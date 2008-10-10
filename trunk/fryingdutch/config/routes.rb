@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :games
+  map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
+
   map.resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

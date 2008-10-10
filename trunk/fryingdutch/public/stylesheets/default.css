@@ -70,3 +70,9 @@ p {
 	padding: 5px;
 	display: block;	
 }
+.content {
+	padding: 10px;
+}
+.pagebottom {
+	clear: both;
+}

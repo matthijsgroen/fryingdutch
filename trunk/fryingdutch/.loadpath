@@ -9,4 +9,8 @@
 	<pathentry path="GEM_LIB/actionpack-2.1.0/lib" type="var"/>
 	<pathentry path="GEM_LIB/rails-2.1.0/lib" type="var"/>
 	<pathentry path="GEM_LIB/actionmailer-2.1.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/actionpack-2.1.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/activerecord-2.1.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/actionpack-2.1.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/activerecord-2.1.0/lib" type="var"/>
 </loadpath>

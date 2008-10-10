@@ -5,19 +5,21 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Fryingdutch.net</title>
-	<%= stylesheet_link_tag 'default' %>
+	<%= stylesheet_link_tag 'default', 'games' %>
 	<%= stylesheet_link_tag 'default_colors' %>
+	<%= javascript_include_tag :defaults %>
 </head>
 <body>
 	<div class="body">
 		<div class="header">
 			<h1>Fryingdutch.net</h1>
-			<%=render :partial => "shared/user_header" %>
+			<%= render :partial => "shared/user_header" %>
 		</div>
-		<%=render :partial => "shared/menu" %>
-	
+		<%= render :partial => "shared/menu" %>
+		<div class="content">
 		<%= yield  %>
-	
+		<div class="pagebottom"></div>
+		</div>
 		<div class="footer">
 			&copy; 2008 fryingdutch.net
 		</div>
