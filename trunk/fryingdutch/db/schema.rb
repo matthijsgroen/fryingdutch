@@ -9,13 +9,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081009160603) do
+ActiveRecord::Schema.define(:version => 20081010193541) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued",     :limit => 11
+    t.integer "lifetime",   :limit => 11
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",  :limit => 11, :null => false
+    t.string  "server_url"
+    t.string  "salt",                     :null => false
   end
 
   create_table "taggings", :force => true do |t|
@@ -33,10 +48,13 @@ ActiveRecord::Schema.define(:version => 20081009160603) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "identity_url"
+    t.string   "display_name"
+    t.string   "nickname"
+    t.string   "email"
   end
 
 end
