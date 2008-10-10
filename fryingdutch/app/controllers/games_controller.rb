@@ -42,7 +42,8 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.js {
         render :update do |page|
-          page['#add_game'].replace :partial => "form"
+          page['#add_game'].before render(:partial => "form")
+          page['#add_game'].hide
         end
       }
       format.xml  { render :xml => @game }
@@ -73,9 +74,8 @@ class GamesController < ApplicationController
         flash[:notice] = 'Game was successfully created.'
         format.js { 
           render :update do |page|
-            @games = Game.find :all
-            page['#game_list'].replace_html :partial => "game", :collection => @games
-            page['#game_list .game:last'].after link_to_remote("Voeg een spel toe", :url => new_game_path, :html => { :id => "add_game" })
+            page['#new_game'].replace :partial => "game", :object => @game
+            page['#add_game'].show
           end
         }
         format.xml  { render :xml => @game, :status => :created, :location => @game }

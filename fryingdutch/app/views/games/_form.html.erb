@@ -6,7 +6,10 @@
   <%= f.text_area :description, :cols => 40, :rows => 5 %><br />
   <%= f.label :tag_list, "Tags:" %> <%= f.text_field :tag_list, :class => "textfield" %><br />
 	<% if @game.new_record? %>
-  <%= f.submit "Toevoegen" %> <%= link_to "Annuleren", "#", :class => "cancel_game_addition" %>
+  <%= f.submit "Toevoegen" %> <%= link_to_function "Annuleren", "#" do |page|
+		page["#new_game"].remove
+		page["#add_game"].show
+	end %>
 	<% else %>
   <%= f.submit "Bewerken" %> <%= link_to_remote "Annuleren", :url => @game, :success => " $(\"#edit_game_#{@game.id}\").replaceWith(request);" %>
 	<% end %>

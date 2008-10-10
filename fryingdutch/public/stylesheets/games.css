@@ -60,7 +60,15 @@ form.edit_game textarea {
 	background-color: #dddddd;
 }
 
+.gamerating {
+	float: left;
+	padding: 5px;
+	width: 200px;
+}
+
+
 .game .game_menu {
+	clear: both;
 	display: block;
 	padding: 0;
 	margin: 4px 0 0 0;
@@ -87,4 +95,12 @@ form.edit_game textarea {
 
 .cloud1, .cloud2, .cloud3, .cloud4 { 
 	color: #000000;
+}
+
+.game .tags a {
+	color: black;
+}
+
+.showall {
+	margin-bottom: 10px;
 }
