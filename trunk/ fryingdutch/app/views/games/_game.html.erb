@@ -1,0 +1,13 @@
+	<div class="game" id="game_<%= game.id %>">
+		<h2><%=h game.name %></h2>
+		<p class="description"><%=h game.description %></p>
+		
+		<p class="tags">Tags: <%=game.tag_list %></p>
+		
+		<ul class="game_menu">
+			<li>Speler commentaar</li>
+			<li>Speler groepen</li>
+			<li><%= link_to_remote "Bewerken", :url => edit_game_path(game) %></li>
+			<li><%= link_to_remote "Verwijderen", :url => game, :method => :delete, :confirm => "Weet u zeker dat u het spel #{game.name} wilt verwijderen?" %></li>
+		</ul>
+	</div>
