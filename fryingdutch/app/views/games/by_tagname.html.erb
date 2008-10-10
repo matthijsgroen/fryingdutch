@@ -1,4 +1,13 @@
-<h2>Spellen met de tag: <%=h params[:tagname] %></h2>
+<h2>Spellen met de tag(s): <%=h params[:tagname] %></h2>
+<%= link_to "Toon alle spellen", games_path %>
 <div id="game_list">
 	<%= render :partial => "game", :collection => @games %>
 </div>
+<% if @games.length > 1 %>
+<div class="sidecolumn">
+	<h2>Tags:</h2>
+	<% sub_tag_cloud @games, %w(cloud1 cloud2 cloud3 cloud4), params[:tagname] do |tag, css_class| %>
+		<%= link_to tag.name, games_by_tagname_path("#{params[:tagname]}, #{tag.name}"), :class => css_class %>
+	<% end %>
+</div>
+<% end %>

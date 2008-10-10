@@ -85,3 +85,6 @@ form.edit_game textarea {
 .cloud3 { font-size: 1.4em; }
 .cloud4 { font-size: 1.6em; }
 
+.cloud1, .cloud2, .cloud3, .cloud4 { 
+	color: #000000;
+}
