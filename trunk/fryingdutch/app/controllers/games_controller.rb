@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     @games = Game.find :all
-    @tags = Game.tag_counts
+    @tags = Game.tag_counts :order => "name asc"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   end
 
   def by_tagname
-    @games = Game.find_tagged_with(params[:tagname])
+    @games = Game.find_tagged_with(params[:tagname], :match_all => true)
 
     respond_to do |format|
       format.html # by_tagname.html.erb
@@ -28,6 +28,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js { render :partial => "game", :object => @game }
       format.xml  { render :xml => @game }
     end
   end
@@ -100,7 +101,7 @@ class GamesController < ApplicationController
         format.html { redirect_to(@game) }
         format.js { 
           render :update do |page| 
-            page["#game_#{@game.id}"].replace :partial => "game"
+            page["#edit_game_#{@game.id}"].replace :partial => "game", :object => @game
           end
         }
         format.xml  { head :ok }
@@ -108,7 +109,7 @@ class GamesController < ApplicationController
         format.html { render :action => "edit" }
         format.js { 
           render :update do |page| 
-            page["#game_#{@game.id}"].replace :partial => "form"
+            page["#edit_game_#{@game.id}"].replace :partial => "form"
           end
         }
         format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }

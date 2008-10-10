@@ -8,5 +8,4 @@
 	<% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4) do |tag, css_class| %>
 		<%= link_to tag.name, games_by_tagname_path(tag.name), :class => css_class %>
 	<% end %>
-	
 </div>
