@@ -1,3 +1,4 @@
+<% if current_user %>
 <div id="user_header">
 <div class="stats">
 	<p>Level: 1</p>
@@ -5,8 +6,22 @@
 </div>
 <img class="avatar" src="/images/default_avatar.png" />	
 <div id="user_menu">
-	<strong>Matthijs Groen</strong><br />
-	Instellingen - Help<br />
-	Berichten (0)		
+	<strong><%=h current_user.nickname %></strong><br />
+	<%= link_to "Instellingen", settings_user_path %> - <%= link_to "Uitloggen", logoff_user_path %><br />
+	Berichten (0) - Help<br />		
 </div>
 </div>
+<% else %>
+<div id="user_header">
+<div id="user_menu">
+	<% form_tag(sessions_url) do %>
+  <label for="openid_identifier">OpenID:</label>
+	<%= text_field_tag "openid_identifier" %>
+	<%= submit_tag 'Log in', :disable_with => "Inloggen&hellip;" %>
+  <% end %>
+
+	<%= link_to "Registreren?", new_user_path %> - Help
+</div>
+</div>
+
+<% end %>

@@ -59,6 +59,17 @@ p {
 	float: left;
 }
 
+#user_menu input#openid_identifier {
+	font-size: 1.2em;
+	border: 1px solid #dddddd;
+	background-color: #eeeeee;
+	font-weight: bold;
+}
+#user_menu label {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
 #mainmenu {
 	padding: 0;
 	margin: 0;
@@ -75,4 +86,7 @@ p {
 }
 .pagebottom {
 	clear: both;
+}
+.explanation {
+	font-style: italic;
 }

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081010193541) do
+ActiveRecord::Schema.define(:version => 20081011203930) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -48,13 +48,14 @@ ActiveRecord::Schema.define(:version => 20081010193541) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "identity_url"
     t.string   "display_name"
     t.string   "nickname"
     t.string   "email"
+    t.integer  "login_counter", :limit => 11
+    t.date     "dob"
   end
 
 end

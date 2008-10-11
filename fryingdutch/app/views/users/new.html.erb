@@ -1,19 +1,13 @@
-<h1>New user</h1>
+<h2>Registreren bij Fryingdutch.net</h2>
 
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', users_path %>
+<p>
+	Leuk dat je je aan wilt melden bij Fryingdutch.net!<br />
+	Helaas is er helemaal geen registratie proces bij TFD! Je kan namelijk meteen inloggen.<br />
+	Fryingdutch maakt gebruikt van OpenID, dat is een manier zodat je makkelijk je 
+	online profiel kan beheren op 1 centrale plek, en die op meerdere sites kan gebruiken!<br />
+	Zo hoef je niet op al die sites die men ondertussen in zijn digitale leven gebruikt steeds 
+	gegevens zoals email adres te wijzigen!<br /><br />
+	
+	<%= link_to "Ik wil graag meer informatie over OpenID!", "http://openid.net/", :target => "_blank" %><br />
+	<%= link_to "Ik heb nog geen OpenID, waar kan ik er een krijgen?", "http://openid.net/get/", :target => "_blank" %><br />
+</p>
