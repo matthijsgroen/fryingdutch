@@ -27,23 +27,37 @@ class SessionsController < ApplicationController
     def open_id_authentication(identity_url)
       # Pass optional :required and :optional keys to specify what sreg fields you want.
       # Be sure to yield registration, a third argument in the #authenticate_with_open_id block.
-      authenticate_with_open_id(identity_url, :required => [:nickname, :email], :optional => :fullname) do |status, identity_url, registration|
+      authenticate_with_open_id(identity_url, :required => [:nickname], :optional => [:fullname, :email, :gender, :dob]) do |status, identity_url, registration|
         case status.status
         when :missing
-          failed_login "Sorry, the OpenID server couldn't be found"
+          failed_login "Sorry, de OpenID server kon niet worden gevonden"
         when :canceled
-          failed_login "OpenID verification was canceled"
+          failed_login "OpenID verificatie was geannuleerd"
         when :failed
-          failed_login "Sorry, the OpenID verification failed"
+          failed_login "Sorry, de OpenID verificatie was mislukt"
         when :successful
+          begin
+            return failed_login "Sorry, we willen op zijn minst je nickname weten!" if registration["nickname"].blank? 
+          rescue
+            return failed_login "Sorry, we willen op zijn minst je nickname weten!"
+          end
           if @current_user = User.find_by_identity_url(identity_url)
+            @current_user.login_counter ||= 0
+            @current_user.login_counter += 1
             assign_registration_attributes!(registration)
             unless @current_user.save
               flash[:error] = "Error saving the fields from your OpenID profile: #{current_user.errors.full_messages.to_sentence}"
             end
             successful_login
           else
-            failed_login "Sorry, no user by that identity URL exists"
+            @current_user = User.new
+            @current_user.login_counter ||= 0
+            @current_user.identity_url = identity_url
+            assign_registration_attributes!(registration)
+            unless @current_user.save
+              flash[:error] = "Error saving the fields from your OpenID profile: #{current_user.errors.full_messages.to_sentence}"
+            end
+            successful_login
           end
         end
       end
@@ -52,7 +66,7 @@ class SessionsController < ApplicationController
   private
     def successful_login
       session[:user_id] = @current_user.id
-      redirect_to(root_url)
+      redirect_to(desktop_user_url)
     end
     
     def failed_login(message)
@@ -71,7 +85,7 @@ class SessionsController < ApplicationController
     end
 
     def model_to_registration_mapping
-      { :login => 'nickname', :email => 'email', :display_name => 'fullname' }
+      { :nickname => 'nickname', :email => 'email', :display_name => 'fullname', :dob => 'dob' }
     end
     
 end

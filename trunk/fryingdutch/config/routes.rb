@@ -2,8 +2,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :games
   map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
 
-  map.resources :users
-
+  map.resource :user, :collection => { :desktop => :any, :logoff => :any, :settings => :get }
+  
   map.open_id_complete 'sessions', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   map.resources :sessions
 

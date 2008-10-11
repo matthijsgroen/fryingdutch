@@ -1,0 +1,25 @@
+<h2>Gebruikers instellingen</h2>
+
+<h3>OpenID gegevens</h3>
+<p>
+	De volgende gegevens van je OpenID zijn bij ons bekend:
+</p>
+
+<ul>
+	<li>
+		<b>Nick:</b> <%=h current_user.nickname %><br />
+		<span class="explanation">Verplicht: Nodig voor forum berichten etc.</span>
+	</li>
+	<li>
+		<b>Naam:</b> <%=h current_user.display_name %><br />
+		<span class="explanation">Optioneel: Kan gebruikt worden voor correspondentie</span>
+	</li>
+	<li>
+		<b>E-Mail:</b> <%=h current_user.email %><br />
+		<span class="explanation">Optioneel: Kan gebruikt worden voor correspondentie. Voor het ontvangen van nieuwsbrieven moet je geaboneerd zijn.</span>
+	</li>
+	<li>
+		<b>Geboortedatum:</b> <%=h current_user.dob %><br />
+		<span class="explanation">Optioneel: Wordt gebruikt voor de verjaardagskalender. Indien bepaalde content leeftijdsrestricties heeft dient je geboortedatum wel bekend te zijn.</span>
+	</li>
+</ul>

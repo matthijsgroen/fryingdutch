@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  before_filter :login_required, :except => [:new]
+  
   # GET /users
   # GET /users.xml
   def index
@@ -8,6 +11,19 @@ class UsersController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @users }
     end
+  end
+  
+  def desktop
+    
+  end
+  
+  def settings
+    
+  end
+
+  def logoff
+    reset_session
+    redirect_to root_url
   end
 
   # GET /users/1
