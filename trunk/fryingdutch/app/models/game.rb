@@ -5,7 +5,8 @@ class Game < ActiveRecord::Base
   acts_as_taggable
   
   validates_each :name do |record, attr, value|
-    record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if Game.find_by_permalink(record.get_permalink)
+    record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if not record.new_record? and Game.find :first, :conditions => ["permalink LIKE ? AND id <> ?", record.get_permalink, record.id]
+    record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if record.new_record? and Game.find :first, :conditions => ["permalink LIKE ?", record.get_permalink]
   end
   
   has_many :user_games, :dependent => :destroy
