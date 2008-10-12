@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   def current_user
     user_id = session[:user_id]
     @current_user = nil
-    @current_user = User.find user_id unless user_id.nil?
+    begin
+      @current_user = User.find user_id unless user_id.nil?
+    rescue
+      @current_user = nil
+    end
   end
 
   def login_required
