@@ -2,7 +2,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :games
   map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
 
-  map.resource :user, :collection => { :desktop => :any, :logoff => :any, :settings => :get }
+  map.resources :users do |user|
+    user.add_game 'add_game/:game_id', :controller => "users", :action => "add_game", :requirements => { :method => :post }
+  end
+
+  map.logoff 'logoff', :controller => "users", :action => "logoff"
+  map.desktop 'desktop', :controller => "users", :action => "desktop"
+  map.settings 'settings', :controller => "users", :action => "settings"
   
   map.open_id_complete 'sessions', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   map.resources :sessions

@@ -41,24 +41,14 @@ class SessionsController < ApplicationController
           rescue
             return failed_login "Sorry, we willen op zijn minst je nickname weten!"
           end
-          if @current_user = User.find_by_identity_url(identity_url)
-            @current_user.login_counter ||= 0
-            @current_user.login_counter += 1
-            assign_registration_attributes!(registration)
-            unless @current_user.save
-              flash[:error] = "Error saving the fields from your OpenID profile: #{current_user.errors.full_messages.to_sentence}"
-            end
-            successful_login
-          else
-            @current_user = User.new
-            @current_user.login_counter ||= 0
-            @current_user.identity_url = identity_url
-            assign_registration_attributes!(registration)
-            unless @current_user.save
-              flash[:error] = "Error saving the fields from your OpenID profile: #{current_user.errors.full_messages.to_sentence}"
-            end
-            successful_login
+          @current_user = User.find_by_identity_url(identity_url) || User.new # user not found, create a new one
+          @current_user.login_counter ||= 0
+          @current_user.login_counter += 1
+          assign_registration_attributes!(registration)
+          unless @current_user.save
+            flash[:error] = "Error saving the fields from your OpenID profile: #{current_user.errors.full_messages.to_sentence}"
           end
+          successful_login
         end
       end
     end
@@ -66,12 +56,12 @@ class SessionsController < ApplicationController
   private
     def successful_login
       session[:user_id] = @current_user.id
-      redirect_to(desktop_user_url)
+      redirect_to desktop_url
     end
     
     def failed_login(message)
       flash[:error] = message
-      redirect_to(new_session_url)
+      redirect_to new_session_url
     end
 
     # registration is a hash containing the valid sreg keys given above
@@ -79,7 +69,7 @@ class SessionsController < ApplicationController
     def assign_registration_attributes!(registration)
       model_to_registration_mapping.each do |model_attribute, registration_attribute|
         unless registration[registration_attribute].blank?
-          @current_user.send("#{model_attribute}=", registration[registration_attribute])
+          @current_user.send "#{model_attribute}=", registration[registration_attribute]
         end
       end
     end

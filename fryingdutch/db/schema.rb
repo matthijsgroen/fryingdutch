@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081011203930) do
+ActiveRecord::Schema.define(:version => 20081012112637) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
@@ -47,6 +48,17 @@ ActiveRecord::Schema.define(:version => 20081011203930) do
     t.string "name"
   end
 
+  create_table "user_games", :force => true do |t|
+    t.integer  "game_id",      :limit => 11
+    t.integer  "user_id",      :limit => 11
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "quit_reason",  :limit => 11
+    t.string   "quit_details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20081011203930) do
     t.string   "email"
     t.integer  "login_counter", :limit => 11
     t.date     "dob"
+    t.string   "permalink"
   end
 
 end
