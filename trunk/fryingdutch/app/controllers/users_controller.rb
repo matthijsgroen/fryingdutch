@@ -22,6 +22,24 @@ class UsersController < ApplicationController
   def new
     # new.html.erb, registration page    
   end
+  
+  def add_game
+    game = Game.find_by_permalink(params[:game_id])
+    start_playing = current_user.user_games.new
+    start_playing.start_date = Date.today
+    start_playing.game = game
+    start_playing.user = current_user
+
+    respond_to do |format|
+      if start_playing.save
+        format.js do
+          render :update do |page|
+            page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', :locals => { :game => game }
+          end          
+        end        
+      end
+    end  
+  end
 
   def logoff
     reset_session
