@@ -1,6 +1,8 @@
 <ul id="mainmenu">
+	<% if current_user %>
 	<li><%=link_to "Bureaublad", desktop_user_path %></li>
 	<li><a href="/">Profiel pagina</a></li>
+	<% end %>
 	<li><%=link_to "Spellen", games_path %></li>
 	<li><a href="/">Forum</a></li>
 </ul>
