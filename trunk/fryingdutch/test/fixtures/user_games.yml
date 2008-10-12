@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  game: 
+  user: 
+  start_date: 2008-10-12
+  end_date: 2008-10-12
+  quit_reason: 
+  quit_details: MyString
+
+two:
+  game: 
+  user: 
+  start_date: 2008-10-12
+  end_date: 2008-10-12
+  quit_reason: 
+  quit_details: MyString

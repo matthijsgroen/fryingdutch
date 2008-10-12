@@ -90,3 +90,8 @@ p {
 .explanation {
 	font-style: italic;
 }
+.play_options {
+	clear: left;
+	float: left;
+	margin-bottom: 10px;
+}
