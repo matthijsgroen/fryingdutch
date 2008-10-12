@@ -1,1 +1,10 @@
 <h1>Profiel pagina van <%=h @user.nickname %></h1>
+
+<div class="games">
+	<h2>Spellen die ik speel:</h2>
+	<ul>
+		<% @user.user_games_playing.each do |user_game| %>
+		<li><%= link_to h(user_game.game.name), user_game.game %>, sinds <%= user_game.start_date %></li>
+		<% end %>
+	</ul>	
+</div>
