@@ -1,9 +1,11 @@
 module ActiveRecord #:nodoc:
   
   module Reactor #:nodoc:
+    
     module Is
     
       module TopicType #:nodoc:
+        
         def self.included(base)
           base.extend(ClassMethods)
         end
@@ -15,7 +17,7 @@ module ActiveRecord #:nodoc:
             has_many :topic_reactions, :through => :topic
             
             after_save :save_topic
-            include ActiveRecord::Reactor::Behaves::AsTopic::InstanceMethods
+            include ActiveRecord::Reactor::Is::TopicType::InstanceMethods
             alias_method_chain :initialize, :topic
           end
         end # ClassMethods
@@ -33,7 +35,7 @@ module ActiveRecord #:nodoc:
         end # InstanceMethods
         
       end # TopicType
-    end # IS
+    end # Is
   end # Reactor
 end # ActiveRecord
 
