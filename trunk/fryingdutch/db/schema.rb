@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081014154307) do
+ActiveRecord::Schema.define(:version => 20081016071100) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(:version => 20081014154307) do
     t.integer "timestamp",  :limit => 11, :null => false
     t.string  "server_url"
     t.string  "salt",                     :null => false
+  end
+
+  create_table "ratings_comment_reactions", :force => true do |t|
+    t.float    "rating"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ratings_comment_topics", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|

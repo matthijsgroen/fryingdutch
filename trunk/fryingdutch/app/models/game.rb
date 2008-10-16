@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
   has_many :user_games, :dependent => :destroy
   has_many :users, :through => :user_games
 
+  #act_as_topic :comments, :type => :ratings_comment, :on_create => { :title => :title, :user_id => User::SYSTEM }
 
   def before_save
     self.permalink = get_permalink
