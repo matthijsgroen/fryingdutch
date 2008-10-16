@@ -18,4 +18,8 @@
 	<pathentry path="GEM_LIB/ruby-openid-2.1.2/lib" type="var"/>
 	<pathentry path="GEM_LIB/activesupport-2.1.0/lib" type="var"/>
 	<pathentry path="GEM_LIB/ruby-openid-2.1.2/lib" type="var"/>
+	<pathentry path="GEM_LIB/activesupport-2.1.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/actionpack-2.1.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/ruby-openid-2.1.2/lib" type="var"/>
+	<pathentry path="GEM_LIB/activerecord-2.1.0/lib" type="var"/>
 </loadpath>
