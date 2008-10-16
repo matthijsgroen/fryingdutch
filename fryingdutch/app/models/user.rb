@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  SYSTEM = 1; # UserID of the system User.
+
   has_many :user_games, :dependent => :destroy
   
   has_many :user_games_playing, :class_name => "UserGame", :conditions => "user_games.end_date IS NULL"
