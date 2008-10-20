@@ -1,2 +1,4 @@
+<% if current_user %>
 	<%= link_to_remote "Ik speel dit spel ook", :url => user_add_game_path(current_user, game) unless current_user and current_user.games_playing.include? game %>
 	<%= link_to "Ik ben gestopt met dit spel", "#" unless current_user and !current_user.games_playing.include? game %>
+<% end %>
