@@ -9,13 +9,15 @@
 			<%= image_tag "star_empty.png" %>	
 			<%= image_tag "star_empty.png" %>	
 		</div>
+		
 		<div class="play_options">
 			<%= render :partial => "play_options", :locals => { :game => game } %>
 		</div>
+		
 		<p class="tags">Tags: <%= game.tags.collect { |tag| link_to h(tag.name), games_by_tagname_path(tag.name) }.join ", " %></p>
 		
 		<ul class="game_menu">
-			<li>Speler commentaar</li>
+			<li>Speler commentaar (<%= game.comments.count %>)</li>
 			<li>Speler groepen</li>
 			<li>Meer info</li>
 			<li><%= link_to_remote "Bewerken", :url => edit_game_path(game) %></li>
