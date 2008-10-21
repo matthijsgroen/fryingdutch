@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081019153804) do
+ActiveRecord::Schema.define(:version => 20081021074559) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "comment_on_id",   :limit => 11
+    t.string   "comment_on_type"
+    t.integer  "content_id",      :limit => 11
+    t.string   "content_type"
+    t.integer  "user_id",         :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -34,6 +44,13 @@ ActiveRecord::Schema.define(:version => 20081019153804) do
     t.string  "salt",                     :null => false
   end
 
+  create_table "rating_comments", :force => true do |t|
+    t.float    "rating"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ratings_comment_reactions", :force => true do |t|
     t.float    "rating"
     t.text     "comment"
@@ -53,26 +70,6 @@ ActiveRecord::Schema.define(:version => 20081019153804) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "topic_reactions", :force => true do |t|
-    t.integer  "topic_id",         :limit => 11
-    t.integer  "user_id",          :limit => 11
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "reaction_on_type"
-    t.integer  "reaction_on_id",   :limit => 11
-  end
-
-  create_table "topics", :force => true do |t|
-    t.string   "parent_type"
-    t.integer  "parent_id",     :limit => 11
-    t.string   "title"
-    t.integer  "reactioncount", :limit => 11
-    t.string   "topic_type"
-    t.integer  "user_id",       :limit => 11
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "user_games", :force => true do |t|
