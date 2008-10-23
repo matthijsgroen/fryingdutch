@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
           rescue
             return failed_login "Sorry, we willen op zijn minst je nickname weten!"
           end
-          @current_user = User.find_by_identity_url(identity_url) || User.new # user not found, create a new one
+          @current_user = User.find_or_create_by_identity_url(identity_url)
           @current_user.login_counter ||= 0
           @current_user.login_counter += 1
           assign_registration_attributes!(registration)

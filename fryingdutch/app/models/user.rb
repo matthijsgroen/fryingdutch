@@ -8,7 +8,12 @@ class User < ActiveRecord::Base
   has_many :games_playing, :class_name => "Game", :through => :user_games_playing, :source => :game
 
   def before_save
-    self.permalink = "#{id}-#{nickname.gsub(/[^a-z0-9]+/i, '-')}".downcase if self.nickname
+    self.permalink = create_permalink 
+  end
+  
+  def after_create
+    self.permalink = create_permalink
+    save
   end
 
   def to_param
@@ -16,5 +21,15 @@ class User < ActiveRecord::Base
     save
     permalink
   end
+  
+  private
+    def create_permalink
+      if self.nickname
+        "#{id}-#{nickname.gsub(/[^a-z0-9]+/i, '-')}".downcase
+      else
+        "#{id}"
+      end
+        
+    end
 
 end
