@@ -4,7 +4,7 @@
 	<p>Level: 1</p>
 	<p>Credits: 200</p>
 </div>
-<img class="avatar" src="/images/default_avatar.png" />	
+<%= gravatar_for current_user, :class => "avatar" %>
 <div id="user_menu">
 	<strong><%=h current_user.nickname %></strong><br />
 	<%= link_to "Instellingen", settings_path %> - <%= link_to "Uitloggen", logoff_path %><br />
