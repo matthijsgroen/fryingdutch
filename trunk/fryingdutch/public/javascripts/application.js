@@ -10,9 +10,15 @@ GameRating = $.klass({
 	
 });
 
+ExternalLink = $.klass({
+	initialize: function() {
+		this.element.attr("target", "_blank");
+	}
+})
 
 $(function() {
 
 	$(".gamerating").attach(GameRating)
+	$("a.external").attach(ExternalLink)
 	
 });
