@@ -17,9 +17,11 @@
 	<% form_tag(sessions_url) do %>
   <label for="openid_identifier">OpenID:</label>
 	<%= text_field_tag "openid_identifier" %>
-	<%= submit_tag 'Log in', :disable_with => "Inloggen&hellip;" %>
+	<%= submit_tag 'Log in' %>
   <% end %>
-
+	<!-- BEGIN ID SELECTOR -->
+	<script type="text/javascript" id="__openidselector" src="https://www.idselector.com/selector/796d7353866138a8eda25ec1efc2e80b67d2440c" charset="utf-8"></script>
+	<!-- END ID SELECTOR -->
 	<%= link_to "Registreren?", new_user_path %> - Help
 </div>
 </div>
