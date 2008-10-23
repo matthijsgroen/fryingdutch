@@ -3,7 +3,6 @@
 
 GameRating = $.klass({
 	initialize: function() {
-		alert("test");
 	},
 	onclick: function(event) {
 		this.element.html("");

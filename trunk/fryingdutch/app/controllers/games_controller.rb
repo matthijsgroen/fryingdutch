@@ -126,7 +126,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.js { 
         render :update do |page| 
-          page["#game_#{@game.id}"].fade
+          page["#game_#{@game.id}"].blind_up
         end
       }
       format.xml  { head :ok }
