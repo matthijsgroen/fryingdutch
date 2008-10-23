@@ -38,6 +38,7 @@ p {
 	height: 60px;
 	float: right;
 	margin: 5px;
+	border-radius: 10px;
 	-moz-border-radius: 10px;
 }
 
@@ -94,4 +95,16 @@ p {
 	clear: left;
 	float: left;
 	margin-bottom: 10px;
+}
+
+
+a.external {
+	color: #3366BB;
+}
+a.external {
+	background: transparent url(/images/external.png) no-repeat scroll right center;
+	padding-right: 13px;
+}
+a.external:hover {
+	text-decoration:underline;
 }
