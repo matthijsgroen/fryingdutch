@@ -5,7 +5,8 @@ GameRating = $.klass({
 	initialize: function() {
 		this.bar = $(".userrating", this.element);
 		this.rating = this.bar.width();
-		this.game_id = this.element.parents(".game").attr("id").split("_")[1];
+		var game_container = this.element.parents(".game");
+		this.game_url = $("h2 a", game_container).attr("href");
 	},
 	onmousemove: function(event) {
 		var offset = this.element.offset();
@@ -38,9 +39,17 @@ GameRating = $.klass({
 		var offset = this.element.offset();
 		var width = event.pageX - offset.left;
 		this.rating = width;
-		var rounded_width = Math.round(width / 8.0) * 8;
+		
 		this.set_width(width);
 		// send message to server
+		$.ajax({
+			url: this.game_url + "/rating",
+			data: {
+				_method: "put",
+				rating: width / 16.0,
+			},
+			dataType: "script"
+		})
 	}
 });
 

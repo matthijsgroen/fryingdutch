@@ -1,10 +1,10 @@
 	<div class="game" id="<%=dom_id game %>">
-		<h2><%=h game.name %></h2>
+		<h2><%= link_to h(game.name), game %></h2>
 		<div class="column">
 			<p class="description"><%=h game.description %></p>
 			
 			<div class="averagerating box">
-				<div class="averagerating score1" style="width: 50px;"></div>
+				<%= render :partial => "game_rating", :locals => { :game => game } %>
 			</div>
 			
 			<div class="play_options">
