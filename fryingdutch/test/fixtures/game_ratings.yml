@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  game: 
+  user: 
   rating: 1.5
-  comment: MyText
 
 two:
+  game: 
+  user: 
   rating: 1.5
-  comment: MyText
