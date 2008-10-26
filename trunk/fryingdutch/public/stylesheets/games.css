@@ -60,12 +60,41 @@ form.edit_game textarea {
 	background-color: #dddddd;
 }
 
-.gamerating {
-	float: left;
-	padding: 5px;
-	width: 200px;
+.averagerating.box {
+	width: 125px;
+	height: 25px;
+	margin: 5px 0 5px 0;
+	background: transparent url(/images/ratings/star_empty.png) top left repeat-x;
+}
+.averagerating.score1 {
+	height: 25px;
+	background: transparent url(/images/ratings/star.png) top left repeat-x;
 }
 
+p.rating_label {
+	display: inline-block;
+}
+
+.userrating.box {
+	display: inline-block;
+	width: 80px;
+	height: 16px;
+	background: transparent url(/images/ratings/star_empty_small.png) top left repeat-x;
+}
+.userrating.score1 {
+	height: 16px;
+	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
+}
+.userrating.score2 {
+	height: 16px;
+	background: transparent url(/images/ratings/star_rating_small.png) top left repeat-x;
+}
+
+.game .column {
+	padding: 2px;
+	position: relative;
+	float: left;
+}
 
 .game .game_menu {
 	clear: both;
@@ -103,4 +132,20 @@ form.edit_game textarea {
 
 .showall {
 	margin-bottom: 10px;
+}
+
+.imagebar {
+	display: block;
+	height: 90px;
+	padding: 0;
+	margin: 4px 0 0 0;
+}
+.imagebar li {
+	display: block;
+	float: left;
+	padding: 4px;
+	margin-right: 4px;
+	background-color: #dddddd;
+	width: 100px;
+	height: 75px;
 }

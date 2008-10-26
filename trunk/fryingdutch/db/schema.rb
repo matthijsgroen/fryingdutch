@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081021074559) do
+ActiveRecord::Schema.define(:version => 20081026091316) do
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_on_id",   :limit => 11
@@ -17,6 +17,14 @@ ActiveRecord::Schema.define(:version => 20081021074559) do
     t.integer  "content_id",      :limit => 11
     t.string   "content_type"
     t.integer  "user_id",         :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_ratings", :force => true do |t|
+    t.integer  "game_id",    :limit => 11
+    t.integer  "user_id",    :limit => 11
+    t.float    "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,20 +52,6 @@ ActiveRecord::Schema.define(:version => 20081021074559) do
     t.string  "salt",                     :null => false
   end
 
-  create_table "rating_comments", :force => true do |t|
-    t.float    "rating"
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ratings_comment_reactions", :force => true do |t|
-    t.float    "rating"
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id",        :limit => 11
     t.integer  "taggable_id",   :limit => 11
@@ -70,6 +64,12 @@ ActiveRecord::Schema.define(:version => 20081021074559) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "text_comments", :force => true do |t|
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_games", :force => true do |t|

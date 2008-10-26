@@ -1,20 +1,25 @@
 	<div class="game" id="<%=dom_id game %>">
 		<h2><%=h game.name %></h2>
-		<p class="description"><%=h game.description %></p>
-		
-		<div class="gamerating">
-			<%= image_tag "star.png" %>	
-			<%= image_tag "star.png" %>	
-			<%= image_tag "star.png" %>	
-			<%= image_tag "star_empty.png" %>	
-			<%= image_tag "star_empty.png" %>	
+		<div class="column">
+			<p class="description"><%=h game.description %></p>
+			
+			<div class="averagerating box">
+				<div class="averagerating score1" style="width: 50px;"></div>
+			</div>
+			
+			<div class="play_options">
+				<%= render :partial => "play_options", :locals => { :game => game } if current_user %>
+			</div>
 		</div>
 		
-		<div class="play_options">
-			<%= render :partial => "play_options", :locals => { :game => game } %>
+		<div class="column">
+			<ul class="imagebar">
+				<li><%= image_tag "/images/no_image.jpg" %></li>
+				<li><%= image_tag "/images/no_image.jpg" %></li>
+				<li><%= image_tag "/images/no_image.jpg" %></li>
+			</ul>			
+			<p class="tags">Tags: <%= game.tags.collect { |tag| link_to h(tag.name), games_by_tagname_path(tag.name) }.join ", " %></p>
 		</div>
-		
-		<p class="tags">Tags: <%= game.tags.collect { |tag| link_to h(tag.name), games_by_tagname_path(tag.name) }.join ", " %></p>
 		
 		<ul class="game_menu">
 			<li>Speler commentaar (<%= game.comments.count %>)</li>
