@@ -89,6 +89,24 @@ class GamesController < ApplicationController
       end
     end
   end
+  
+  # PUT /games/1/rating
+  def rating
+    game = Game.find_by_permalink(params[:game_id])
+    game_rating = game.game_ratings.find_or_create_by_user_id(current_user.id)
+    game_rating.rating = params[:rating].to_f
+    respond_to do |format|
+      if game_rating.save
+        format.js {
+          render :update do |page|
+            page["##{dom_id(game)} .averagerating.box"].replace_html :partial => "game_rating", :locals => { :game => game }
+            page["##{dom_id(game)} .play_options"].replace_html :partial => "play_options", :locals => { :game => game }
+          end
+        }
+      end
+    end
+    
+  end
 
   # PUT /games/1
   # PUT /games/1.xml

@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :games
+  map.resources :games do |game|
+    game.set_rating 'rating', :controller => "games", :action => "rating", :requirements => { :method => :put }
+  end
   map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
 
   map.resources :users do |user|

@@ -1,6 +1,9 @@
+<%
+	game_rating = current_user.game_ratings.find_by_game_id game.id	
+%>
 	<p class="rating_label">Mijn mening:</p>
 	<div class="userrating box">
-		<div class="userrating score1" style="width: 50px;"></div>
+		<div class="userrating score1" style="width: <%=game_rating.rating * 16 rescue 0 %>px;"></div>
 	</div>
 	<p>
 		<%= link_to_remote "Ik speel dit spel ook", :url => user_add_game_path(current_user, game) unless current_user.games_playing.include? game %>
