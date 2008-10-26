@@ -54,6 +54,13 @@ form.edit_game textarea {
 	margin: 0;
 	padding: 5px;
 }
+.game h2 a {
+	color: black;
+	text-decoration: none;
+}
+.game h2 a:hover {
+	border-bottom: 1px dashed black;
+}
 .game p.description {
 	width: 200px;
 	padding: 5px;
