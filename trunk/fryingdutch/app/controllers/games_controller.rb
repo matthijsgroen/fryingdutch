@@ -101,7 +101,11 @@ class GamesController < ApplicationController
           render :update do |page|
             page["##{dom_id(game)} .averagerating.box"].replace_html :partial => "game_rating", :locals => { :game => game }
             page["##{dom_id(game)} .play_options"].replace_html :partial => "play_options", :locals => { :game => game }
+            page["##{dom_id(game)} .play_options"].highlight 1000
           end
+        }
+        format.html {
+          redirect_to game
         }
       end
     end

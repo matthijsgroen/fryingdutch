@@ -20,20 +20,10 @@ GameRating = $.klass({
 		var rounded_width = Math.round(width / 8.0) * 8;
 		this.bar.css("width", rounded_width);
 		var amount_stars = Math.floor(rounded_width / 16.0);
-		switch(amount_stars) {
-			case 0: 
-			case 1: 
-			case 2: 
-			case 3: 
-				this.bar.removeClass("score2");
-				this.bar.addClass("score1");
-				break;
-			case 4: 
-			case 5: 
-				this.bar.removeClass("score1");
-				this.bar.addClass("score2");
-				break;
+		for (var i = 0; i <= 5; i++) {
+			this.bar.removeClass("score"+i);
 		}
+		this.bar.addClass("score" + amount_stars);
 	},
 	onclick: function(event) {
 		var offset = this.element.offset();
@@ -59,8 +49,19 @@ ExternalLink = $.klass({
 	}
 });
 
+FlashMessage = $.klass({
+	initialize: function() {
+		this.element.highlight(500);
+		this.element.blindUp(500);
+		this.element.queue(function () {
+        $(this).remove();
+        $(this).dequeue();
+    });
+	}
+})
+
 $(function() {
-	$(".userrating.box").attach(GameRating)
-	$("a.external").attach(ExternalLink)
-	
+	$(".userrating.box").attach(GameRating);
+	$("a.external").attach(ExternalLink);
+	$(".flash").attach(FlashMessage);
 });

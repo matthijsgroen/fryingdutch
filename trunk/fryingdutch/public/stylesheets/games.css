@@ -73,9 +73,29 @@ form.edit_game textarea {
 	margin: 5px 0 5px 0;
 	background: transparent url(/images/ratings/star_empty.png) top left repeat-x;
 }
+.averagerating.score0 {
+	height: 25px;
+	background: transparent url(/images/ratings/star.png) top left repeat-x;
+}
 .averagerating.score1 {
 	height: 25px;
 	background: transparent url(/images/ratings/star.png) top left repeat-x;
+}
+.averagerating.score2 {
+	height: 25px;
+	background: transparent url(/images/ratings/star.png) top left repeat-x;
+}
+.averagerating.score3 {
+	height: 25px;
+	background: transparent url(/images/ratings/star.png) top left repeat-x;
+}
+.averagerating.score4 {
+	height: 25px;
+	background: transparent url(/images/ratings/star_rating.png) top left repeat-x;
+}
+.averagerating.score5 {
+	height: 25px;
+	background: transparent url(/images/ratings/star_rating.png) top left repeat-x;
 }
 
 p.rating_label {
@@ -88,11 +108,27 @@ p.rating_label {
 	height: 16px;
 	background: transparent url(/images/ratings/star_empty_small.png) top left repeat-x;
 }
+.userrating.score0 {
+	height: 16px;
+	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
+}
 .userrating.score1 {
 	height: 16px;
 	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
 }
 .userrating.score2 {
+	height: 16px;
+	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
+}
+.userrating.score3 {
+	height: 16px;
+	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
+}
+.userrating.score4 {
+	height: 16px;
+	background: transparent url(/images/ratings/star_rating_small.png) top left repeat-x;
+}
+.userrating.score5 {
 	height: 16px;
 	background: transparent url(/images/ratings/star_rating_small.png) top left repeat-x;
 }
