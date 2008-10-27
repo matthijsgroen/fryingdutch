@@ -22,9 +22,9 @@
 		</div>
 		
 		<ul class="game_menu">
+			<li>Meer info</li>
 			<li>Speler commentaar (<%= game.comments.count %>)</li>
 			<li>Speler groepen</li>
-			<li>Meer info</li>
 			<li><%= link_to_remote "Bewerken", :url => edit_game_path(game) %></li>
 			<li><%= link_to_remote "Verwijderen", :url => game, :method => :delete, :confirm => "Weet u zeker dat u het spel #{game.name} wilt verwijderen?" %></li>
 		</ul>

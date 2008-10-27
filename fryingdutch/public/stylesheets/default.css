@@ -107,3 +107,8 @@ a.external {
 a.external:hover {
 	text-decoration:underline;
 }
+
+.flash.message {
+	border: 1px solid #99BB99;
+	background-color: #DDFFDD;
+}
