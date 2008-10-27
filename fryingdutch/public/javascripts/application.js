@@ -58,10 +58,40 @@ FlashMessage = $.klass({
         $(this).dequeue();
     });
 	}
-})
+});
+
+GameTabLink = $.klass(Remote.Link, {
+	initialize: function($super) {
+		$super({ success: this.success });
+		this.menu = this.element.parents("ul");
+		var game_container = this.element.parents(".game");
+		this.content_box = $(".tab_contents", game_container);
+	},
+	onclick: function($super, event) {
+		if (this.element.hasClass("active")) {
+			this.resetTabs();
+			return false;
+		}
+		this.resetTabs();
+		this.element.addClass("active");
+		$super(event);
+		return false;
+	},
+	resetTabs: function() {
+		$("a.game_tab", this.menu).removeClass("active");
+		if (this.content_box.css("display") != "none") {
+			this.content_box.blindUp(500);
+		}
+	},
+	success: function(data) {
+		this.content_box.html(data)
+		this.content_box.blindDown(500);
+	}
+});
 
 $(function() {
 	$(".userrating.box").attach(GameRating);
 	$("a.external").attach(ExternalLink);
 	$(".flash").attach(FlashMessage);
+	$("a.game_tab").attach(GameTabLink);
 });
