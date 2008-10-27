@@ -150,14 +150,21 @@ p.rating_label {
 .game .game_menu li {
 	display: block;
 	float: left;
-	padding: 4px;
 	margin-right: 4px;
 	background-color: #dddddd;
 }
 
 .game .game_menu li a {
+	display: block;
+	padding: 4px;
 	color: black;
 	text-decoration: none;
+}
+
+.game .game_menu li a.active {
+	color: black;
+	text-decoration: none;
+	background-color: #FFFFFF;
 }
 
 .cloud1 { font-size: 1.0em; }
@@ -171,6 +178,12 @@ p.rating_label {
 
 .game .tags a {
 	color: black;
+}
+
+.game .tab_contents {
+	display: none;
+	background-color: #FFFFFF;
+	padding: 5px;
 }
 
 .showall {

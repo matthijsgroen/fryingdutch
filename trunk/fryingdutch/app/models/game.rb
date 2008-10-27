@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   
   has_many :user_games, :dependent => :destroy
   has_many :users, :through => :user_games
-  has_many :comments, :as => :comment_on  
+  has_many :comments, :as => :comment_on, :order => "created_at DESC"
 
   def before_save
     self.permalink = get_permalink
