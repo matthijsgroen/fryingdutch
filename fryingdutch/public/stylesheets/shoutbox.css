@@ -1,0 +1,68 @@
+ol.shoutbox {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+ol.shoutbox li {
+	clear: both;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+ol.shoutbox .user_info {
+	width: 110px;
+	float: left;
+	background: transparent url(/images/balloon.png) right top no-repeat;
+	padding-bottom: 3px;
+}
+ol.shoutbox .user_info .avatar {
+	display: block;
+	padding: 3px;
+}
+ol.shoutbox .user_info a.userlink {
+	display: block;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;	
+}
+ol.shoutbox li .message {
+	margin-left: 110px;
+	padding: 5px;
+	background-color: #DDDDDD;
+}
+ol.shoutbox li hr {
+	clear: both;
+	margin: 5px;
+	border: 1px dashed #EEEEEE;
+}
+ol.shoutbox li textarea {
+	background-color: #EEEEEE;
+	border: none;
+	width: 100%;
+}
+ol.shoutbox li.new_comment .user_info {
+	height: 1.5em;
+	overflow: hidden;
+}
+ol.shoutbox li.new_comment .user_info .avatar {
+	visibility: hidden;
+}
+ol.shoutbox li.new_comment textarea {
+	height: 1em;
+}
+ol.shoutbox li.new_comment input {
+	display: none;
+}
+
+ol.shoutbox li.new_comment.expanded .user_info {
+	height: auto;
+}
+ol.shoutbox li.new_comment.expanded .user_info .avatar {
+	visibility: visible;
+}
+ol.shoutbox li.new_comment.expanded textarea {
+	height: auto;
+}
+ol.shoutbox li.new_comment.expanded input {
+	display: block;
+}

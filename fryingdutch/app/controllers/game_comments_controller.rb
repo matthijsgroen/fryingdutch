@@ -4,8 +4,36 @@ class GameCommentsController < ApplicationController
 
   def index
     @comments = @game.comments
+    @text_comment = TextComment.new    
     respond_to do |format|
-      format.js { render :partial => "comments" }
+      format.js { render :partial => "index" } # _index.js.erb
+    end
+  end
+  
+  def create
+    @text_comment = TextComment.new params[:text_comment]
+    success = true
+    if @text_comment.save
+      comment = Comment.new
+      comment.comment_on = @game
+      comment.content = @text_comment
+      comment.user = current_user
+      unless comment.save
+        @text_comment.destroy
+        success = false
+      end
+    else
+      success = false
+    end
+    
+    @comments = @game.comments
+    @text_comment = TextComment.new
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page["##{dom_id(@game)} .tab_contents"].replace_html :partial => "index"
+        end
+      }
     end
   end
   

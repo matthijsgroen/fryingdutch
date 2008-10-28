@@ -89,8 +89,23 @@ GameTabLink = $.klass(Remote.Link, {
 	}
 });
 
+ExpandCommentBox = $.klass({
+	initialize: function() {
+		this.container = this.element.parents("li");
+	},
+	onfocus: function(event) {
+		this.container.addClass("expanded");
+		$("textarea", this.container).css("height", "auto").attr("rows", 3);
+	},
+	onkeyup: function(event) {
+		var value = this.element.val();
+		$("input[type=\"submit\"]", this.container).attr("disabled", (value.length > 3) ? "" : "disabled");
+	}
+});
+
 $(function() {
-	$(".userrating.box").attach(GameRating);
+	$(".shoutbox .new_comment textarea").attach(ExpandCommentBox);
+	$(".userrating.box.editable").attach(GameRating);
 	$("a.external").attach(ExternalLink);
 	$(".flash").attach(FlashMessage);
 	$("a.game_tab").attach(GameTabLink);
