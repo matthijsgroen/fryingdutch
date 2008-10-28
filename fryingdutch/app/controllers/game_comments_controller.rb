@@ -32,6 +32,9 @@ class GameCommentsController < ApplicationController
       format.js {
         render :update do |page|
           page["##{dom_id(@game)} .tab_contents"].replace_html :partial => "index"
+          page["##{dom_id(@game)} .game_menu a.comments"].replace_html "Speler commentaar (#{@game.comments.count})"
+          page["##{dom_id(@game)} .game_menu a.comments"].highlight
+          page["##{dom_id(comment)}"].highlight
         end
       }
     end
