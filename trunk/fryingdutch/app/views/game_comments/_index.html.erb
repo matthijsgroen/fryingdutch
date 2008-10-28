@@ -1,4 +1,5 @@
 <ol class="shoutbox">
+	<% if current_user %>
 	<li class="new_comment">
 		<%= render :partial => "user_info", :object => current_user %>
 		<div class="message">
@@ -9,5 +10,6 @@
 		</div>
 		<hr />
 	</li>
+	<% end %>
 	<%= render :partial => "comment", :collection => @comments %>
 </ol>
