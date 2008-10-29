@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
+
+  before_filter :login_required, :only => [:new, :create, :edit, :update, :destroy]
+  
   # GET /games
   # GET /games.xml
   def index
