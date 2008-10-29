@@ -1,7 +1,16 @@
-<li id="<%= dom_id comment %>">
-		<%= render :partial => "user_info", :object => comment.user %>
+<li id="<%= dom_id comment %>" class="comment">
+		<%= render :partial => "user_info", :object => comment.user, :locals => { :user_link_menu => true } %>
 		<div class="message">
 			<%= h comment.content.comment %>
 		</div>
+		<% if current_user %>
+		<ul class="comment_options">
+			<% if comment.user_id == current_user.id %>
+			<!-- li><%= link_to "Bewerken", "#" %></li -->
+			<li><%= link_to_remote "Verwijderen", :url => game_game_comment_path(@game, comment), :method => :delete, :confirm => "Weet u het zeker?" %></li>
+			<% end %>
+			<!-- li><%= link_to "Rapporteren", "#" %></li -->
+		</ul>
+		<% end %>
 		<hr />
 </li>

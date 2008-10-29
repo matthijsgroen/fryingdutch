@@ -62,10 +62,10 @@ FlashMessage = $.klass({
 
 GameTabLink = $.klass(Remote.Link, {
 	initialize: function($super) {
-		$super({ success: this.success });
 		this.menu = this.element.parents("ul");
 		var game_container = this.element.parents(".game");
 		this.content_box = $(".tab_contents", game_container);
+		$super({ dataType: "script" });
 	},
 	onclick: function($super, event) {
 		if (this.element.hasClass("active")) {
@@ -102,6 +102,8 @@ ExpandCommentBox = $.klass({
 		$("input[type=\"submit\"]", this.container).attr("disabled", (value.length > 3) ? "" : "disabled");
 	}
 });
+
+
 
 $(function() {
 	$(".shoutbox .new_comment textarea").attach(ExpandCommentBox);

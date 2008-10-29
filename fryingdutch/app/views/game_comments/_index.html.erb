@@ -1,7 +1,7 @@
 <ol class="shoutbox">
 	<% if current_user %>
 	<li class="new_comment">
-		<%= render :partial => "user_info", :object => current_user %>
+		<%= render :partial => "user_info", :object => current_user, :locals => { :user_link_menu => false } %>
 		<div class="message">
 			<% remote_form_for @text_comment, :url => game_game_comments_path(@game), :html => { :method => :post } do |f| %>
 				<%= f.text_area :comment, :rows => 1 %>
