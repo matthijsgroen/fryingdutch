@@ -19,12 +19,13 @@ ol.shoutbox .user_info .avatar {
 	display: block;
 	padding: 3px;
 }
+ol.shoutbox .user_info span.userlink,
 ol.shoutbox .user_info a.userlink {
-	display: block;
 	font-weight: bold;
 	color: black;
 	text-decoration: none;	
 }
+
 ol.shoutbox li .message {
 	margin-left: 110px;
 	padding: 5px;
@@ -65,4 +66,20 @@ ol.shoutbox li.new_comment.expanded textarea {
 }
 ol.shoutbox li.new_comment.expanded input {
 	display: block;
+}
+ol.shoutbox ul.comment_options {
+	float: right;
+	padding: 3px;
+	list-style: none;
+	height: 0.8em;
+}
+ol.shoutbox ul.comment_options li {
+	float: left;
+	margin-right: 10px;
+	clear: none;
+}
+ol.shoutbox ul.comment_options li a {
+	color: #AAAAAA;
+	text-decoration: none;
+	font-size: 0.7em;
 }

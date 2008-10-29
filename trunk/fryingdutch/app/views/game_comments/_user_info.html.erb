@@ -2,7 +2,10 @@
 	rating = @game.game_ratings.find_by_user_id(user_info.id);
 %>
 <div class="user_info">
-	<%= link_to h(user_info.nickname), user_info, :class => "userlink" %>
+	<div class="comment_menu <%= "enabled" if user_link_menu %>">
+	<%= link_to h(user_info.nickname), user_info, :class => "userlink" if user_link_menu %>
+	<%= "<span class=\"userlink\">#{h(user_info.nickname)}</span>" unless user_link_menu %>
+	</div>
 	<%= gravatar_for user_info, :size => 40, :class => "avatar" %>
 	<div class="userrating box">
 		<div class="userrating score<%=rating.rating.floor rescue 0 %>" style="width: <%=rating.rating * 16 rescue 0 %>px;"></div>

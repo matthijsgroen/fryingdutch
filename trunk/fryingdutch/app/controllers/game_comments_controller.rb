@@ -26,23 +26,42 @@ class GameCommentsController < ApplicationController
       success = false
     end
     
-    @comments = @game.comments
-    @text_comment = TextComment.new
-    respond_to do |format|
-      format.js {
-        render :update do |page|
-          page["##{dom_id(@game)} .tab_contents"].replace_html :partial => "index"
-          page["##{dom_id(@game)} .game_menu a.comments"].replace_html "Speler commentaar (#{@game.comments.count})"
-          page["##{dom_id(@game)} .game_menu a.comments"].highlight
-          page["##{dom_id(comment)}"].highlight
-        end
-      }
-    end
+    refresh_js :highlight => comment
+  end
+  
+  def destroy
+    #TODO: Check for correct rights
+    comment = @game.comments.find params[:id]
+    comment.destroy
+    
+    refresh_js :blind_up => comment
   end
   
   private
     def get_game
       @game = Game.find_by_permalink(params[:game_id])
+    end
+  
+    def refresh_js(options = {})
+      @comments = @game.comments
+      @text_comment = TextComment.new
+      respond_to do |format|
+        format.js {
+          render :update do |page|
+            delay = 0
+            if options[:blind_up]
+              page["##{dom_id(options[:blind_up])}"].blind_up 
+              delay = 0.5
+            end
+            page.delay delay do
+              page["##{dom_id(@game)} .tab_contents"].replace_html :partial => "index"
+              page["##{dom_id(@game)} .game_menu a.comments"].replace_html "Speler commentaar (#{@game.comments.count})"
+              page["##{dom_id(@game)} .game_menu a.comments"].highlight
+              page["##{dom_id(options[:highlight])}"].highlight if options[:highlight] 
+            end
+          end
+        }
+      end
     end
 
 end
