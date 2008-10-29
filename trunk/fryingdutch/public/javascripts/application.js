@@ -84,7 +84,10 @@ GameTabLink = $.klass(Remote.Link, {
 		}
 	},
 	success: function(data) {
-		this.content_box.html(data)
+		this.content_box.queue(function () {
+        $(this).html(data);
+        $(this).dequeue();
+    });		
 		this.content_box.blindDown(500);
 	}
 });

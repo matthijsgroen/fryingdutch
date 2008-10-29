@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :games do |game|
+  map.resources :games, :member => { :info => :get } do |game|
     game.set_rating 'rating', :controller => "games", :action => "rating", :requirements => { :method => :put }
     game.resources :game_comments, :as => "comments"
   end
