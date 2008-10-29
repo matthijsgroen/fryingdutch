@@ -22,7 +22,7 @@
 		</div>
 		
 		<ul class="game_menu">
-			<li><%= link_to "Meer info", "#" %></li>
+			<li><%= link_to "Meer info", info_game_path(game), :class => "game_tab info" %></li>
 			<li><%= link_to "Speler commentaar (#{game.comments.count})", game_game_comments_path(game), :class => "game_tab comments" %></li>
 			<li><%= link_to "Speler groepen", "#" %></li>
 			<% if current_user %>

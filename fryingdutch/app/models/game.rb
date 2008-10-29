@@ -14,6 +14,10 @@ class Game < ActiveRecord::Base
   has_many :users, :through => :user_games
   has_many :comments, :as => :comment_on, :order => "created_at DESC"
 
+  has_many :user_games_playing, :class_name => "UserGame", :conditions => "user_games.end_date IS NULL"
+  has_many :players, :class_name => "User", :through => :user_games_playing, :source => :user
+
+
   def before_save
     self.permalink = get_permalink
   end

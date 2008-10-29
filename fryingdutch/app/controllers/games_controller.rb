@@ -20,7 +20,6 @@ class GamesController < ApplicationController
     end
   end
 
-
   # GET /games/1
   # GET /games/1.xml
   def show
@@ -61,6 +60,14 @@ class GamesController < ApplicationController
         end
       }
       format.xml  { render :xml => @game }
+    end
+  end
+
+  # GET /games/1/info
+  def info
+    @game = Game.find_by_permalink(params[:id])
+    respond_to do |format|
+      format.js { render :partial => "info" } # _info.js.erb
     end
   end
 
