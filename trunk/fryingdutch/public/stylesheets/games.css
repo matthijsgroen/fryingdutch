@@ -62,7 +62,7 @@ form.edit_game textarea {
 	border-bottom: 1px dashed black;
 }
 .game p.description {
-	width: 200px;
+	width: 245px;
 	padding: 5px;
 	background-color: #dddddd;
 }
@@ -194,7 +194,7 @@ p.rating_label {
 	display: block;
 	height: 90px;
 	padding: 0;
-	margin: 4px 0 0 0;
+	margin: 0;
 }
 .imagebar li {
 	display: block;
@@ -202,6 +202,23 @@ p.rating_label {
 	padding: 4px;
 	margin-right: 4px;
 	background-color: #dddddd;
-	width: 100px;
 	height: 75px;
+	width: 100px;
+}
+.imagebar .links {
+	padding: 0;
+	margin: 0;
+}
+.imagebar .links li {
+	display: list-item;
+	list-style: none;
+	float: none;
+	padding: 0;
+	margin: 0;
+	height: auto;
+	width: auto;
+}
+.imagebar .links li a {
+	color: black;
+	font-size: 0.8em;
 }

@@ -14,16 +14,23 @@
 		
 		<div class="column">
 			<ul class="imagebar">
-				<li><%= image_tag "/images/no_image.jpg" %></li>
-				<li><%= image_tag "/images/no_image.jpg" %></li>
-				<li><%= image_tag "/images/no_image.jpg" %></li>
+				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
+				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
+				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
+				<li>
+					<ul class="links">
+						<li><%= link_to "Screenshots (0)", "#" %></li>					
+						<li><%= link_to "Usershots (0)", "#" %></li>				
+						<li><%= link_to "+ Toevoegen", "#" %></li>
+					</ul>		
+				</li>
 			</ul>			
 			<p class="tags">Tags: <%= game.tags.collect { |tag| link_to h(tag.name), games_by_tagname_path(tag.name) }.join ", " %></p>
 		</div>
 		
 		<ul class="game_menu">
 			<li><%= link_to "Meer info", info_game_path(game), :class => "game_tab info" %></li>
-			<li><%= link_to "Speler commentaar (#{game.comments.count})", game_game_comments_path(game), :class => "game_tab comments" %></li>
+			<li><%= link_to "Speler commentaar (#{game.comments.count})", game_comments_path(game), :class => "game_tab comments" %></li>
 			<li><%= link_to "Speler groepen", "#" %></li>
 			<% if current_user %>
 			<li><%= link_to_remote "Bewerken", :url => edit_game_path(game) %></li>

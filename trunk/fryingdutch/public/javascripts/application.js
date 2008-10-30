@@ -107,11 +107,12 @@ ExpandCommentBox = $.klass({
 });
 
 
+jQuery(document).ready(function($) {
+  $('a[rel*=facebox]').facebox()
 
-$(function() {
 	$(".shoutbox .new_comment textarea").attach(ExpandCommentBox);
 	$(".userrating.box.editable").attach(GameRating);
 	$("a.external").attach(ExternalLink);
 	$(".flash").attach(FlashMessage);
 	$("a.game_tab").attach(GameTabLink);
-});
+}) 
