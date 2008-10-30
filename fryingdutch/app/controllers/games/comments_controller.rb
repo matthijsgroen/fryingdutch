@@ -40,12 +40,16 @@ class Games::CommentsController < ApplicationController
   
   def edit
     @comment = @game.comments.find params[:id]
-    @text_comment = @comment.comment_on
+    @text_comment = @comment.content
 
     respond_to do |format|
       format.js {
         render :update do |page|
-          page["##{dom_id(@comment)} .message"].replace_html :partial => "edit_comment"
+          page["##{dom_id(@comment)} .edit_content"].replace_html :partial => "edit_comment"
+          page["##{dom_id(@comment)} .edit_content"].show
+          page["##{dom_id(@comment)} .comment_options"].hide
+          page["##{dom_id(@comment)} .message"].hide
+          page["##{dom_id(@comment)} textarea"].focus() 
         end
       }
     end
