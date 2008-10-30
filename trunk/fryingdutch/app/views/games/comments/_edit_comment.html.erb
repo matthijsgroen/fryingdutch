@@ -1,0 +1,11 @@
+	<% if current_user %>
+	<li class="edit_comment">
+		<div class="message">
+			<% remote_form_for @text_comment, :url => game_comment_path(@game, @comment), :html => { :method => :post } do |f| %>
+				<%= f.text_area :comment %>
+				<%= f.submit "Bewerken" %>
+			<% end %>
+		</div>
+		<hr />
+	</li>
+	<% end %>
