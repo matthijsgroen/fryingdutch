@@ -1,6 +1,7 @@
 class Games::CommentsController < ApplicationController
   
   before_filter :get_game
+  before_filter :login_required, :only => [:create, :destroy]
 
   def index
     @comments = @game.comments

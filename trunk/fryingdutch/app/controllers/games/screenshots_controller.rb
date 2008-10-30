@@ -1,5 +1,8 @@
 class Games::ScreenshotsController < ApplicationController
 
+  before_filter :get_game
+  before_filter :login_required, :only => [:new, :create, :update, :destroy]
+
   def index
   end
   
@@ -14,5 +17,10 @@ class Games::ScreenshotsController < ApplicationController
 
   def update
   end
+
+  private
+    def get_game
+      @game = Game.find_by_permalink(params[:game_id])
+    end
 
 end
