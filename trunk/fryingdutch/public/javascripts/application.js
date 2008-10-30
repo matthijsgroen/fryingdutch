@@ -100,16 +100,24 @@ ExpandCommentBox = $.klass({
 		this.container.addClass("expanded");
 		$("textarea", this.container).css("height", "auto").attr("rows", 3);
 	},
+});
+
+DisableSubmit = $.klass({
+	initialize: function() {
+		this.container = this.element.parents("li");
+	},
 	onkeyup: function(event) {
 		var value = this.element.val();
 		$("input[type=\"submit\"]", this.container).attr("disabled", (value.length > 3) ? "" : "disabled");
 	}
-});
+})
 
 
 jQuery(document).ready(function($) {
   $('a[rel*=facebox]').facebox()
 
+	$(".shoutbox .comment textarea").attach(DisableSubmit);
+	$(".shoutbox .new_comment textarea").attach(DisableSubmit);
 	$(".shoutbox .new_comment textarea").attach(ExpandCommentBox);
 	$(".userrating.box.editable").attach(GameRating);
 	$("a.external").attach(ExternalLink);

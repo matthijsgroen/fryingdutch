@@ -25,11 +25,13 @@ ol.shoutbox .user_info a.userlink {
 	color: black;
 	text-decoration: none;	
 }
-
-ol.shoutbox li .message {
+ol.shoutbox li .message, ol.shoutbox li .edit_content {
 	margin-left: 110px;
 	padding: 5px;
 	background-color: #DDDDDD;
+}
+ol.shoutbox li .edit_content {
+	display: none;
 }
 ol.shoutbox li hr {
 	clear: both;
@@ -66,6 +68,9 @@ ol.shoutbox li.new_comment.expanded textarea {
 }
 ol.shoutbox li.new_comment.expanded input {
 	display: block;
+}
+ol.shoutbox li.comment div.edit_comment {
+	display: none;
 }
 ol.shoutbox ul.comment_options {
 	float: right;
