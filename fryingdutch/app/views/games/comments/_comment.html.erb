@@ -6,7 +6,7 @@
 		<% if current_user %>
 		<ul class="comment_options">
 			<% if comment.user_id == current_user.id %>
-			<!-- li><%= link_to "Bewerken", "#" %></li -->
+			<li><%= link_to_remote "Bewerken", :url => edit_game_comment_path(@game, comment) %></li>
 			<li><%= link_to_remote "Verwijderen", :url => game_comment_path(@game, comment), :method => :delete, :confirm => "Weet u het zeker?" %></li>
 			<% end %>
 			<!-- li><%= link_to "Rapporteren", "#" %></li -->

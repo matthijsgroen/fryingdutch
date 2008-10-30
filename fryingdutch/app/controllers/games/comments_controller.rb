@@ -38,6 +38,23 @@ class Games::CommentsController < ApplicationController
     refresh_js :blind_up => comment
   end
   
+  def edit
+    @comment = @game.comments.find params[:id]
+    @text_comment = @comment.comment_on
+
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page["##{dom_id(@comment)} .message"].replace_html :partial => "edit_comment"
+        end
+      }
+    end
+  end
+  
+  def update
+    
+  end
+  
   private
     def get_game
       @game = Game.find_by_permalink(params[:game_id])
