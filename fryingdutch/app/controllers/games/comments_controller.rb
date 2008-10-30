@@ -1,4 +1,4 @@
-class GameCommentsController < ApplicationController
+class Games::CommentsController < ApplicationController
   
   before_filter :get_game
 
