@@ -1,2 +1,2 @@
-module GameCommentsHelper
+module Games::CommentsHelper
 end

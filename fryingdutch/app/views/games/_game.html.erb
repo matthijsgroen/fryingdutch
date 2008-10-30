@@ -19,7 +19,7 @@
 				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
 				<li>
 					<ul class="links">
-						<li><%= link_to "Screenshots (0)", "#" %></li>					
+						<li><%= link_to "Screenshots (0)", game_screenshots_path(game), :rel => "facebox" %></li>					
 						<li><%= link_to "Usershots (0)", "#" %></li>				
 						<li><%= link_to "+ Toevoegen", new_game_screenshot_path(game), :rel => "facebox" %></li>
 					</ul>		
