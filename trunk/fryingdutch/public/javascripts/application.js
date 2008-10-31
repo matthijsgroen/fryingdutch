@@ -52,11 +52,11 @@ ExternalLink = $.klass({
 FlashMessage = $.klass({
 	initialize: function() {
 		this.element.highlight(500);
-		this.element.blindUp(500);
-		this.element.queue(function () {
-        $(this).remove();
-        $(this).dequeue();
-    });
+//		this.element.blindUp(500);
+//		this.element.queue(function () {
+//        $(this).remove();
+//        $(this).dequeue();
+//    });
 	}
 });
 

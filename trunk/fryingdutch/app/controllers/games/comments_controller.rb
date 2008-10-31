@@ -18,6 +18,7 @@ class Games::CommentsController < ApplicationController
       comment = Comment.new
       comment.comment_on = @game
       comment.content = @text_comment
+      comment.category = "comment"
       comment.user = current_user
       unless comment.save
         @text_comment.destroy
@@ -49,7 +50,7 @@ class Games::CommentsController < ApplicationController
           page["##{dom_id(@comment)} .edit_content"].show
           page["##{dom_id(@comment)} .comment_options"].hide
           page["##{dom_id(@comment)} .message"].hide
-          page["##{dom_id(@comment)} textarea"].focus() 
+          page["##{dom_id(@comment)} textarea"].focus
         end
       }
     end

@@ -14,14 +14,14 @@
 		
 		<div class="column">
 			<ul class="imagebar">
-				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
-				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
-				<li class="image"><%= image_tag "/images/no_image.jpg" %></li>
+				<% 3.times do |index| %>
+				<li class="image"><%= image_tag game.screenshots[index] ? game.screenshots[index].content.public_filename(:thumb) : "/images/no_image.jpg" %></li>
+				<% end %>
 				<li>
 					<ul class="links">
-						<li><%= link_to "Screenshots (0)", game_screenshots_path(game), :rel => "facebox" %></li>					
-						<li><%= link_to "Usershots (0)", "#" %></li>				
-						<li><%= link_to "+ Toevoegen", new_game_screenshot_path(game), :rel => "facebox" %></li>
+						<li><%= link_to "Screenshots (#{game.screenshots.count})", game_screenshots_path(game), :rel => "facebox" %></li>					
+						<li><%= link_to "Usershots (#{game.usershots.count})", "#" %></li>				
+						<li><%= link_to "+ Toevoegen", new_game_screenshot_path(game), :rel => "facebox" if current_user %></li>
 					</ul>		
 				</li>
 			</ul>			
