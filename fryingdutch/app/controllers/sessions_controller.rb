@@ -36,10 +36,11 @@ class SessionsController < ApplicationController
         when :failed
           failed_login "Sorry, de OpenID verificatie was mislukt"
         when :successful
+          @open_id_url = identity_url
           begin
-            return failed_login "Sorry, we willen op zijn minst je nickname weten!" if registration["nickname"].blank? 
+            return missing_data "Sorry, we willen op zijn minst je nickname weten!" if registration["nickname"].blank? 
           rescue
-            return failed_login "Sorry, we willen op zijn minst je nickname weten!"
+            return missing_data "Sorry, we willen op zijn minst je nickname weten!"
           end
           @current_user = User.find_or_create_by_identity_url(identity_url)
           @current_user.login_counter ||= 0
@@ -61,7 +62,16 @@ class SessionsController < ApplicationController
     
     def failed_login(message)
       flash[:error] = message
-      redirect_to new_session_url
+      render :action => :new
+    end
+
+    def missing_data(message)
+      flash[:error] = message
+      #use this for displaying targeted help for big known providers to assist users
+      @open_id_provider = nil
+      @open_id_provider = "myopenid" if @open_id_url.contains? "myopenid.com"
+      
+      render :action => :missing_data
     end
 
     # registration is a hash containing the valid sreg keys given above

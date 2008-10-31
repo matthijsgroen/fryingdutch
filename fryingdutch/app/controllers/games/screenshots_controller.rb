@@ -7,9 +7,23 @@ class Games::ScreenshotsController < ApplicationController
   end
   
   def new
+    @screenshot = @game.screenshots.new
+    @screenshot.content = Screenshot.new
   end
 
   def create
+    @screenshot = @game.screenshots.new
+
+    @screenshot.content = Screenshot.new(params[:comment][:screenshot])
+    if @screenshot.content.save
+      flash[:notice] = 'Mugshot was successfully created.'
+      @screenshot.user = current_user
+      @screenshot.category = "screenshot"
+      @screenshot.save
+      render :action => :new
+    else
+      render :action => :new
+    end
   end
 
   def destroy
