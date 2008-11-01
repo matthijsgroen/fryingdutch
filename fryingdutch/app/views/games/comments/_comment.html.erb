@@ -5,9 +5,6 @@
 		</div>
 		<% if current_user %>
 			<% if comment.user_id == current_user.id %>
-				<div class="edit_content">
-					<%= h comment.content.comment %>
-				</div>
 				<ul class="comment_options">
 					<li><%= link_to_remote "Bewerken", :url => edit_game_comment_path(@game, comment) %></li>
 					<li><%= link_to_remote "Verwijderen", :url => game_comment_path(@game, comment), :method => :delete, :confirm => "Weet u het zeker?" %></li>
