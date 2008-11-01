@@ -16,9 +16,9 @@ class Games::ScreenshotsController < ApplicationController
 
     @screenshot.content = Screenshot.new(params[:comment][:screenshot])
     if @screenshot.content.save
-      flash[:notice] = 'Mugshot was successfully created.'
+      flash[:notice] = 'Afbeelding is toegevoegd aan spel'
       @screenshot.user = current_user
-      @screenshot.category = "screenshot"
+      @screenshot.category = params[:comment][:category]
       @screenshot.save
       render :action => :new
     else
