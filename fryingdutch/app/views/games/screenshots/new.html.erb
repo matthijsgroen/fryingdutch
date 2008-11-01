@@ -8,8 +8,13 @@
     <%= s.file_field :uploaded_data %>
   </p>
 	<p>
+    Soort:
+    <label><%= f.radio_button :category, "screenshot" %> Screenshot</label>
+    <label><%= f.radio_button :category, "usershot" %> Usershot</label>
+  </p>
+	<p>
     <label for="description">Beschrijving:</label>
-    <%= s.text_area :description %>
+    <%= s.text_area :description, :rows => 2 %>
   </p>
 	<% end %>
   <p>
