@@ -5,6 +5,11 @@ class Games::ScreenshotsController < ApplicationController
 
   def index
   end
+
+  def show
+    @screenshot = @game.screenshots.find params[:id]
+    
+  end
   
   def new
     @screenshot = @game.screenshots.new
