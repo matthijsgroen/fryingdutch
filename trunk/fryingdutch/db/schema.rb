@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081031174031) do
+ActiveRecord::Schema.define(:version => 20081031175428) do
+
+  create_table "articles", :force => true do |t|
+    t.integer  "content_id", :limit => 11
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["content_id"], :name => "index_articles_on_content_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_on_id",   :limit => 11
@@ -19,7 +29,29 @@ ActiveRecord::Schema.define(:version => 20081031174031) do
     t.integer  "user_id",         :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category",                      :default => "comment"
   end
+
+  create_table "content_branches", :force => true do |t|
+    t.integer  "parent_id",  :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_leafs", :force => true do |t|
+    t.integer  "branch_id",  :limit => 11
+    t.integer  "position",   :limit => 11
+    t.string   "name"
+    t.string   "mimetype"
+    t.integer  "child_id",   :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_leafs", ["branch_id", "name"], :name => "index_content_leafs_on_branch_id_and_name", :unique => true
+  add_index "content_leafs", ["branch_id", "position"], :name => "index_content_leafs_on_branch_id_and_position", :unique => true
+  add_index "content_leafs", ["branch_id"], :name => "index_content_leafs_on_branch_id"
+  add_index "content_leafs", ["child_id"], :name => "index_content_leafs_on_child_id"
 
   create_table "game_ratings", :force => true do |t|
     t.integer  "game_id",    :limit => 11
@@ -47,9 +79,9 @@ ActiveRecord::Schema.define(:version => 20081031174031) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :limit => 11, :null => false
+    t.integer "timestamp",  :limit => 11,                 :null => false
     t.string  "server_url"
-    t.string  "salt",                     :null => false
+    t.string  "salt",                     :default => "", :null => false
   end
 
   create_table "screenshots", :force => true do |t|
@@ -62,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20081031174031) do
     t.integer  "height",       :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "taggings", :force => true do |t|

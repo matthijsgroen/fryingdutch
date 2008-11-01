@@ -46,7 +46,9 @@ class Games::CommentsController < ApplicationController
     respond_to do |format|
       format.js {
         render :update do |page|
-          page["##{dom_id(@comment)} .edit_content"].replace_html :partial => "edit_comment"
+          page << "if ($(\"##{dom_id(@comment)} .edit_content\").length == 0) {"
+          page["##{dom_id(@comment)} .message"].after render(:partial => "edit_comment")
+          page << "}"
           page["##{dom_id(@comment)} .edit_content"].show
           page["##{dom_id(@comment)} .comment_options"].hide
           page["##{dom_id(@comment)} .message"].hide
@@ -57,7 +59,22 @@ class Games::CommentsController < ApplicationController
   end
   
   def update
-    
+    @comment = @game.comments.find params[:id]
+    @text_comment = @comment.content
+
+    respond_to do |format|
+      if @text_comment.update_attributes(params[:text_comment])
+        flash[:notice] = 'Comment was successfully updated.'
+        format.js { 
+          render :update do |page| 
+            page["##{dom_id(@comment)}"].replace :partial => "comment"
+          end
+        }
+      else
+        flash[:error] = "Comment wasn't successfully updated, please try again."
+      end
+    end
+   
   end
   
   private
