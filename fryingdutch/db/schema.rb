@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081031175428) do
+ActiveRecord::Schema.define(:version => 20081107125545) do
 
   create_table "articles", :force => true do |t|
     t.integer  "content_id", :limit => 11
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20081031175428) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "category",                      :default => "comment"
+    t.integer  "position",        :limit => 11
   end
 
   create_table "content_branches", :force => true do |t|

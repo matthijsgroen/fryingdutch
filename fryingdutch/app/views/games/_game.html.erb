@@ -16,8 +16,11 @@
 			<ul class="imagebar">
 				<% 3.times do |index| %>
 				<li class="image"><%= game.screenshots[index] ? 
-						link_to(image_tag(game.screenshots[index].content.public_filename(:thumb)), game_screenshot_path(game, game.screenshots[index]), :rel => "facebox") : 
-						image_tag("/images/no_image.jpg") %></li>
+						facebox_link_to(
+							image_tag(game.screenshots[index].content.public_filename(:thumb)),
+							:url => game_screenshot_path(game, game.screenshots[index])
+							) : 
+							image_tag("/images/no_image.jpg") %></li>
 				<% end %>
 				<li>
 					<ul class="links">
