@@ -1,2 +1,10 @@
 <%= image_tag @screenshot.content.public_filename(:large) %>
 <p><%=h @screenshot.content.description %></p>
+
+<%
+facebox_navigation do |nav|
+	nav.previous game_screenshot_path(@game, @screenshot.higher_item) unless @screenshot.first?
+	nav << " Image #{@screenshot.position} / #{@screenshot.comment_on.screenshots.count} "
+	nav.next game_screenshot_path(@game, @screenshot.lower_item) unless @screenshot.last?
+end
+%>

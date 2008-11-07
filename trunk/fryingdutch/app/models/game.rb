@@ -12,9 +12,9 @@ class Game < ActiveRecord::Base
   
   has_many :user_games, :dependent => :destroy
   has_many :users, :through => :user_games
-  has_many :comments, :as => :comment_on, :conditions => { :category => "comment" }, :order => "created_at DESC"
-  has_many :screenshots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "screenshot" }, :order => "created_at DESC"
-  has_many :usershots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "usershot" }, :order => "created_at DESC"
+  has_many :comments, :as => :comment_on, :conditions => { :category => "comment" }, :order => "position, created_at DESC"
+  has_many :screenshots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "screenshot" }, :order => "position, created_at DESC"
+  has_many :usershots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "usershot" }, :order => "position, created_at DESC"
 
   has_many :user_games_playing, :class_name => "UserGame", :conditions => "user_games.end_date IS NULL"
   has_many :players, :class_name => "User", :through => :user_games_playing, :source => :user

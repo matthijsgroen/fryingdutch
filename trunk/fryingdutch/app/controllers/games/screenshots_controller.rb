@@ -1,3 +1,5 @@
+include FaceboxRender
+
 class Games::ScreenshotsController < ApplicationController
 
   before_filter :get_game
@@ -9,6 +11,10 @@ class Games::ScreenshotsController < ApplicationController
   def show
     @screenshot = @game.screenshots.find params[:id]
     
+    respond_to do |format|
+      format.html
+      format.js { render_to_facebox }
+    end
   end
   
   def new
@@ -25,7 +31,7 @@ class Games::ScreenshotsController < ApplicationController
       @screenshot.user = current_user
       @screenshot.category = params[:comment][:category]
       @screenshot.save
-      render :action => :new
+      redirect_to @screenshot.content.public_filename     
     else
       render :action => :new
     end

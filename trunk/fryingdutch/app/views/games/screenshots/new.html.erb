@@ -1,5 +1,7 @@
 <h1>Screenshot / Usershot toevoegen</h1>
 
+<%= error_messages_for :game, :screenshot, :content %>
+
 <% form_for @screenshot, :url => game_screenshots_path(@game), :html => { :method => :post, :multipart => true } do |f| %>
 	<%= f.error_messages %>
   <% f.fields_for @screenshot.content do |s| %>
