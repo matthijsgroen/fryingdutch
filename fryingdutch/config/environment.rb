@@ -66,4 +66,4 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
-require 'vendor/plugins/attachment_fu/lib/attachment_fu_patch.rb'
+require 'attachment_fu_patch.rb'
