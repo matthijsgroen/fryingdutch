@@ -18,12 +18,8 @@ module FaceboxRender
       page << "jQuery.facebox(#{@box.content.to_json})"
       page["##{@box.name} .footer"].prepend("<div class=\"message\">#{options[:msg]}</div>)") if options[:msg]
       
-      if @box.has_navigation?
-        page << "if ($(\"#facebox .navigation\").length == 0) {"
-          page["#facebox .footer"].prepend "<p class=\"navigation\"></p>"
-        page << "}"
-        page["#facebox .navigation"].replace_html @box.navigation
-      end
+      page["##{@box.name} .footer .navigation"].remove
+      page["##{@box.name} .navigation"].prepend_to "##{@box.name} .footer"
           
       yield(page) if block_given?
       

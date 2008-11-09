@@ -7,8 +7,9 @@ module ApplicationHelper
   
   def ajax_message(text, options={})
     opts = { :type => :message }.update(options)
-    
     "<div class=\"flash #{opts[:type].to_s}\">#{text}</div>"
   end
+
+  include NavigationHelper
 
 end
