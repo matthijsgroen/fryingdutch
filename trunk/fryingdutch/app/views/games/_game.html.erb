@@ -4,11 +4,11 @@
 			<p class="description"><%=h game.description %></p>
 			
 			<div class="averagerating box">
-				<%= render :partial => "game_rating", :locals => { :game => game } %>
+				<%= render :partial => "games/game_rating", :locals => { :game => game } %>
 			</div>
 			
 			<div class="play_options">
-				<%= render :partial => "play_options", :locals => { :game => game } if current_user %>
+				<%= render :partial => "games/play_options", :locals => { :game => game } if current_user %>
 			</div>
 		</div>
 		
@@ -35,13 +35,15 @@
 		</div>
 		
 		<ul class="game_menu">
-			<li><%= link_to "Meer info", info_game_path(game), :class => "game_tab info" %></li>
-			<li><%= link_to "Speler commentaar (#{game.comments.count})", game_comments_path(game), :class => "game_tab comments" %></li>
+			<li><%= link_to "Meer info", info_game_path(game), :class => "game_tab info #{current_page?(info_game_path(game)) ? "active" : ""}" %></li>
+			<li><%= link_to "Speler commentaar (#{game.comments.count})", game_comments_path(game), :class => "game_tab comments #{current_page?(game_comments_path(game)) ? "active" : ""}" %></li>
 			<li><%= link_to "Speler groepen", "#" %></li>
 			<% if current_user %>
 			<li><%= link_to_remote "Bewerken", :url => edit_game_path(game) %></li>
 			<li><%= link_to_remote "Verwijderen", :url => game, :method => :delete, :confirm => "Weet u zeker dat u het spel #{game.name} wilt verwijderen?" %></li>
 			<% end %>
 		</ul>
-		<div class="tab_contents"></div>
+		<div class="tab_contents" <%='style="display: block"' if tab_content %>>
+			<%= render :partial => tab_content if tab_content %>
+		</div>
 	</div>

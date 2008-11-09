@@ -7,6 +7,7 @@ class Games::CommentsController < ApplicationController
     @comments = @game.comments
     @text_comment = TextComment.new    
     respond_to do |format|
+      format.html # index.html.erb
       format.js { render :partial => "index" } # _index.js.erb
     end
   end
