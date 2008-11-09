@@ -6,6 +6,10 @@ class Games::ScreenshotsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :update, :destroy]
 
   def index
+    respond_to do |format|
+      format.html
+      format.js { render_to_facebox }
+    end
   end
 
   def show

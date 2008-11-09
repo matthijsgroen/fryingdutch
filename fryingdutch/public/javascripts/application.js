@@ -114,7 +114,8 @@ DisableSubmit = $.klass({
 
 
 jQuery(document).ready(function($) {
-  $('a[rel*=facebox]').facebox()
+  $('a[rel*=facebox]').facebox();
+	$('a[rel*=remote]').attach(Remote.Link, { dataType: "script" } );
 
 	$(".shoutbox .comment textarea").attach(DisableSubmit);
 	$(".shoutbox .new_comment textarea").attach(DisableSubmit);

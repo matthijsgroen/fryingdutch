@@ -5,7 +5,7 @@ namespace :db do
     
     require 'rubygems' unless Object.const_defined?(:Gem)
         
-    %w(environment db:drop db:create db:schema:load db:bootstrap:load).each { |t| Rake::Task[t].execute task_args}
+    %w(environment db:drop db:create db:migrate db:bootstrap:load).each { |t| Rake::Task[t].execute task_args}
     
     puts
     puts '=' * 80
