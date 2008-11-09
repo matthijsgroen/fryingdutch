@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     game.set_rating 'rating', :controller => "Games", :action => "rating", :requirements => { :method => :put }
     game.resources :comments, :controller => "Games::Comments"
     game.resources :screenshots, :controller => "Games::Screenshots"
+    game.resources :usershots, :controller => "Games::Usershots"
   end
   map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
 

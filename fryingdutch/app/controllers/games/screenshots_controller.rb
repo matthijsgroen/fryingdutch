@@ -1,11 +1,11 @@
-include FaceboxRender
-
 class Games::ScreenshotsController < ApplicationController
 
   before_filter :get_game
   before_filter :login_required, :only => [:new, :create, :update, :destroy]
 
   def index
+    @shots = @game.screenshots
+    
     respond_to do |format|
       format.html
       format.js { render_to_facebox }
