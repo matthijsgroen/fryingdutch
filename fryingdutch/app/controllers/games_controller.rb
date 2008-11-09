@@ -70,6 +70,7 @@ class GamesController < ApplicationController
   def info
     @game = Game.find_by_permalink(params[:id])
     respond_to do |format|
+      format.html # info.html.erb
       format.js { render :partial => "info" } # _info.js.erb
     end
   end
