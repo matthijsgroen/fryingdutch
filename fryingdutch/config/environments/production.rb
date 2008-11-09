@@ -20,3 +20,9 @@ config.action_view.cache_template_loading            = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+ temp = Tempfile.new('ruby_inline', '/tmp')  
+ dir = temp.path  
+ temp.delete  
+ Dir.mkdir(dir, 0755)  
+ ENV['INLINEDIR'] = dir 
