@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20081107125545) do
     t.integer  "user_id",         :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category",                      :default => "comment"
+    t.string   "category",        :default => "comment"
     t.integer  "position",        :limit => 11
   end
 

@@ -19,7 +19,7 @@
 						link_to(
 							image_tag(game.screenshots[index].content.public_filename(:thumb)),
 							game_screenshot_path(game, game.screenshots[index]),
-							:rel => "remote"	
+							:rel => "remote"
 						) : 
 							image_tag("/images/no_image.jpg") %></li>
 				<% end %>
