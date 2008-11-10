@@ -35,4 +35,15 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+ 
+  def assert_login_required
+    assert flash.key?(:message)
+    assert_equal "Je moet ingelogd zijn om deze pagina te bekijken.", flash[:message]
+    assert_redirected_to root_url
+  end
+  
+  def login_as(fixture_name)
+    @request.session[:user_id] = users(fixture_name).id 
+  end
+  
 end

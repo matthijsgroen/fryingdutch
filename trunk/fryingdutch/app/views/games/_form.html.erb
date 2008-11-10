@@ -1,16 +1,6 @@
-<% remote_form_for(@game) do |f| %>
-  <%= f.error_messages %>
-  <%= f.text_field :name, :class => "textfield name" %>
+  <%= form.error_messages %>
+  <%= form.text_field :name, :class => "textfield name" %>
 	<br />
-  <%= f.label :description, "Omschrijving" %><br />
-  <%= f.text_area :description, :cols => 40, :rows => 5 %><br />
-  <%= f.label :tag_list, "Tags:" %> <%= f.text_field :tag_list, :class => "textfield" %><br />
-	<% if @game.new_record? %>
-  <%= f.submit "Toevoegen" %> <%= link_to_function "Annuleren", "#" do |page|
-		page["#new_game"].remove
-		page["#add_game"].show
-	end %>
-	<% else %>
-  <%= f.submit "Bewerken" %> <%= link_to_remote "Annuleren", :url => @game, :success => " $(\"#edit_game_#{@game.id}\").replaceWith(request);" %>
-	<% end %>
-<% end %>
+  <%= form.label :description, "Omschrijving" %><br />
+  <%= form.text_area :description, :cols => 40, :rows => 5 %><br />
+  <%= form.label :tag_list, "Tags:" %> <%= form.text_field :tag_list, :class => "textfield" %><br />

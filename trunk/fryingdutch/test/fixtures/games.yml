@@ -1,9 +1,29 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-  description: MyText
-
-two:
-  name: MyString
-  description: MyText
+games_001: 
+  permalink: world-of-warcraft
+  name: World of Warcraft
+  updated_at: 2008-10-12 16:41:24
+  id: "1"
+  description: vet cool etc
+  created_at: 2008-10-12 16:41:24
+games_002: 
+  permalink: travian
+  name: Travian
+  updated_at: 2008-10-12 16:41:52
+  id: "2"
+  description: browser game
+  created_at: 2008-10-12 16:41:52
+games_003: 
+  permalink: hattrick
+  name: Hattrick
+  updated_at: 2008-10-12 16:42:07
+  id: "3"
+  description: voetbal manager
+  created_at: 2008-10-12 16:42:07
+games_004: 
+  permalink: planetarion
+  name: Planetarion
+  updated_at: 2008-10-12 16:46:07
+  id: "4"
+  description: space gebeuren
+  created_at: 2008-10-12 16:46:07

@@ -1,1 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+thaisi:
+  id: 1
+  created_at: 2008-11-08 08:28:33  	
+  updated_at: 2008-11-09 22:10:33
+  identity_url: http://thaisi.myopenid.com/
+  display_name: Matthijs Groen
+  nickname: THAiSi
+  email: matthijs.groen@gmail.com
+  login_counter: 3
+  dob: 1981-05-31
+  permalink: 1-thaisi

@@ -1,0 +1,11 @@
+<% remote_form_for(@game) do |f| %>
+	<%= render :partial => f %>
+	<% if @game.new_record? %>
+  <%= f.submit "Toevoegen" %> <%= link_to_function "Annuleren", "#" do |page|
+		page["#new_game"].remove
+		page["#add_game"].show
+	end %>
+	<% else %>
+  <%= f.submit "Bewerken" %> <%= link_to_remote "Annuleren", :url => @game, :success => " $(\"#edit_game_#{@game.id}\").replaceWith(request);" %>
+	<% end %>
+<% end %>

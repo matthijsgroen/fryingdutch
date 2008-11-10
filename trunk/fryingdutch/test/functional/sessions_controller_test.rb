@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SessionControllerTest < ActionController::TestCase
+class SessionsControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   def test_truth
     assert true

@@ -38,9 +38,9 @@ class SessionsController < ApplicationController
         when :successful
           @open_id_url = identity_url
           begin
-            return missing_data "Sorry, we willen op zijn minst je nickname weten!" if registration["nickname"].blank? 
+            return missing_data("Sorry, we willen op zijn minst je nickname weten!") if registration["nickname"].blank? 
           rescue
-            return missing_data "Sorry, we willen op zijn minst je nickname weten!"
+            return missing_data("Sorry, we willen op zijn minst je nickname weten!")
           end
           @current_user = User.find_or_create_by_identity_url(identity_url)
           @current_user.login_counter ||= 0
