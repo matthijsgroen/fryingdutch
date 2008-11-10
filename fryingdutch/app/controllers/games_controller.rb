@@ -42,9 +42,10 @@ class GamesController < ApplicationController
     @game.name = "Nieuw spel" 
 
     respond_to do |format|
+      format.html # new.html.erb
       format.js {
         render :update do |page|
-          page['#add_game'].before render(:partial => "form")
+          page['#add_game'].before render(:partial => "remote_form")
           page['#add_game'].hide
         end
       }
