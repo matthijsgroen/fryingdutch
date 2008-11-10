@@ -27,7 +27,7 @@
 					<ul class="links">
 						<li><%= link_to "Screenshots (#{game.screenshots.count})", game_screenshots_path(game), :rel => "remote" %></li>					
 						<li><%= link_to "Usershots (#{game.usershots.count})", game_usershots_path(game), :rel => "remote" %></li>				
-						<li><%= link_to "+ Toevoegen", new_game_screenshot_path(game), :rel => "facebox" if current_user %></li>
+						<li><%= link_to "+ Toevoegen", new_game_screenshot_path(game), :rel => "remote" if current_user %></li>
 					</ul>		
 				</li>
 			</ul>			
