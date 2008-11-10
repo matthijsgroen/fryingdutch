@@ -24,6 +24,11 @@ class Games::ScreenshotsController < ApplicationController
   def new
     @screenshot = @game.screenshots.new
     @screenshot.content = Screenshot.new
+    
+    respond_to do |format|
+      format.html
+      format.js { render_to_facebox }
+    end
   end
 
   def create
