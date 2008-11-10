@@ -43,7 +43,7 @@
 			<li><%= link_to_remote "Verwijderen", :url => game, :method => :delete, :confirm => "Weet u zeker dat u het spel #{game.name} wilt verwijderen?" %></li>
 			<% end %>
 		</ul>
-		<div class="tab_contents" <%='style="display: block"' if tab_content %>>
-			<%= render :partial => tab_content if tab_content %>
+		<div class="tab_contents" <%='style="display: block"' if local_assigns.key? :tab_content %>>
+			<%= render :partial => tab_content if local_assigns.key? :tab_content %>
 		</div>
 	</div>
