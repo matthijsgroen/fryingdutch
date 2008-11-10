@@ -53,29 +53,6 @@ class GamesController < ApplicationController
     end
   end
 
-  # GET /games/1/edit
-  def edit
-    @game = Game.find_by_permalink(params[:id])
-
-    respond_to do |format|
-      format.js {
-        render :update do |page|
-          page['#game_' + @game.id.to_s].replace :partial => "form"
-        end
-      }
-      format.xml  { render :xml => @game }
-    end
-  end
-
-  # GET /games/1/info
-  def info
-    @game = Game.find_by_permalink(params[:id])
-    respond_to do |format|
-      format.html # info.html.erb
-      format.js { render :partial => "info" } # _info.js.erb
-    end
-  end
-
   # POST /games
   # POST /games.xml
   def create
@@ -84,6 +61,9 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         flash[:notice] = 'Game was successfully created.'
+        format.html {
+          redirect_to games_path
+        }
         format.js { 
           render :update do |page|
             page['#new_game'].replace :partial => "game", :object => @game
@@ -92,6 +72,9 @@ class GamesController < ApplicationController
         }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
+        format.html {
+          render :action => "new"
+        }
         format.js { 
           render :update do |page| 
             page['#new_game'].replace :partial => "form"
@@ -122,6 +105,29 @@ class GamesController < ApplicationController
       end
     end
     
+  end
+
+  # GET /games/1/info
+  def info
+    @game = Game.find_by_permalink(params[:id])
+    respond_to do |format|
+      format.html # info.html.erb
+      format.js { render :partial => "info" } # _info.js.erb
+    end
+  end
+
+  # GET /games/1/edit
+  def edit
+    @game = Game.find_by_permalink(params[:id])
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.js {
+        render :update do |page|
+          page['#game_' + @game.id.to_s].replace :partial => "remote_form"
+        end
+      }
+      format.xml  { render :xml => @game }
+    end
   end
 
   # PUT /games/1
@@ -158,6 +164,9 @@ class GamesController < ApplicationController
     @game.destroy
 
     respond_to do |format|
+      format.html {
+        redirect_to games_path
+      }
       format.js { 
         render :update do |page| 
           page["#game_#{@game.id}"].blind_up

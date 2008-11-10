@@ -39,7 +39,7 @@
 			<li><%= link_to "Speler commentaar (#{game.comments.count})", game_comments_path(game), :class => "game_tab comments #{current_page?(game_comments_path(game)) ? "active" : ""}" %></li>
 			<li><%= link_to "Speler groepen", "#" %></li>
 			<% if current_user %>
-			<li><%= link_to_remote "Bewerken", :url => edit_game_path(game) %></li>
+			<li><%= link_to "Bewerken", edit_game_path(game), :rel => "remote" %></li>
 			<li><%= link_to_remote "Verwijderen", :url => game, :method => :delete, :confirm => "Weet u zeker dat u het spel #{game.name} wilt verwijderen?" %></li>
 			<% end %>
 		</ul>
