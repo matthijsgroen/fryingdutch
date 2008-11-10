@@ -112,7 +112,6 @@ DisableSubmit = $.klass({
 	}
 })
 
-
 jQuery(document).ready(function($) {
   $('a[rel*=facebox]').facebox();
 	$('a[rel*=remote]').attach(Remote.Link, { dataType: "script" } );
