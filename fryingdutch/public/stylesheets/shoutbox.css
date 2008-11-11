@@ -72,19 +72,27 @@ ol.shoutbox li.new_comment.expanded input {
 ol.shoutbox li.comment div.edit_comment {
 	display: none;
 }
-ol.shoutbox ul.comment_options {
-	float: right;
-	padding: 3px;
-	list-style: none;
+
+ul.item_options {
 	height: 0.8em;
+	padding: 3px;
+	margin: 0;
+	float: right;
+	list-style: none;
 }
-ol.shoutbox ul.comment_options li {
+ul.item_options li {
 	float: left;
 	margin-right: 10px;
 	clear: none;
 }
-ol.shoutbox ul.comment_options li a {
+ul.item_options li a {
 	color: #AAAAAA;
 	text-decoration: none;
 	font-size: 0.7em;
+}
+.item_options_bottom {
+	border: none;
+	clear: both;
+	padding: 0;
+	margin: 0;
 }

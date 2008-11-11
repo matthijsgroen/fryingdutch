@@ -1,0 +1,24 @@
+<div>
+<p>
+	<%= link_to("Website", @metadata.website, :class => "external") + "<br />" unless @metadata.website.nil? or @metadata.website.blank? %>
+	<%= link_to("Forum", @metadata.forum, :class => "external") + "<br />" unless @metadata.forum.nil? or @metadata.forum.blank? %>
+	<%= link_to("Community site", @metadata.community_site, :class => "external") + "<br />" unless @metadata.community_site.nil? or @metadata.community_site.blank? %>
+
+	<% unless @metadata.developer.blank? and @metadata.developer_url.blank? %>
+		Ontwikkelaar: 
+		<%= h @metadata.developer if not @metadata.developer.blank? and @metadata.developer_url.blank? %>
+		<%= link_to h(@metadata.developer_url), @metadata.developer_url, :class => "external" if @metadata.developer.blank? and not @metadata.developer_url.blank? %>
+		<%= link_to h(@metadata.developer), @metadata.developer_url, :class => "external" unless @metadata.developer.blank? or @metadata.developer_url.blank? %>
+		<br />
+	<% end %>	
+
+	Spelers bij TFD: <%= @game.players.count %>
+</p>
+
+<% if current_user %>
+	<ul class="item_options">
+		<li><%= link_to "Bewerken", edit_game_metadata_path(@game), :rel => "remote" %></li>
+	</ul>
+	<hr class="item_options_bottom" />
+<% end %>
+</div>

@@ -9,21 +9,19 @@ GameRating = $.klass({
 		this.game_url = $("h2 a", game_container).attr("href");
 	},
 	onmousemove: function(event) {
+		this.bar.addClass("setting");
 		var offset = this.element.offset();
 		var width = event.pageX - offset.left;
 		this.set_width(width);
 	},
 	onmouseleave: function(event) {
+		this.bar.removeClass("setting");		
 		this.set_width(this.rating);
 	},
 	set_width: function(width) {
-		var rounded_width = Math.round(width / 8.0) * 8;
+		var rounded_width = Math.round(width / 9.0) * 9;
 		this.bar.css("width", rounded_width);
-		var amount_stars = Math.floor(rounded_width / 16.0);
-		for (var i = 0; i <= 5; i++) {
-			this.bar.removeClass("score"+i);
-		}
-		this.bar.addClass("score" + amount_stars);
+		var amount_stars = Math.floor(rounded_width / 18.0);
 	},
 	onclick: function(event) {
 		var offset = this.element.offset();
@@ -36,7 +34,7 @@ GameRating = $.klass({
 			url: this.game_url + "/rating",
 			data: {
 				_method: "put",
-				rating: width / 16.0,
+				rating: width / 18.0,
 			},
 			dataType: "script"
 		})
