@@ -49,10 +49,11 @@ form.edit_game textarea {
 	padding: 8px;
 	margin-bottom: 10px;
 }
-.game h2 {
+.game h2.title {
 	padding: 0;
 	margin: 0;
 	padding: 5px;
+	float: left;
 }
 .game h2 a {
 	color: black;
@@ -68,34 +69,15 @@ form.edit_game textarea {
 }
 
 .averagerating.box {
-	width: 125px;
-	height: 25px;
+	width: 90px;
+	height: 18px;
 	margin: 5px 0 5px 0;
-	background: transparent url(/images/ratings/star_empty.png) top left repeat-x;
+	background: transparent url(/images/rating.png) top left repeat-x;
+	float: left;
 }
-.averagerating.score0 {
-	height: 25px;
-	background: transparent url(/images/ratings/star.png) top left repeat-x;
-}
-.averagerating.score1 {
-	height: 25px;
-	background: transparent url(/images/ratings/star.png) top left repeat-x;
-}
-.averagerating.score2 {
-	height: 25px;
-	background: transparent url(/images/ratings/star.png) top left repeat-x;
-}
-.averagerating.score3 {
-	height: 25px;
-	background: transparent url(/images/ratings/star.png) top left repeat-x;
-}
-.averagerating.score4 {
-	height: 25px;
-	background: transparent url(/images/ratings/star_rating.png) top left repeat-x;
-}
-.averagerating.score5 {
-	height: 25px;
-	background: transparent url(/images/ratings/star_rating.png) top left repeat-x;
+.averagerating.score {
+	height: 18px;
+	background: transparent url(/images/rating.png) left -36px repeat-x;
 }
 
 p.rating_label {
@@ -104,35 +86,21 @@ p.rating_label {
 
 .userrating.box {
 	display: inline-block;
-	width: 80px;
-	height: 16px;
-	background: transparent url(/images/ratings/star_empty_small.png) top left repeat-x;
+	width: 90px;
+	height: 18px;
+	background: transparent url(/images/rating.png) top left repeat-x;
 }
-.userrating.score0 {
-	height: 16px;
-	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
+.userrating.score {
+	height: 18px;
+	background: transparent url(/images/rating.png) left -36px repeat-x;
 }
-.userrating.score1 {
-	height: 16px;
-	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
-}
-.userrating.score2 {
-	height: 16px;
-	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
-}
-.userrating.score3 {
-	height: 16px;
-	background: transparent url(/images/ratings/star_small.png) top left repeat-x;
-}
-.userrating.score4 {
-	height: 16px;
-	background: transparent url(/images/ratings/star_rating_small.png) top left repeat-x;
-}
-.userrating.score5 {
-	height: 16px;
-	background: transparent url(/images/ratings/star_rating_small.png) top left repeat-x;
+.userrating.score.setting {
+	background: transparent url(/images/rating.png) left -18px repeat-x;
 }
 
+.game .column.first {
+	clear: left;
+}
 .game .column {
 	padding: 2px;
 	position: relative;

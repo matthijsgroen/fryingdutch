@@ -1,0 +1,4 @@
+<% remote_form_for @metadata, :url => game_metadata_path(@game) do |f| %>
+<%= render :partial => f %>
+<%= f.submit "Opslaan" %> <%= link_to_remote "Annuleren", :url => game_metadata_path(@game), :success => " $(\"#edit_game_metadata_#{@metadata.id}\").replaceWith(request);" %>
+<% end %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081107125545) do
+ActiveRecord::Schema.define(:version => 20081111163133) do
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_on_id",   :limit => 11
@@ -19,8 +19,28 @@ ActiveRecord::Schema.define(:version => 20081107125545) do
     t.integer  "user_id",         :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category",        :default => "comment"
+    t.string   "category",                      :default => "comment"
     t.integer  "position",        :limit => 11
+  end
+
+  create_table "game_metadatas", :force => true do |t|
+    t.integer  "game_id",             :limit => 11
+    t.string   "website"
+    t.string   "forum"
+    t.string   "community_site"
+    t.string   "publisher"
+    t.string   "publisher_url"
+    t.string   "developer"
+    t.string   "developer_url"
+    t.date     "release_date"
+    t.string   "players_worldwide"
+    t.string   "players_netherlands"
+    t.string   "languages"
+    t.float    "cost"
+    t.string   "cost_period"
+    t.boolean  "micro_payments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "game_ratings", :force => true do |t|

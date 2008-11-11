@@ -107,15 +107,6 @@ class GamesController < ApplicationController
     
   end
 
-  # GET /games/1/info
-  def info
-    @game = Game.find_by_permalink(params[:id])
-    respond_to do |format|
-      format.html # info.html.erb
-      format.js { render :partial => "info" } # _info.js.erb
-    end
-  end
-
   # GET /games/1/edit
   def edit
     @game = Game.find_by_permalink(params[:id])
@@ -149,7 +140,7 @@ class GamesController < ApplicationController
         format.html { render :action => "edit" }
         format.js { 
           render :update do |page| 
-            page["#edit_game_#{@game.id}"].replace :partial => "form"
+            page["#edit_game_#{@game.id}"].replace :partial => "remote_form"
           end
         }
         format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }
