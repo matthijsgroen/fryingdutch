@@ -1,3 +1,8 @@
 <ul class="image_list">
 	<%=render :partial => "shot", :collection => @shots %>
 </ul>
+<%
+	navigation do |nav|
+		nav << will_paginate(@shots)
+	end
+%>

@@ -27,7 +27,7 @@ GameRating = $.klass({
 		var offset = this.element.offset();
 		var width = event.pageX - offset.left;
 		this.rating = width;
-		
+
 		this.set_width(width);
 		// send message to server
 		$.ajax({
@@ -85,7 +85,7 @@ GameTabLink = $.klass(Remote.Link, {
 		this.content_box.queue(function () {
         $(this).html(data);
         $(this).dequeue();
-    });		
+    });
 		this.content_box.blindDown(500);
 	}
 });
@@ -111,8 +111,13 @@ DisableSubmit = $.klass({
 })
 
 jQuery(document).ready(function($) {
-  $('a[rel*=facebox]').facebox();
 	$('a[rel*=remote]').attach(Remote.Link, { dataType: "script" } );
+  $('a[rel*=facebox]').facebox();
+	// Add facebox-support for will-paginate links created as a facebox-navigation
+	//$('#facebox .footer .navigation a[rel*=next][rel*=prev][rel*=start]').facebox();
+	//$('a[rel*=next]').attach(Remote.Link, { dataType: "script" } );
+
+	$(document).bind('beforeReveal.facebox', function() { $('#facebox .pagination a[@rel*=next], #facebox .pagination a[@rel*=prev], #facebox .pagination a[@rel*=start]').attach(Remote.Link, { dataType: "script" } ); })
 
 	$(".shoutbox .comment textarea").attach(DisableSubmit);
 	$(".shoutbox .new_comment textarea").attach(DisableSubmit);
@@ -121,4 +126,4 @@ jQuery(document).ready(function($) {
 	$("a.external").attach(ExternalLink);
 	$(".flash").attach(FlashMessage);
 	$("a.game_tab").attach(GameTabLink);
-}) 
+})
