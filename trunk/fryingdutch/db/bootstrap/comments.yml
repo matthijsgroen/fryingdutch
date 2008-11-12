@@ -1,1 +1,23 @@
-
+--- 
+comments_001: 
+  content_type: TextComment
+  category: comment
+  updated_at: 2008-11-12 20:43:57
+  content_id: "1"
+  comment_on_type: Game
+  comment_on_id: "1"
+  id: "1"
+  user_id: "1"
+  position: "1"
+  created_at: 2008-11-12 20:43:57
+comments_002: 
+  content_type: TextComment
+  category: comment
+  updated_at: 2008-11-12 20:44:38
+  content_id: "2"
+  comment_on_type: Game
+  comment_on_id: "2"
+  id: "2"
+  user_id: "1"
+  position: "1"
+  created_at: 2008-11-12 20:44:38
