@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  SYSTEM = 1; # UserID of the system User.
+  SYSTEM = 0; # UserID of the system User.
 
   has_many :user_games, :dependent => :destroy
   has_many :game_ratings
@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   def after_create
     self.permalink = create_permalink
     save
+  end
+  
+  def plays(game)
+    self.user_games.create :start_date => Date.today, :game => game, :user => self
   end
 
   def to_param
