@@ -4,7 +4,7 @@ class Games::ScreenshotsController < ApplicationController
   before_filter :login_required, :only => [:new, :create, :update, :destroy]
 
   def index
-    @shots = @game.screenshots
+    @shots = @game.screenshots.paginate :page => params[:page], :per_page => 3
     
     respond_to do |format|
       format.html
