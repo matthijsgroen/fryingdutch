@@ -1,0 +1,2 @@
+module GameSupport::WorldOfWarcraftHelper
+end
