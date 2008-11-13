@@ -4,7 +4,10 @@
 	<h2>Spellen die ik speel:</h2>
 	<ul>
 		<% @user.user_games_playing.each do |user_game| %>
-		<li><%= link_to h(user_game.game.name), user_game.game %>, sinds <%= user_game.start_date %></li>
+		<li id="user_playing_#{dom_id(user_game.game)}">
+			<%= link_to h(user_game.game.name), user_game.game %>, sinds <%= user_game.start_date %>
+			<%= "[Meer info]" if user_game.game.support.features[:public_info?] %>
+		</li>
 		<% end %>
 	</ul>	
 </div>

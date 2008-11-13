@@ -29,9 +29,17 @@ class UsersController < ApplicationController
     respond_to do |format|
       if current_user.plays game 
         format.js do
-          render :update do |page|
-            page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', :locals => { :game => game }
-            game.collect_info page
+            
+          if game.extra_support? and game.support.features[:collect_info?]
+            render_to_facebox :partial => "game_support/#{game.permalink.underscore}/collect_info" do |page|
+              page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', 
+                :locals => { :game => game }
+            end            
+          else
+            render :update do |page|
+              page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', 
+                :locals => { :game => game }
+            end
           end          
         end        
       end

@@ -7,7 +7,6 @@ class Game < ActiveRecord::Base
   has_many :game_ratings
   has_one :game_metadata
   
-  include GameExtension
 
   validates_each :name do |record, attr, value|
     record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if not record.new_record? and Game.find :first, :conditions => ["permalink LIKE ? AND id <> ?", record.get_permalink, record.id]
@@ -40,6 +39,18 @@ class Game < ActiveRecord::Base
     return permalink if permalink
     save
     permalink
+  end
+
+  def extra_support?
+    support != GameSupport::GameSupportController
+  end
+  
+  def support
+    begin
+      @support ||= "GameSupport::#{permalink.underscore.camelize}Controller".constantize
+    rescue
+      @support = GameSupport::GameSupportController
+    end
   end
 
 end
