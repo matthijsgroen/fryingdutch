@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :login_required, :except => [:new, :show]
+  before_filter :login_required, :only => [:desktop, :settings, :add_game, :remove_game]
   
   # GET /users
   # GET /users.xml
@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if current_user.plays game 
         format.js do
-            
           if game.extra_support? and game.support.features[:collect_info?]
             render_to_facebox :partial => "game_support/#{game.permalink.underscore}/collect_info" do |page|
               page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', 
@@ -44,6 +43,50 @@ class UsersController < ApplicationController
         end        
       end
     end  
+  end
+
+  def remove_game
+    @game = Game.find_by_permalink(params[:game_id])
+    @user_game = current_user.user_games_playing.find_by_game_id(@game.id)
+    @user_game.end_date = Date.today
+    @user_game.save
+    
+    @quit_reasons = [
+      ["Saai", 
+        "het spel saai was geworden", "boring"],
+      ["Tijds intensief", 
+        "het spel teveel tijd in beslag nam", "time-consuming"],
+      ["Te duur", 
+        "het spel kost me te veel geld", "money-consuming"],
+      ["Zelf geen tijd", 
+        "ik geen tijd meer had om te spelen", "no-time"],
+      ["Ander spel", 
+        "ik een ander spel leuker vind", "another-game"],
+      ["Spel is veranderd", 
+        "het spel veranderd is in negatieve zin", "game-changed"],
+      ["Geen leuke sfeer", 
+        "andere spelers verpesten de sfeer", "other-players"],
+      ["TFD Support", 
+        "handige tools zijn hier niet, en dat heeft het een beetje verpest voor mij", "tfd-support"]
+    ]
+    #TODO: sort this in the way the people vote for this game?
+    respond_to do |format|
+      format.js do
+        render_to_facebox :partial => "games/quit_reasons" do |page|
+          page["#game_#{@game.id} .play_options"].replace_html :partial => 'games/play_options', 
+            :locals => { :game => @game }
+        end            
+      end        
+    end  
+  end
+
+  def update_quit_reason
+    quit_entry = current_user.user_games.find params[:reason_id]
+    quit_entry.update_attributes params[:user_game]
+    
+    respond_to do |format|
+      format.js { close_facebox }
+    end
   end
 
   def logoff

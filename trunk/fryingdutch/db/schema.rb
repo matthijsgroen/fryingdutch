@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081111163133) do
+ActiveRecord::Schema.define(:version => 20081116071814) do
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_on_id",   :limit => 11
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20081111163133) do
     t.integer  "user_id",      :limit => 11
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "quit_reason",  :limit => 11
+    t.string   "quit_reason"
     t.string   "quit_details"
     t.datetime "created_at"
     t.datetime "updated_at"
