@@ -1,0 +1,19 @@
+<h2>Ik ben gestopt met <%=h @game.name %> omdat...</h2>
+<p>
+	<%=h current_user.nickname %>, we zouden graag willen weten wat de reden is waarom je bent gestopt.
+</p>
+<p style="display: none">
+	Andere leden zien deze info, en kunnen op die manier bepalen of het spel iets is voor ze!<br />
+	En misschien kunnen we als TFD er iets aan doen om het spel interessanter te maken via deze site!.<br />
+	Suggesties daarover kun je trouwens <em>altijd</em> kwijt op ons <%= link_to "Suggestie forum", "#" %><br />
+	p.s. Deze gegevens zijn niet verplicht om achter te laten hoor!
+</p>
+<% remote_form_for @user_game, :url => game_quit_reason_path(@game, @user_game), :html => { :method => :put } do |form| %>
+	<dl>
+	<% @quit_reasons.each do |key, description, value| %>	
+			<dt><label><%= form.radio_button :quit_reason, value %><%= key %></label></dt>
+			<dd><%= description %></dd> 
+	<% end %>
+	</dl>
+	<%= form.submit "Opslaan" %>
+<% end %>

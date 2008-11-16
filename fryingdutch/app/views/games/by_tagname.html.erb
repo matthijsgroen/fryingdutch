@@ -1,7 +1,7 @@
 <h2>Spellen met de tag(s): <%=h params[:tagname] %></h2>
 <p class="showall"><%= link_to "Toon alle spellen", games_path %></p>
 <div id="game_list">
-	<%= render :partial => "game", :collection => @games %>
+	<%= render :partial => @games %>
 </div>
 <% if @games.length > 1 %>
 <div class="sidecolumn">

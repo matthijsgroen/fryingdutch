@@ -112,3 +112,7 @@ a.external:hover {
 	border: 1px solid #99BB99;
 	background-color: #DDFFDD;
 }
+
+dt {
+	font-size: 130%;
+}

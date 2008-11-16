@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :games do |game|
     game.set_rating 'rating', :controller => "Games", :action => "rating", :requirements => { :method => :put }
+    game.quit_reason 'quit/:reason_id', :controller => "Users", :action => "update_quit_reason", :requirements => { :method => :put } 
     game.resources :comments, :controller => "Games::Comments"
     game.resources :screenshots, :controller => "Games::Screenshots"
     game.resources :usershots, :controller => "Games::Usershots"
@@ -9,7 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
 
   map.resources :users do |user|
-    user.add_game 'add_game/:game_id', :controller => "users", :action => "add_game", :requirements => { :method => :post }
+    user.add_game 'add_game/:game_id', :controller => "users", :action => "add_game", :requirements => { :method => :put }
+    user.remove_game 'remove_game/:game_id', :controller => "users", :action => "remove_game", :requirements => { :method => :put }
   end
 
   map.logoff 'logoff', :controller => "users", :action => "logoff"

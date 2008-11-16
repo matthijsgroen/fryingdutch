@@ -1,6 +1,6 @@
 <h2>Spellen</h2>
 <div id="game_list">
-	<%= render :partial => "game", :collection => @games %>
+	<%= render :partial => @games %>
 	<%= link_to "Voeg een spel toe", new_game_path, :id => "add_game", :rel => "remote" if current_user %>
 </div>
 <div class="sidecolumn">
