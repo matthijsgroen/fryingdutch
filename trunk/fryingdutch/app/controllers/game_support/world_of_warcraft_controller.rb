@@ -7,4 +7,8 @@ class GameSupport::WorldOfWarcraftController < GameSupport::GameSupportControlle
     })
   end
 
+  def collect_info
+    
+  end
+
 end

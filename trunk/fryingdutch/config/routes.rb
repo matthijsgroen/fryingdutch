@@ -13,7 +13,12 @@ ActionController::Routing::Routes.draw do |map|
     user.add_game 'add_game/:game_id', :controller => "users", :action => "add_game", :requirements => { :method => :put }
     user.remove_game 'remove_game/:game_id', :controller => "users", :action => "remove_game", :requirements => { :method => :put }
   end
-
+  
+  # World of Warcraft
+  map.with_options :path_prefix => "/game-support/world-of-warcraft", :controller => "GameSupport::WorldOfWarcraft" do |wow|
+    wow.wow_collect_info 'collect-info', :action => "collect_info", :requirements => { :method => :get }
+  end
+  
   map.logoff 'logoff', :controller => "users", :action => "logoff"
   map.desktop 'desktop', :controller => "users", :action => "desktop"
   map.settings 'settings', :controller => "users", :action => "settings"
