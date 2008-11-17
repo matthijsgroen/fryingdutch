@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   # World of Warcraft
   map.with_options :path_prefix => "/game-support/world-of-warcraft", :controller => "GameSupport::WorldOfWarcraft" do |wow|
     wow.wow_collect_info 'collect-info', :action => "collect_info", :requirements => { :method => :get }
+    wow.wow_update_characters 'characters', :action => "update_characters", :requirements => { :method => :put }
   end
   
   map.logoff 'logoff', :controller => "users", :action => "logoff"

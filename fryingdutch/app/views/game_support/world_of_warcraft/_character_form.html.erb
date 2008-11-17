@@ -1,5 +1,7 @@
 <li class="character_assignment">
-	Realm: <input type="text" name="realm" size="15" value="(autocomplete)" /> <br />
-	Character: <input type="text" name="character" size="15" value="(autocomplete)" /><br />
-	<span class="confirmation">Level 30 blood elf rogue</span>
+	<% remote_form_for character_form, :url => wow_update_characters_path do |form| %>
+	Realm: <%= form.text_field :realm %> <br />
+	Character: <%= form.text_field :name %><br />
+	<span class="confirmation"></span>
+	<% end %>
 </li>
