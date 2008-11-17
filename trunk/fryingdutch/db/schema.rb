@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081116071814) do
+ActiveRecord::Schema.define(:version => 20081116181257) do
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_on_id",   :limit => 11
@@ -128,6 +128,14 @@ ActiveRecord::Schema.define(:version => 20081116071814) do
     t.integer  "login_counter", :limit => 11
     t.date     "dob"
     t.string   "permalink"
+  end
+
+  create_table "wow_characters", :force => true do |t|
+    t.string   "name"
+    t.string   "realm"
+    t.integer  "user_id",    :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

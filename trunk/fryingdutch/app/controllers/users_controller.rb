@@ -28,13 +28,13 @@ class UsersController < ApplicationController
     
     respond_to do |format|
         format.js do
-          render :update do |page|
-            page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', 
-              :locals => { :game => game }
-            
-            page << "jQuery.facebox({ ajax: '/game-support/#{game.permalink}/collect-info' })" if game.extra_support? and game.support.features[:collect_info?]
-            
-          end          
+          if current_user.plays game
+            render :update do |page|
+              page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', 
+                :locals => { :game => game }
+              page << "jQuery.facebox({ ajax: '/game-support/#{game.permalink}/collect-info' })" if game.extra_support? and game.support.features[:collect_info?]
+            end
+          end
         end        
     end  
   end
