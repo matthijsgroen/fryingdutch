@@ -65,9 +65,12 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
   
+  config.gem 'RubyInline', :source => 'http://gems.rubyforge.org/', :version => ">= 3.8.1", :lib => "inline"
+  config.gem 'image_science', :version => '~> 1.1.3'
   # Add will_paginate gem support, auto-install using rake gems:install
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', 
     :source => 'http://gems.github.com'
+  
 end
 
 require 'attachment_fu_patch.rb'
