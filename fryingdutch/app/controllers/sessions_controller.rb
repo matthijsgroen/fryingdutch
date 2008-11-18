@@ -30,6 +30,11 @@ class SessionsController < ApplicationController
       authenticate_with_open_id(identity_url, :required => [:nickname], :optional => [:fullname, :email, :gender, :dob]) do |status, identity_url, registration|
         case status.status
         when :missing
+          if RAILS_ENV == "development" # offline mode
+            @current_user = User.find_by_identity_url(identity_url)
+            successful_login
+            return
+          end          
           failed_login "Sorry, de OpenID server kon niet worden gevonden"
         when :canceled
           failed_login "OpenID verificatie was geannuleerd"
