@@ -15,7 +15,7 @@ GameRating = $.klass({
 		this.set_width(width);
 	},
 	onmouseleave: function(event) {
-		this.bar.removeClass("setting");		
+		this.bar.removeClass("setting");
 		this.set_width(this.rating);
 	},
 	set_width: function(width) {
@@ -110,14 +110,38 @@ DisableSubmit = $.klass({
 	}
 })
 
+NavigationBarLink = $.klass({
+	initialize : function() {},
+	onclick: function() {
+		id = this.element.attr('id').substring(5);
+		if($('#able_'+id.substring(0,id.length-7)).hasClass('active')) {
+			bars = $(".navbar").hide();
+			bar = $("#"+id);
+			pos = this.element.position();
+			bar.css('top', pos.top+bar.height());
+			bar.css('left', pos.left);
+			bar.show();
+		} else
+			$("#open_"+id).click();
+		return false;
+	}
+});
+
+NavigationBar = $.klass({
+	initialize : function() {
+		this.element.hide();
+		this.element.css('position', 'absolute');
+	},
+});
+
 jQuery(document).ready(function($) {
 	$('a[rel*=remote]').attach(Remote.Link, { dataType: "script" } );
   $('a[rel*=facebox]').facebox();
 	// Add facebox-support for will-paginate links created as a facebox-navigation
-	//$('#facebox .footer .navigation a[rel*=next][rel*=prev][rel*=start]').facebox();
-	//$('a[rel*=next]').attach(Remote.Link, { dataType: "script" } );
+	$('#facebox .pagination a').attach(Remote.Link, { dataType: "script" } );
 
-	$(document).bind('beforeReveal.facebox', function() { $('#facebox .pagination a[@rel*=next], #facebox .pagination a[@rel*=prev], #facebox .pagination a[@rel*=start]').attach(Remote.Link, { dataType: "script" } ); })
+	$('a[rel*=navbar]').attach(NavigationBarLink);
+	$('div .navbar').attach(NavigationBar);
 
 	$(".shoutbox .comment textarea").attach(DisableSubmit);
 	$(".shoutbox .new_comment textarea").attach(DisableSubmit);
