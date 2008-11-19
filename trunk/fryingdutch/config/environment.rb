@@ -72,3 +72,4 @@ Rails::Initializer.run do |config|
 end
 
 require 'attachment_fu_patch.rb'
+require 'util.rb'

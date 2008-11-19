@@ -1,0 +1,37 @@
+
+div.navbar {
+	background-color: #DDDDDD;
+	padding: 5px;
+}
+
+div.navbar a.close {
+	vertical-align: super;
+	font-size: 6pt;
+}
+
+.able_navbar {
+	float:left;
+}
+
+.able_navbar a {
+}
+
+.able_navbar a.active {
+	color: green;
+}
+
+#facebox .navigation {
+	float: left;
+	font-size: medium;
+}
+
+#facebox .navigation td {
+	padding-left: 5px;
+}
+
+#facebox .navigation A.next, #facebox .navigation A.previous, #facebox .navigation A.index {
+	text-decoration: none;
+	font-size: large;
+	color: blue;
+}
+

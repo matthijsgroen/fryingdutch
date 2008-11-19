@@ -47,6 +47,16 @@ class Games::ScreenshotsController < ApplicationController
   end
 
   def destroy
+    screenshot = @game.screenshots.find params[:id]
+    screenshot.destroy
+    
+      respond_to do |format|
+        format.js {
+          render :update do |page|
+            page["##{dom_id(screenshot)}"].hide "drop" 
+          end
+        }
+      end
   end
 
   def update
