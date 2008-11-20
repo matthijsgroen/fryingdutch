@@ -4,9 +4,8 @@ class Game < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :name
   acts_as_taggable
-  has_many :game_ratings
-  has_one :game_metadata
-  
+  has_many :game_ratings, :dependent => :destroy
+  has_one :game_metadata, :dependent => :destroy
 
   validates_each :name do |record, attr, value|
     record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if not record.new_record? and Game.find :first, :conditions => ["permalink LIKE ? AND id <> ?", record.get_permalink, record.id]
@@ -15,9 +14,9 @@ class Game < ActiveRecord::Base
   
   has_many :user_games, :dependent => :destroy
   has_many :users, :through => :user_games
-  has_many :comments, :as => :comment_on, :conditions => { :category => "comment" }, :order => "position, created_at DESC"
-  has_many :screenshots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "screenshot" }, :order => "position, created_at DESC"
-  has_many :usershots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "usershot" }, :order => "position, created_at DESC"
+  has_many :comments, :as => :comment_on, :conditions => { :category => "comment" }, :order => "position, created_at DESC", :dependent => :destroy
+  has_many :screenshots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "screenshot" }, :order => "position, created_at DESC", :dependent => :destroy
+  has_many :usershots, :class_name => "Comment", :as => :comment_on, :conditions => { :category => "usershot" }, :order => "position, created_at DESC", :dependent => :destroy
 
   has_many :user_games_playing, :class_name => "UserGame", :conditions => "user_games.end_date IS NULL"
   has_many :players, :class_name => "User", :through => :user_games_playing, :source => :user
