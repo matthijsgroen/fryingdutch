@@ -38,8 +38,7 @@ class GamesController < ApplicationController
   # GET /games/new
   # GET /games/new.xml
   def new
-    @game = Game.new
-    @game.name = "Nieuw spel" 
+    @game = Game.new(:name => "Nieuw spel")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,7 +61,7 @@ class GamesController < ApplicationController
       if @game.save
         flash[:notice] = 'Game was successfully created.'
         format.html {
-          redirect_to games_path
+          redirect_to @game
         }
         format.js { 
           render :update do |page|

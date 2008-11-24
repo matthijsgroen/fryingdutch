@@ -44,4 +44,9 @@ Spec::Runner.configure do |config|
   # == Notes
   # 
   # For more information take a look at Spec::Example::Configuration and Spec::Runner
+  
+  def login_error
+    "Je moet ingelogd zijn om deze pagina te bekijken."
+  end
+  
 end
