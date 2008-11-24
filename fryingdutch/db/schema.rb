@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081116181257) do
+ActiveRecord::Schema.define(:version => 20081123210735) do
+
+  create_table "boards", :force => true do |t|
+    t.integer  "parent_id",   :limit => 11
+    t.string   "name"
+    t.string   "description"
+    t.integer  "position",    :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "permalink"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_on_id",   :limit => 11

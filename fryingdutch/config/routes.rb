@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :boards
+
   map.resources :games do |game|
     game.set_rating 'rating', :controller => "Games", :action => "rating", :requirements => { :method => :put }
     game.quit_reason 'quit/:reason_id', :controller => "Users", :action => "update_quit_reason", :requirements => { :method => :put } 
