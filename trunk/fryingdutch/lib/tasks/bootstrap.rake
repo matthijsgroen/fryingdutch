@@ -1,18 +1,7 @@
+
 namespace :db do
-  desc "Recreates the development database and loads the bootstrap fixtures from db/boostrap."
-  task :bootstrap do |task_args|
-    mkdir_p File.join(RAILS_ROOT, 'log')
-    
-    require 'rubygems' unless Object.const_defined?(:Gem)
-        
-    %w(environment db:drop db:create db:migrate db:bootstrap:load).each { |t| Rake::Task[t].execute task_args}
-    
-    puts
-    puts '=' * 80
-    puts
-    puts "You've been bootstrapped!"
-    puts
-  end
+  desc "Recreates the development database and loads the bootstrap fixtures from db/bootstrap."
+  task :bootstrap => [:environment, :drop, :create, :migrate, "bootstrap:load", "log:clear", "gems:install"]
   
   namespace :bootstrap do
     desc "Load fixtures from db/bootstrap into the database"
@@ -28,7 +17,7 @@ namespace :db do
  
     task :extract_fixtures => :environment do
       sql  = "SELECT * FROM %s"
-      skip_tables = ["schema_info"]
+      skip_tables = ["schema_migrations"]
       ActiveRecord::Base.establish_connection
       (ActiveRecord::Base.connection.tables - skip_tables).each do |table_name|
         i = "000"
