@@ -1,9 +1,12 @@
 
 namespace :db do
   desc "Recreates the development database and loads the bootstrap fixtures from db/bootstrap."
-  task :bootstrap => [:environment, :drop, :create, :migrate, "bootstrap:load", "log:clear", "gems:install"]
+  task :bootstrap => [:environment, :create, :migrate, "bootstrap:load", "log:clear", "gems:install"]
   
   namespace :bootstrap do
+    
+    task :again => [:environment, "db:drop", "db:create", "db:migrate", "bootstrap:load", "log:clear", "gems:install"]
+
     desc "Load fixtures from db/bootstrap into the database"
     task :load => :environment do
       require 'active_record/fixtures'
