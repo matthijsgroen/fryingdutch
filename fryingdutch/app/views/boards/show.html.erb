@@ -1,23 +1,10 @@
-<p>
-  <b>Parent:</b>
-  <%=h @board.parent %>
-</p>
+<h2><%=h @board.name %></h2>
+<p class="description"><%=h @board.description %></p>
 
-<p>
-  <b>Name:</b>
-  <%=h @board.name %>
-</p>
+<%= render :partial => @board.children %>
 
-<p>
-  <b>Description:</b>
-  <%=h @board.description %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%=h @board.position %>
-</p>
-
-
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<%= link_to 'Edit', edit_board_path(@board) %> 
+| 
+<%= link_to 'Delete', @board, :confirm => "Weet u zeker dat u dit forum wilt verwijderen?", :method => :delete %>
+|
+<%= link_to 'New', board_add_path(@board) %>

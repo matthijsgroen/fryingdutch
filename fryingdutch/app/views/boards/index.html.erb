@@ -1,25 +1,6 @@
-<h1>Listing boards</h1>
+<h2>Listing boards</h2>
 
-<table>
-  <tr>
-    <th>Parent</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Position</th>
-  </tr>
-
-<% for board in @boards %>
-  <tr>
-    <td><%=h board.parent %></td>
-    <td><%=h board.name %></td>
-    <td><%=h board.description %></td>
-    <td><%=h board.position %></td>
-    <td><%= link_to 'Show', board %></td>
-    <td><%= link_to 'Edit', edit_board_path(board) %></td>
-    <td><%= link_to 'Destroy', board, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => @boards %>
 
 <br />
 
