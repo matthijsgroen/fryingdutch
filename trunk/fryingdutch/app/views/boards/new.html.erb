@@ -2,6 +2,7 @@
 
 <% form_for(@board) do |f| %>
   <%= f.error_messages %>
+	<%= f.hidden_field :parent_id %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>

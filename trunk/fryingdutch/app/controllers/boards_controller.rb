@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.xml
   def index
-    @boards = Board.find(:all)
+    @boards = Board.root_boards
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +28,15 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.xml  { render :xml => @board }
+    end
+  end
+
+  def add_board
+    @parent = Board.find_by_permalink params[:board_id]
+    @board = Board.new :parent_id => @parent.id
+    respond_to do |format|
+      format.html { render :action => "new" }
       format.xml  { render :xml => @board }
     end
   end

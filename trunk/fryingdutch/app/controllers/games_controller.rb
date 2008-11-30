@@ -5,12 +5,13 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.find :all
+    @games = Game.find :all, :order => "created_at"
     @tags = Game.tag_counts :order => "name asc"
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @games }
+      format.atom 
     end
   end
 

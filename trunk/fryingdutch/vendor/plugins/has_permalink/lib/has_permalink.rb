@@ -25,7 +25,12 @@ module ActiveRecord #:nodoc:
         end
         
         def get_permalink
-          "#{name.gsub(/[^a-z0-9]+/i, '-')}".downcase if self.name
+          name = self.id
+          name = "#{self.name.gsub(/[^a-z0-9]+/i, '-')}".downcase if respond_to? :name
+          if respond_to? :parent
+            name = "#{parent.permalink}_#{name}" if parent.respond_to? :permalink
+          end          
+          name
         end
       
         def to_param
