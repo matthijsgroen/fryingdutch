@@ -14,6 +14,7 @@ module ActiveRecord #:nodoc:
           end
           
           before_save :assign_permalink
+          after_save :update_children_permalink
           
           include ActiveRecord::Has::Permalink::InstanceMethods
         end
@@ -24,11 +25,15 @@ module ActiveRecord #:nodoc:
           self.permalink = get_permalink
         end
         
+        def update_children_permalink
+          children.each { |child| child.save } if respond_to? :children
+        end
+        
         def get_permalink
           name = self.id
           name = "#{self.name.gsub(/[^a-z0-9]+/i, '-')}".downcase if respond_to? :name
           if respond_to? :parent
-            name = "#{parent.permalink}_#{name}" if parent.respond_to? :permalink
+            name = "#{parent.permalink}\\#{name}" if parent.respond_to? :permalink
           end          
           name
         end
