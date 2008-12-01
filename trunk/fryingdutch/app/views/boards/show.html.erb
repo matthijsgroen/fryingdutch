@@ -1,7 +1,9 @@
+<%= bread_crumbs @board %>
 <h2><%=h @board.name %></h2>
 <p class="description"><%=h @board.description %></p>
 
 <%= render :partial => @board.children %>
+
 
 <%= link_to 'Edit', edit_board_path(@board) %> 
 | 
