@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :boards do |board|
     board.add 'toevoegen', :controller => "Boards", :action => "add_board", :requirements => { :method => :get }
+    board.resources :topics, :controller => "Boards::Topics"
   end
 
   map.resources :games do |game|

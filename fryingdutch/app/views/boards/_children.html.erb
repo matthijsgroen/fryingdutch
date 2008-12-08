@@ -1,5 +1,5 @@
 <table class="board-list">
-	<caption>Listing boards</caption>
+	<caption>Sub boards</caption>
 	<thead>
 		<tr>
 			<td colspan="2">Forum</td>
@@ -8,10 +8,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%= render :partial => @boards %>
+		<%= render :partial => @board.children %>
 	</tbody>
 </table>
-
-<br />
-
-<%= link_to 'New board', new_board_path %>

@@ -1,5 +1,13 @@
-<% div_for board do %>
-<h3><%=link_to h(board.name), board %></h3>
-<p class="description"><%=h board.description %></p>
-
-<% end %>
+<tr id="<%=dom_id board %>">
+	<td><!-- icon --></td>
+	<th>
+		<%=link_to h(board.name), board %>
+		<p class="description"><%=h board.description %></p>
+	</th>
+	<td>
+		<%=h board.topics.count  %>
+	</td>
+	<td>
+		<!-- last post -->
+	</td>
+</tr>

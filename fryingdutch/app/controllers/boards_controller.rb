@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
   # GET /boards/1.xml
   def show
     @board = Board.find_by_permalink(params[:id])
+    @topics = @board.topics
 
     respond_to do |format|
       format.html # show.html.erb
