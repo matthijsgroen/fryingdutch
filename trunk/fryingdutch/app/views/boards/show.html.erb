@@ -1,12 +1,14 @@
 <%= bread_crumbs @board %>
 <h2><%=h @board.name %></h2>
 <p class="description"><%=h @board.description %></p>
-
-<%= render :partial => @board.children %>
-
-
+<div>
 <%= link_to 'Edit', edit_board_path(@board) %> 
 | 
 <%= link_to 'Delete', @board, :confirm => "Weet u zeker dat u dit forum wilt verwijderen?", :method => :delete %>
 |
-<%= link_to 'New', board_add_path(@board) %>
+<%= link_to 'Add subboard', board_add_path(@board) %>
+</div>
+
+<%= render :partial => "children" %>
+
+<%= render :partial => "boards/topics/index" %>
