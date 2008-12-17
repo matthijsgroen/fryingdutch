@@ -1,5 +1,5 @@
 <li id="<%= dom_id shot %>" class="image">
-<%=
+<%
 bar_link_to(image_tag(shot.content.public_filename(:thumb)), game_screenshot_path(@game, shot)) do |bar|
 	bar.open_link_to("Open", game_screenshot_path(@game, shot), :rel => "remote")
 	bar << link_to_remote("Verwijderen", :url => game_screenshot_path(@game, shot), :method => :delete, :confirm => "Weet u het zeker?")
