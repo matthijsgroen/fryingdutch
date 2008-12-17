@@ -7,6 +7,7 @@ class Screenshot < ActiveRecord::Base
                   :thumb => '100x75>', 
                   :large => '800x600>' 
                  }
+  has_many :comments, :as => :comment_on, :conditions => { :category => "comment" }, :order => "position, created_at DESC", :dependent => :destroy
 
   validates_as_attachment
   

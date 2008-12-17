@@ -40,7 +40,10 @@ class Games::ScreenshotsController < ApplicationController
       @screenshot.user = current_user
       @screenshot.category = params[:comment][:category]
       @screenshot.save
-      redirect_to @screenshot.content.public_filename     
+      respond_to do |format|
+        format.html
+        format.js { refresh_screenshots @game }
+      end
     else
       render :action => :new
     end
@@ -62,9 +65,30 @@ class Games::ScreenshotsController < ApplicationController
   def update
   end
 
-  private
-    def get_game
-      @game = Game.find_by_permalink(params[:game_id])
+  def show_comments
+    screenshot = @game.screenshots.find params[:id]
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page["##{dom_id(screenshot)}"].hide "drop" 
+        end
+      }
     end
+  end
+
+  private
+  def get_game
+    @game = Game.find_by_permalink(params[:game_id])
+  end
+  
+  def refresh_screenshots(game)
+      respond_to do |format|
+        format.js {
+          render :update do |page|
+            page["##{dom_id(game)} .imagebar"].replace :partial => "games/screenshots", :locals => {:game => game}
+        end
+      }
+      end
+  end
 
 end

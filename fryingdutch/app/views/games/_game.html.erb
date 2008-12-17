@@ -12,24 +12,7 @@
 		</div>
 		
 		<div class="column">
-			<ul class="imagebar">
-				<% 3.times do |index| %>
-				<li class="image"><%= game.screenshots[index] ? 
-						link_to(
-							image_tag(game.screenshots[index].content.public_filename(:thumb)),
-							game_screenshot_path(game, game.screenshots[index]),
-							:rel => "remote"
-						) : 
-							image_tag("/images/no_image.jpg") %></li>
-				<% end %>
-				<li>
-					<ul class="links">
-						<li><%= link_to "Screenshots (#{game.screenshots.count})", game_screenshots_path(game), :rel => "remote" %></li>					
-						<li><%= link_to "Usershots (#{game.usershots.count})", game_usershots_path(game), :rel => "remote" %></li>				
-						<li><%= link_to "+ Toevoegen", new_game_screenshot_path(game), :rel => "remote" if current_user %></li>
-					</ul>		
-				</li>
-			</ul>			
+			<%= render :partial => "games/screenshots", :locals => {:game => game } %>
 			<p class="tags">Tags: <%= game.tags.collect { |tag| link_to h(tag.name), games_by_tagname_path(tag.name) }.join ", " %></p>
 		</div>
 		

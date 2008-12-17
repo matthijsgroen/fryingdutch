@@ -1,10 +1,13 @@
+<div id="<%= dom_id @screenshot %>">
 <%= image_tag @screenshot.content.public_filename(:large) %>
-<p><%=h @screenshot.content.description %></p>
-
+<p><%=h @screenshot.content.description
+ link_to("Comments (#{@screenshot.content.comments.count})", game_screenshot_path(@game, @screenshot), :action=> "show_comments", :rel => "remote"); %> Comments (<%=  %>)</p>
+</div>
 <%
 	navigation do |nav|
 		nav.previous game_screenshot_path(@game, @screenshot.higher_item) unless @screenshot.first?
-		nav << " Image #{@screenshot.position} / #{@screenshot.comment_on.screenshots.count} "
+		nav << " Image #{@screenshot.position} / #{@screenshot.comment_on.screenshots.count}"
+		nav << link_to(" || ", game_screenshots_path, :class=> "index", :rel => "remote");
 		nav.next game_screenshot_path(@game, @screenshot.lower_item) unless @screenshot.last?
 	end
 %>
