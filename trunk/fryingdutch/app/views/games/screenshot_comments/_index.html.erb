@@ -1,0 +1,6 @@
+<ol class="shoutbox">
+	<li>
+		<%= link_to(image_tag(@screenshot.content.public_filename(:thumb)), game_screenshot_path(@game, @screenshot), :rel => "remote") %>
+		<p><%=h @screenshot.content.description %></p>
+ 	</li>
+</ol>

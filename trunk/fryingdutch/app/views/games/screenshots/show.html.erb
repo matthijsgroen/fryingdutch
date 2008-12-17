@@ -1,7 +1,7 @@
 <div id="<%= dom_id @screenshot %>">
 <%= image_tag @screenshot.content.public_filename(:large) %>
 <p><%=h @screenshot.content.description
- link_to("Comments (#{@screenshot.content.comments.count})", game_screenshot_path(@game, @screenshot), :action=> "show_comments", :rel => "remote"); %> Comments (<%=  %>)</p>
+ link_to("Comments (#{@screenshot.content.comments.count})", game_screenshot_comments_path(@game, @screenshot), :action=> "show_comments", :rel => "remote"); %></p>
 </div>
 <%
 	navigation do |nav|
