@@ -9,7 +9,9 @@ ActionController::Routing::Routes.draw do |map|
     game.set_rating 'rating', :controller => "Games", :action => "rating", :requirements => { :method => :put }
     game.quit_reason 'quit/:reason_id', :controller => "Users", :action => "update_quit_reason", :requirements => { :method => :put } 
     game.resources :comments, :controller => "Games::Comments"
-    game.resources :screenshots, :controller => "Games::Screenshots"
+    game.resources :screenshots, :controller => "Games::Screenshots" do |shot|
+      shot.resources :comments, :controller => "Games::ScreenshotComments"
+    end
     game.resources :usershots, :controller => "Games::Usershots"
     game.resource :metadata, :controller => "Games::Metadatas"
   end
