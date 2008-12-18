@@ -8,6 +8,6 @@
 		<%=h board.topics.count  %>
 	</td>
 	<td>
-		<!-- last post -->
+		<%= "#{time_ago_in_words board.topics.first.updated_at} ago" if board.topics.first %> 
 	</td>
 </tr>

@@ -69,3 +69,31 @@ table.topic-list thead td {
 	background-color: #cccccc;
 	font-weight: bold;
 }
+
+table.topic-list tbody td.last_post {
+	color: #888888;
+	font-size: 0.8em;
+}
+
+.topic .footer {
+	background: none;
+}
+
+.topic .user_info a.userlink {
+	font-weight: bold;
+	color: black;
+	text-decoration: none;	
+}
+.topic .footer .avatar {
+	margin: 5px;
+}
+.topic .message {
+	margin: 5px;
+	padding: 5px;
+	background-color: #DDDDDD;
+}
+.topic .message h3 {
+	margin: 0;
+	font-size: 2em;
+	
+}

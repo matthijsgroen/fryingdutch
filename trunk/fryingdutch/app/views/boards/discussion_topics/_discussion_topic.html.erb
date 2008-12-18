@@ -1,8 +1,10 @@
-<tr>
-	<td>icons</td>
-	<td><%=link_to h(discussion_topic.title), board_discussion_topic_path(@board, comment) %></td>
-	<td>0</td>
-	<td>0</td>
-	<td><%=h comment.user.nickname %></td>
-	<td></td>
+<tr id="<%=dom_id comment %>">
+	<td class="icon">:-)</td>
+	<td class="title"><%=link_to h(discussion_topic.title), board_discussion_topic_path(@board, comment) %></td>
+	<td class="replies">0</td>
+	<td class="views">0</td>
+	<td class="author"><%=h comment.user.nickname %></td>
+	<td class="last_post">
+		<%= time_ago_in_words comment.created_at %> ago
+	</td>
 </tr>

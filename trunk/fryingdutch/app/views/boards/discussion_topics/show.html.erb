@@ -1,11 +1,19 @@
-<%= link_to "Terug naar forum", @board %>
+<p><%= link_to "Terug naar forum", @board %></p>
 
-<p>
-  <b>Title:</b>
-  <%=h @topic.content.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%=h @topic.content.body %>
-</p>
+<div class="topic">
+	<div class="message">
+  	<h3><%=h @topic.content.title %></h3>
+	  <%=h @topic.content.body %>
+	</div>
+	<% if false # current_user %>
+		<% if comment.user_id == current_user.id %>
+			<ul class="item_options">
+				<li><%= link_to "Bewerken", edit_game_comment_path(@game, comment), :rel => "remote" %></li>
+				<li><%= link_to_remote "Verwijderen", :url => game_comment_path(@game, comment), :method => :delete, :confirm => "Weet u het zeker?" %></li>
+				<!-- li><%= link_to "Rapporteren", "#" %></li -->
+			</ul>
+		<% end %>
+	<% end %>
+	<%= render :partial => "/boards/topics/topic_footer", :object => @topic, :locals => { :user_link_menu => true } %>
+	<hr />
+</div>
