@@ -17,3 +17,27 @@ table.topic-list caption {
 table.topic-list tbody th {
 	text-align: left;
 }
+table.topic-list tbody td.icon {
+	width: 30px;
+}
+table.topic-list tbody td.replies,
+table.topic-list tbody td.views {
+	width: 50px;
+	text-align: right;
+}
+table.topic-list tbody td.author {
+	width: 80px;
+	text-align: center;
+}
+table.topic-list tbody td.last_post {
+	width: 120px;
+}
+
+.topic .footer .avatar,
+.topic .user_info {
+	float: left;
+}
+.topic hr {
+	clear: both;
+}
+
