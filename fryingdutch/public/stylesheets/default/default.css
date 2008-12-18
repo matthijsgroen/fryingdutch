@@ -31,7 +31,7 @@ p {
 	width: 296px;
 	height: 44px;
 	text-indent: -1000px;
-	background: url(/images/logo.png) no-repeat;
+	background: url(/images/default/logo.png) no-repeat;
 	float: left;
 }
 

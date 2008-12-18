@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+
+  before_filter :login_required, :only => [:new, :add_board, :create, :edit, :update, :destroy]
+
   # GET /boards
   # GET /boards.xml
   def index

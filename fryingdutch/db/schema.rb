@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081123210735) do
+ActiveRecord::Schema.define(:version => 20081213072225) do
 
   create_table "boards", :force => true do |t|
     t.integer  "parent_id",   :limit => 11
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20081123210735) do
     t.datetime "updated_at"
     t.string   "category",                      :default => "comment"
     t.integer  "position",        :limit => 11
+  end
+
+  create_table "discussion_topics", :force => true do |t|
+    t.string   "title"
+    t.integer  "icon_id",    :limit => 11
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "game_metadatas", :force => true do |t|

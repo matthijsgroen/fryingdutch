@@ -12,7 +12,7 @@ ol.shoutbox li {
 ol.shoutbox .user_info {
 	width: 110px;
 	float: left;
-	background: transparent url(/images/balloon.png) right top no-repeat;
+	background: transparent url(/images/default/balloon.png) right top no-repeat;
 	padding-bottom: 3px;
 }
 ol.shoutbox .user_info .avatar {
@@ -72,7 +72,6 @@ ol.shoutbox li.new_comment.expanded input {
 ol.shoutbox li.comment div.edit_comment {
 	display: none;
 }
-
 ul.item_options {
 	height: 0.8em;
 	padding: 3px;

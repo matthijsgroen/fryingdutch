@@ -1,0 +1,19 @@
+
+table.board-list {
+	width: 100%;
+}
+table.board-list thead td {
+	font-weight: bold;
+}
+table.board-list tbody th {
+	text-align: left;
+}
+table.topic-list {
+	width: 100%;
+}
+table.topic-list caption {
+	margin-top: 20px;
+}
+table.topic-list tbody th {
+	text-align: left;
+}
