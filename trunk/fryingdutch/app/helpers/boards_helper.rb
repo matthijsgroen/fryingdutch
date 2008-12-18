@@ -8,5 +8,11 @@ module BoardsHelper
     items << link_to("alle boards", boards_path)
     items.reverse.join " \\ "
   end
+  
+  def new_topic_path(board)
+    topic = :discussion_topics
+    
+    send "new_board_#{topic.to_s.singularize}_path", board
+  end
 
 end

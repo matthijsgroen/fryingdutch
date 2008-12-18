@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'ca9769fca6c5fc26e0d28bd4b083bddb'
+  layout :determine_layout
 
   before_filter :current_user
+  
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
@@ -30,6 +32,11 @@ class ApplicationController < ActionController::Base
       flash[:message] = "Je moet ingelogd zijn om deze pagina te bekijken."
       redirect_to root_url
     end
+  end
+  
+  def determine_layout
+    return "frozen" unless @current_user.nil?
+    "application"
   end
   
 end

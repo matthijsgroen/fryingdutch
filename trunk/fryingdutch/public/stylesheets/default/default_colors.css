@@ -1,6 +1,41 @@
+body {
+	background-color: #eeeeee;
+}
+
+.body {
+	background-color: #ffffff;
+}
+
+.header, .footer {
+	background-color: #dddddd;
+}
+
+.footer {
+	color: #888888;
+}
+
+#user_header {
+	border: 2px solid #999999;
+	background-color: #eeeeee;
+}
+
+#mainmenu {
+	background-color: black;
+}
+#mainmenu li {
+	border-right: 1px dotted #999999;
+}
+#mainmenu a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+/**
+ * Board.css
+ * 
+ */
 
 table.board-list {
-	width: 100%;
 	border: 1px solid black;
 	border-collapse: collapse;
 }
@@ -16,16 +51,8 @@ table.board-list caption {
 }
 table.board-list thead td {
 	background-color: #cccccc;
-	font-weight: bold;
 }
-table.board-list tbody th {
-	text-align: left;
-}
-
-
-
 table.topic-list {
-	width: 100%;
 	border: 1px solid black;
 	border-collapse: collapse;
 }
@@ -34,7 +61,6 @@ table.topic-list th {
 	border: 1px solid black;
 }
 table.topic-list caption {
-	margin-top: 20px;
 	font-size: larger;
 	font-weight: bold;
 	text-align: left;
@@ -42,7 +68,4 @@ table.topic-list caption {
 table.topic-list thead td {
 	background-color: #cccccc;
 	font-weight: bold;
-}
-table.topic-list tbody th {
-	text-align: left;
 }
