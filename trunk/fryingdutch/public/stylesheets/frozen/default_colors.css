@@ -3,19 +3,20 @@ body {
 }
 
 .body {
-	background-color: #ffffff;
+	background: #ffffff url(/images/frozen/menu-tile.png) center 80px repeat-x;
+
 }
 
-#cbl, .header {
+.outer-wrapper, .header {
 	background: #ffffff url(/images/frozen/top-tile.png) top center repeat-x;
 }
 
 .footer, .footer .body {
-	background-color: #000000;
+	background: #000000;
 }
 
 .footer {
-	color: #ffffff;
+	color: #a7c7fd;
 }
 
 #user_header {
@@ -23,9 +24,6 @@ body {
 	background-color: #eeeeee;
 }
 
-#mainmenu {
-	background: #ffffff url(/images/frozen/menu-tile.png) top center repeat-x;
-}
 #mainmenu li {
 	border-right: 1px dotted #999999;
 }
