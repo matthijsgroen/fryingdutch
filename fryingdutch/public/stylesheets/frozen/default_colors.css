@@ -1,0 +1,103 @@
+body {
+	background-color: #000000;
+}
+
+.body {
+	background-color: #ffffff;
+}
+
+#cbl, .header {
+	background: #ffffff url(/images/frozen/top-tile.png) top center repeat-x;
+}
+
+.footer, .footer .body {
+	background-color: #000000;
+}
+
+.footer {
+	color: #ffffff;
+}
+
+#user_header {
+	border: 2px solid #999999;
+	background-color: #eeeeee;
+}
+
+#mainmenu {
+	background: #ffffff url(/images/frozen/menu-tile.png) top center repeat-x;
+}
+#mainmenu li {
+	border-right: 1px dotted #999999;
+}
+#mainmenu a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+/**
+ * Board.css
+ * 
+ */
+
+table.board-list {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+table.board-list td,
+table.board-list th {
+	border: 1px solid black;
+}
+table.board-list caption {
+	margin-top: 20px;
+	font-size: larger;
+	font-weight: bold;
+	text-align: left;
+}
+table.board-list thead td {
+	background-color: #cccccc;
+}
+table.topic-list {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+table.topic-list td,
+table.topic-list th {
+	border: 1px solid black;
+}
+table.topic-list caption {
+	font-size: larger;
+	font-weight: bold;
+	text-align: left;
+}
+table.topic-list thead td {
+	background-color: #cccccc;
+	font-weight: bold;
+}
+
+table.topic-list tbody td.last_post {
+	color: #888888;
+	font-size: 0.8em;
+}
+
+.topic .footer {
+	background: none;
+}
+
+.topic .user_info a.userlink {
+	font-weight: bold;
+	color: black;
+	text-decoration: none;	
+}
+.topic .footer .avatar {
+	margin: 5px;
+}
+.topic .message {
+	margin: 5px;
+	padding: 5px;
+	background-color: #DDDDDD;
+}
+.topic .message h3 {
+	margin: 0;
+	font-size: 2em;
+	
+}

@@ -6,14 +6,16 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Fryingdutch.net</title>
 	<%= stylesheet_link_tag \
-			'default/default', 
 			'default/games', 
 			'default/shoutbox',
 			'default/facebox',
 			'default/navigation',
 			'shared/board' 
 	%>
-	<%= stylesheet_link_tag 'default/default_colors' %>
+	<%= stylesheet_link_tag \
+			'frozen/default_colors', 
+			'frozen/default' 
+	%>
 	<%= javascript_include_tag \
 			'jquery', 
 			'jquery.livequery', 
@@ -28,6 +30,7 @@
 	<%= @atom_url if @atom_url %>
 </head>
 <body>
+<div id="cbl"><div id="cbr">	
 	<div class="body">
 		<%= link_to "Ga naar inhoud", { :anchor => "content" }, :class => "aurial" %>
 		<div class="header">
@@ -45,8 +48,11 @@
 
 		<div class="pagebottom"></div>
 		</div>
-		<div class="footer">
-			&copy; 2008 frozendutch.net - <%= link_to "Bug gevonden?", "http://code.google.com/p/fryingdutch/issues/list", :class => "external" %>
+	</div>
+</div></div>
+	<div class="footer">
+		<div class="body">
+		&copy; 2008 - 2009 frozendutch.net - <%= link_to "Bug gevonden?", "http://code.google.com/p/fryingdutch/issues/list", :class => "external" %>
 		</div>
 	</div>
 </body>
