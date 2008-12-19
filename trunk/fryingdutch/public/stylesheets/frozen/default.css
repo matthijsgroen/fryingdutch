@@ -1,0 +1,124 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 0.9em;
+}
+a.aurial {
+	display: none;
+}
+p {
+	padding: 0;
+	margin: 0;
+}
+
+.body {
+	width: 1000px;
+	margin: 0px auto 0px auto;
+}
+
+.header {
+	height: 80px;
+}
+
+.footer {
+	font-size: 0.9em;
+	padding: 20px 3px 3px 3px;
+}
+
+.footer .body {
+	height: 40px;
+}
+
+.header h1 {
+	margin: 37px 0 0 0;
+	width: 404px;
+	height: 43px;
+	text-indent: -1000px;
+	background: url(/images/frozen/title.png) no-repeat;
+	float: left;
+}
+
+#user_header {
+	padding: 3px;
+	height: 60px;
+	float: right;
+	margin: 5px;
+	-moz-border-radius: 10px;
+}
+
+#user_header .stats {
+	height: 50px;
+	padding: 4px;
+	margin-right: 4px;
+	float: left;
+}
+
+#user_header .avatar {
+	float: left;
+}
+
+#user_menu {
+	height: 50px;
+	padding: 4px;
+	margin-right: 4px;
+	float: left;
+}
+
+#user_menu input#openid_identifier {
+	font-size: 1.2em;
+	border: 1px solid #dddddd;
+	background-color: #eeeeee;
+	font-weight: bold;
+}
+#user_menu label {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#mainmenu {
+	padding: 0;
+	margin: 0;
+	display: block;
+	height: 30px;
+}
+#mainmenu li {
+	float: left;
+	padding: 5px;
+	display: block;	
+}
+.content {
+	padding: 10px;
+}
+.pagebottom {
+	clear: both;
+}
+.explanation {
+	font-style: italic;
+}
+.play_options {
+	clear: left;
+	float: left;
+	margin-bottom: 10px;
+}
+
+
+a.external {
+	color: #3366BB;
+}
+a.external {
+	background: transparent url(/images/external.png) no-repeat scroll right center;
+	padding-right: 13px;
+}
+a.external:hover {
+	text-decoration:underline;
+}
+
+.flash.message {
+	border: 1px solid #99BB99;
+	background-color: #DDFFDD;
+}
+
+dt {
+	font-size: 130%;
+}
