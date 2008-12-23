@@ -1,17 +1,29 @@
-<table class="board-list">
-	<caption>Listing boards</caption>
-	<thead>
-		<tr>
-			<td colspan="2">Forum</td>
-			<td>Topics</td>
-			<td>Last post</td>
-		</tr>
-	</thead>
-	<tbody>
-		<%= render :partial => @boards %>
-	</tbody>
-</table>
+<% @boards.select { |b| b.children.count.zero? }.each do |b| %>
+	<% div_for b, :class => "tile" do %>
+		<dt><%= link_to h(b.name), b %></dt>
+		<dd><%= h b.description %></dd>
+	<% end %>
+<% end %>
 
-<br />
+<hr class="clear" />
+
+<% @boards.select { |b| !b.children.count.zero? }.each do |b| %>
+	<% div_for b, :class => "group" do %>
+		<div class="titlebar">
+			<dt><%= link_to h(b.name), b %></dt>
+			<dd><%= h b.description %></dd>
+		</div>
+		<div class="children">
+			<% b.children.each do |bc| %>
+				<% div_for bc, :class => "tile" do %>
+					<dt><%= link_to h(bc.name), bc %></dt>
+					<dd><%= h bc.description %></dd>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	
+<% end %>
+<hr class="clear" />
 
 <%= link_to 'New board', new_board_path if current_user %>

@@ -1,0 +1,2 @@
+module Boards::TextReactionsHelper
+end
