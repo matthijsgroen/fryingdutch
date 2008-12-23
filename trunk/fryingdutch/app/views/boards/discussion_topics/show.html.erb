@@ -1,4 +1,4 @@
-<p><%= link_to "Terug naar forum", @board %></p>
+<p><%= link_to "&laquo; Terug naar forum", @board %></p>
 
 <div class="topic">
 	<div class="message">
@@ -16,4 +16,10 @@
 	<% end %>
 	<%= render :partial => "/boards/topics/topic_footer", :object => @topic, :locals => { :user_link_menu => true } %>
 	<hr />
+</div>
+
+<h3><%=@topic.content.replies.count %> reacties</h3>
+
+<div id="new_reply">
+<%= link_to "Nieuwe reactie plaatsen", new_board_text_reaction_path(@board, @topic) %>
 </div>

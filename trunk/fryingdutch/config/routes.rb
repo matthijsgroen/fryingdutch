@@ -2,7 +2,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :boards do |board|
     board.add 'add', :controller => "Boards", :action => "add_board", :requirements => { :method => :get }
+    #topics
     board.resources :discussion_topics, :as => "disc", :controller => "Boards::DiscussionTopics"
+
+    #reactions
+    board.resources :text_reactions, :as => "text", :controller => "Boards::TextReactions", :path_prefix => "/boards/:board_id/t/:topic_id" 
   end
 
   map.resources :games do |game|
