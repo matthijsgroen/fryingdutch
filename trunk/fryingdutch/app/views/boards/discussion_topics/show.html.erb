@@ -20,6 +20,10 @@
 
 <h3><%=@topic.content.replies.count %> reacties</h3>
 
+<ol class="shoutbox">
+	<%=render :partial => @topic.content.replies %>
+</ol>
+
 <div id="new_reply">
 <%= link_to "Nieuwe reactie plaatsen", new_board_text_reaction_path(@board, @topic) %>
 </div>

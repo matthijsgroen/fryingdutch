@@ -6,7 +6,7 @@ class Boards::DiscussionTopicsController < ApplicationController
   # GET /boards/discussion_topics/1
   # GET /boards/discussion_topics/1.xml
   def show
-    @topic = @board.topics.find(params[:id])
+    @topic = @board.topics.find_by_content_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +28,7 @@ class Boards::DiscussionTopicsController < ApplicationController
 
   # GET /boards/discussion_topics/1/edit
   def edit
-    @discussion_topic = Boards::DiscussionTopic.find(params[:id])
+    @discussion_topic = Boards::DiscussionTopic.find_by_content_id(params[:id])
   end
 
   # POST /boards/discussion_topics
@@ -44,8 +44,8 @@ class Boards::DiscussionTopicsController < ApplicationController
         @topic.category = "topic"
         @topic.save
         
-        format.html { redirect_to(board_discussion_topic_path(@board, @topic)) }
-        format.xml  { render :xml => @topic, :status => :created, :location => board_discussion_topic_path(@board, @topic) }
+        format.html { redirect_to(board_discussion_topic_path(@board, @topic.content)) }
+        format.xml  { render :xml => @topic, :status => :created, :location => board_discussion_topic_path(@board, @topic.content) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @topic.content.errors, :status => :unprocessable_entity }

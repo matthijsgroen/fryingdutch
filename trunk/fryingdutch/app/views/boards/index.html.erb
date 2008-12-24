@@ -1,9 +1,9 @@
-<% @boards.select { |b| b.children.count.zero? }.each do |b| %>
-	<% div_for b, :class => "tile" do %>
-		<dt><%= link_to h(b.name), b %></dt>
-		<dd><%= h b.description %></dd>
-	<% end %>
-<% end %>
+<h1>Forums</h1>
+<p>
+	Een inleidende beschijving etc
+</p>
+
+<%= render :partial => @boards.select { |b| b.children.count.zero? } %>
 
 <hr class="clear" />
 
@@ -14,15 +14,9 @@
 			<dd><%= h b.description %></dd>
 		</div>
 		<div class="children">
-			<% b.children.each do |bc| %>
-				<% div_for bc, :class => "tile" do %>
-					<dt><%= link_to h(bc.name), bc %></dt>
-					<dd><%= h bc.description %></dd>
-				<% end %>
-			<% end %>
+		<%= render :partial => b.children %>
 		</div>
 	<% end %>
-	
 <% end %>
 <hr class="clear" />
 

@@ -77,7 +77,7 @@ class GamesController < ApplicationController
         }
         format.js { 
           render :update do |page| 
-            page['#new_game'].replace :partial => "form"
+            page['#new_game'].replace :partial => "remote_form"
           end
         }
         format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }

@@ -1,10 +1,9 @@
 <tr id="<%=dom_id comment %>">
 	<td class="icon">:-)</td>
-	<td class="title"><%=link_to h(discussion_topic.title), board_discussion_topic_path(@board, comment) %></td>
-	<td class="replies">0</td>
-	<td class="views">0</td>
+	<td class="title"><%=link_to h(discussion_topic.title), board_discussion_topic_path(@board, discussion_topic) %></td>
+	<td class="replies"><%= comment.content.replies.count %></td>
 	<td class="author"><%=h comment.user.nickname %></td>
 	<td class="last_post">
-		<%= time_ago_in_words comment.created_at %> ago
+		<%= time_ago_in_words comment.updated_at %> ago
 	</td>
 </tr>
