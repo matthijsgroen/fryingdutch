@@ -1,31 +1,15 @@
 
 .board.tile {
-	width: 300px;
-	border: 1px solid #444444;
+	width: 225px;
 	margin: 3px;
 	float: left;
-	padding: 4px;
+	padding: 5px;
+	height: 60px;
 }
 hr.clear {
 	clear: both;
-	
 }
 
-
-
-/**
- * The old style, remove if done
- */
-
-table.board-list {
-	width: 100%;
-}
-table.board-list thead td {
-	font-weight: bold;
-}
-table.board-list tbody th {
-	text-align: left;
-}
 table.topic-list {
 	width: 100%;
 }
@@ -58,4 +42,6 @@ table.topic-list tbody td.last_post {
 .topic hr {
 	clear: both;
 }
+
+
 

@@ -1,13 +1,4 @@
-<tr id="<%=dom_id board %>">
-	<td><!-- icon --></td>
-	<th>
-		<%=link_to h(board.name), board %>
-		<p class="description"><%=h board.description %></p>
-	</th>
-	<td>
-		<%=h board.topics.count  %>
-	</td>
-	<td>
-		<%= "#{time_ago_in_words board.topics.first.updated_at} ago" if board.topics.first %> 
-	</td>
-</tr>
+<% div_for board, :class => "tile" do %>
+		<dt><%= link_to h(board.name), board %></dt>
+		<dd><%= h board.description %></dd>
+<% end %>

@@ -6,11 +6,15 @@ module ActiveRecord #:nodoc:
       end
       
       module ClassMethods
-        def has_permalink
-          validates_presence_of :name
-          validates_each :name do |record, attr, value|
-            record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if not record.new_record? and find :first, :conditions => ["permalink LIKE ? AND id <> ?", record.get_permalink, record.id]
-            record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if record.new_record? and find :first, :conditions => ["permalink LIKE ?", record.get_permalink]
+        def has_permalink(options = {})
+          options = { :field => :name, :validate => true, :prefix_id => false }.update options
+          
+          if options[:validate]
+            validates_presence_of options[:field]
+            validates_each options[:field] do |record, attr, value|
+              record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if not record.new_record? and find :first, :conditions => ["permalink LIKE ? AND id <> ?", record.get_permalink, record.id]
+              record.errors.add attr, 'Een soortgelijke naam is al in gebruik!' if record.new_record? and find :first, :conditions => ["permalink LIKE ?", record.get_permalink]
+            end
           end
           
           before_save :assign_permalink

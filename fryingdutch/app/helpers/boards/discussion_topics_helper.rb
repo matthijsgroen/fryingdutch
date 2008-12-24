@@ -1,4 +1,3 @@
 module Boards::DiscussionTopicsHelper
- 
   
 end
