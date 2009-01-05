@@ -8,11 +8,15 @@ body {
 }
 
 .outer-wrapper, .header {
-	background: #ffffff url(/images/frozen/top-tile.png) top center repeat-x;
+	background: #296795 url(/images/frozen/top-tile.png) top center repeat-x;
 }
 
-.footer, .footer .body {
-	background: #000000;
+.footer {
+	background: #000000 url(/images/frozen/footer.png) top center repeat-x;
+}
+
+.footer .body {
+	background: none;
 }
 
 .footer {

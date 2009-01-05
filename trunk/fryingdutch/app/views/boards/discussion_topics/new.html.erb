@@ -1,18 +1,16 @@
-<h1>New discussion_topic</h1>
+<h1>Nieuw discussie onderwerp</h1>
 
 <% form_for(@topic, :url => board_discussion_topics_path(@board)) do |f| %>
   <%= f.error_messages %>
 	
 	<% fields_for @topic.content do |c| %>
 		<%= c.error_messages %>
-	  <p>
-	    <%= c.label :title %><br />
-	    <%= c.text_field :title %>
-	  </p>
-	  <p>
-	    <%= c.label :body %><br />
-	    <%= c.text_area :body %>
-	  </p>
+	  <dl>
+	  	<dt><%= c.label :title, "Titel" %></dt>
+	    <dd><%= c.text_field :title %></dd>
+	  	<dt><%= c.label :body, "Tekst" %></dt>
+	    <dd><%= c.text_area :body, :class => "bigtext" %></dd>
+	  </dl>
   <% end %>
 
   <p>
