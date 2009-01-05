@@ -9,40 +9,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081213072225) do
+ActiveRecord::Schema.define(:version => 20090105211544) do
 
   create_table "boards", :force => true do |t|
-    t.integer  "parent_id",   :limit => 11
+    t.integer  "parent_id"
     t.string   "name"
     t.string   "description"
-    t.integer  "position",    :limit => 11
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "comment_on_id",   :limit => 11
+    t.integer  "comment_on_id"
     t.string   "comment_on_type"
-    t.integer  "content_id",      :limit => 11
+    t.integer  "content_id"
     t.string   "content_type"
-    t.integer  "user_id",         :limit => 11
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category",                      :default => "comment"
-    t.integer  "position",        :limit => 11
+    t.string   "category",        :default => "comment"
+    t.integer  "position"
   end
 
   create_table "discussion_topics", :force => true do |t|
     t.string   "title"
-    t.integer  "icon_id",    :limit => 11
+    t.integer  "icon_id"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "funeral_letters", :force => true do |t|
+    t.integer  "funeral_id"
+    t.integer  "employee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "game_metadatas", :force => true do |t|
-    t.integer  "game_id",             :limit => 11
+    t.integer  "game_id"
     t.string   "website"
     t.string   "forum"
     t.string   "community_site"
@@ -62,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20081213072225) do
   end
 
   create_table "game_ratings", :force => true do |t|
-    t.integer  "game_id",    :limit => 11
-    t.integer  "user_id",    :limit => 11
+    t.integer  "game_id"
+    t.integer  "user_id"
     t.float    "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -78,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20081213072225) do
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
-    t.integer "issued",     :limit => 11
-    t.integer "lifetime",   :limit => 11
+    t.integer "issued"
+    t.integer "lifetime"
     t.string  "handle"
     t.string  "assoc_type"
     t.binary  "server_url"
@@ -87,27 +94,35 @@ ActiveRecord::Schema.define(:version => 20081213072225) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :limit => 11, :null => false
+    t.integer "timestamp",  :null => false
     t.string  "server_url"
-    t.string  "salt",                     :null => false
+    t.string  "salt",       :null => false
+  end
+
+  create_table "read_contents", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "screenshots", :force => true do |t|
-    t.integer  "parent_id",    :limit => 11
+    t.integer  "parent_id"
     t.string   "content_type"
     t.string   "filename"
     t.string   "thumbnail"
-    t.integer  "size",         :limit => 11
-    t.integer  "width",        :limit => 11
-    t.integer  "height",       :limit => 11
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
   end
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id",        :limit => 11
-    t.integer  "taggable_id",   :limit => 11
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
   end
@@ -126,8 +141,8 @@ ActiveRecord::Schema.define(:version => 20081213072225) do
   end
 
   create_table "user_games", :force => true do |t|
-    t.integer  "game_id",      :limit => 11
-    t.integer  "user_id",      :limit => 11
+    t.integer  "game_id"
+    t.integer  "user_id"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "quit_reason"
@@ -143,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20081213072225) do
     t.string   "display_name"
     t.string   "nickname"
     t.string   "email"
-    t.integer  "login_counter", :limit => 11
+    t.integer  "login_counter"
     t.date     "dob"
     t.string   "permalink"
   end
@@ -151,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20081213072225) do
   create_table "wow_characters", :force => true do |t|
     t.string   "name"
     t.string   "realm"
-    t.integer  "user_id",    :limit => 11
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
