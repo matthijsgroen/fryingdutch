@@ -1,13 +1,13 @@
 <%= bread_crumbs @board %>
 <h2><%=h @board.name %></h2>
 <p class="description"><%=h @board.description %></p>
-<% if current_user %>
+<% if false # current_user %>
 <div>
-<%= link_to 'Edit', edit_board_path(@board) %> 
+<%= link_to 'Bewerken', edit_board_path(@board) %> 
 | 
-<%= link_to 'Delete', @board, :confirm => "Weet u zeker dat u dit forum wilt verwijderen?", :method => :delete %>
+<%= link_to 'Verwijderen', @board, :confirm => "Weet u zeker dat u dit forum wilt verwijderen?", :method => :delete %>
 |
-<%= link_to 'Add subboard', board_add_path(@board) %>
+<%= link_to 'Sub-forum toevoegen', board_add_path(@board) %>
 </div>
 <% end %>
 

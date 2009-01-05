@@ -5,7 +5,7 @@ module BoardsHelper
     while board = board.parent       
       items << link_to(h(board.name), board)      
     end   
-    items << link_to("alle boards", boards_path)
+    items << link_to("Alle fora", boards_path)
     items.reverse.join " \\ "
   end
   

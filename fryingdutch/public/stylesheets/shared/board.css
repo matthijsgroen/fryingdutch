@@ -44,4 +44,15 @@ table.topic-list tbody td.last_post {
 }
 
 
+.bigtext {
+	width: 100%;
+}
 
+.bigtext.empty {
+	
+}
+
+.profile_avatar {
+	float: left;
+	padding-right: 10px;
+}
