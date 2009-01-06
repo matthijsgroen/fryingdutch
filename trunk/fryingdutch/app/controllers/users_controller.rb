@@ -30,6 +30,8 @@ class UsersController < ApplicationController
         format.js do
           if current_user.plays game
             render :update do |page|
+              page["#game_#{game.id}"].add_class "personal"
+
               page["#game_#{game.id} .play_options"].replace_html :partial => 'games/play_options', 
                 :locals => { :game => game }
               page << "jQuery.facebox({ ajax: '/game-support/#{game.permalink}/collect-info' })" if game.extra_support? and game.support.features[:collect_info?]
@@ -67,6 +69,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js do
         render_to_facebox :partial => "games/quit_reasons" do |page|
+          page["#game_#{@game.id}"].remove_class "personal"
           page["#game_#{@game.id} .play_options"].replace_html :partial => 'games/play_options', 
             :locals => { :game => @game }
         end            

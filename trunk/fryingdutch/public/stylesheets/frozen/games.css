@@ -1,0 +1,219 @@
+#game_list {
+	width: 75%;
+	float: left;
+}
+
+.sidecolumn {
+	float: left;
+	padding: 10px;
+	width: 20%;
+}
+.sidecolumn h2 {
+	margin: 0;
+}
+
+a#add_game {
+	padding: 5px;
+	background-color: #999999;
+	color: #FFFFFF;
+}
+
+form#new_game, 
+form.edit_game {
+	border: 2px solid #999999;
+	background-color: #eeeeee;
+	padding: 15px;
+	margin-bottom: 10px;
+}
+
+form#new_game .textfield,
+form.edit_game .textfield {
+	background-color: #eeeeee;
+	border: 1px solid #999999;
+}
+
+form#new_game .name,
+form.edit_game .name {
+	font-size: 1.4em;	
+}
+
+form#new_game textarea,
+form.edit_game textarea {
+	background-color: #eeeeee;
+	border: 1px solid #999999;
+}
+
+.game {
+	border: 2px solid #296795;
+	background-color: #d8dbf0;
+	padding: 8px;
+	margin-bottom: 10px;
+}
+
+.game.personal {
+	border: 2px solid #728384;
+	background-color: #f4f6e6;
+	padding: 8px;
+	margin-bottom: 10px;
+}
+
+.game h2.title {
+	padding: 0;
+	margin: 0;
+	padding: 5px;
+	float: left;
+}
+.game h2 a {
+	color: black;
+	text-decoration: none;
+}
+.game h2 a:hover {
+	border-bottom: 1px dashed black;
+}
+.game p.description {
+	width: 245px;
+	padding: 5px;
+	background-color: #dddddd;
+}
+
+.averagerating.box {
+	width: 90px;
+	height: 18px;
+	margin: 5px 0 5px 0;
+	background: transparent url(/images/rating.png) top left repeat-x;
+	float: left;
+}
+.averagerating.score {
+	height: 18px;
+	background: transparent url(/images/rating.png) left -36px repeat-x;
+}
+
+p.rating_label {
+	display: inline-block;
+}
+
+.userrating.box {
+	display: inline-block;
+	width: 90px;
+	height: 18px;
+	background: transparent url(/images/rating.png) top left repeat-x;
+}
+.userrating.score {
+	height: 18px;
+	background: transparent url(/images/rating.png) left -36px repeat-x;
+}
+.userrating.score.setting {
+	background: transparent url(/images/rating.png) left -18px repeat-x;
+}
+
+.game .column.first {
+	clear: left;
+}
+.game .column {
+	padding: 2px;
+	position: relative;
+	float: left;
+}
+
+.game .game_menu {
+	clear: both;
+	display: block;
+	padding: 0;
+	margin: 4px 0 0 0;
+	height: 2em;
+}
+
+.game .game_menu li {
+	display: block;
+	float: left;
+	margin-right: 4px;
+	background-color: #dddddd;
+}
+
+.game .game_menu li a {
+	display: block;
+	padding: 4px;
+	color: black;
+	text-decoration: none;
+}
+
+.game .game_menu li a.active {
+	color: black;
+	text-decoration: none;
+	background-color: #FFFFFF;
+}
+
+.cloud1 { font-size: 1.0em; }
+.cloud2 { font-size: 1.2em; }
+.cloud3 { font-size: 1.4em; }
+.cloud4 { font-size: 1.6em; }
+
+.cloud1, .cloud2, .cloud3, .cloud4 { 
+	color: #000000;
+}
+
+.game .tags a {
+	color: black;
+}
+
+.game .tab_contents {
+	display: none;
+	background-color: #FFFFFF;
+	padding: 5px;
+}
+
+.showall {
+	margin-bottom: 10px;
+}
+
+.imagebar {
+	display: block;
+	height: 90px;
+	padding: 0;
+	margin: 0;
+}
+.game.personal .imagebar li {
+	background-color: #728384;
+}
+.imagebar li {
+	display: block;
+	float: left;
+	padding: 4px;
+	margin-right: 4px;
+	background-color: #296795;
+	height: 75px;
+	width: 100px;
+}
+.imagebar li a img {
+	border: none;
+}
+
+.imagebar .links {
+	padding: 0;
+	margin: 0;
+}
+.imagebar .links li {
+	display: list-item;
+	list-style: none;
+	float: none;
+	padding: 0;
+	margin: 0;
+	height: auto;
+	width: auto;
+}
+.imagebar .links li a {
+	color: black;
+	font-size: 0.8em;
+}
+
+ul.image_list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+ul.image_list li {
+	padding: 0;
+	margin: 5px;
+	list-style: none;
+	display: inline-block;
+}

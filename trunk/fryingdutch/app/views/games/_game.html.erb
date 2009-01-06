@@ -1,4 +1,4 @@
-	<div class="game" id="<%=dom_id game %>">
+	<div class="game<%=" personal" if current_user.games_playing.include? game %>" id="<%=dom_id game %>">
 		<h2 class="title"><%= link_to h(game.name), game %></h2>
 		<div class="averagerating box">
 			<%= render :partial => "games/game_rating", :locals => { :game => game } %>
