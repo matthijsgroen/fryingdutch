@@ -2,11 +2,12 @@ module BoardsHelper
   
   def bread_crumbs(board)
     items = []
+    items << link_to_unless_current(h(board.name), board)      
     while board = board.parent       
-      items << link_to(h(board.name), board)      
+      items << link_to_unless_current(h(board.name), board)      
     end   
-    items << link_to("Alle fora", boards_path)
-    items.reverse.join " \\ "
+    items << link_to_unless_current("Alle fora", boards_path)
+    items.reverse.join " &gt; "
   end
   
   def new_topic_path(board)
