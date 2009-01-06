@@ -7,6 +7,9 @@ class Boards::DiscussionTopicsController < ApplicationController
   # GET /boards/discussion_topics/1.xml
   def show
     @topic = @board.topics.find_by_content_id(params[:id])
+    
+    last_reaction = @topic.content.replies.find :last
+    @topic.read_reaction @current_user, last_reaction
 
     respond_to do |format|
       format.html # show.html.erb

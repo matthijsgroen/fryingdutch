@@ -16,17 +16,9 @@ class Board < ActiveRecord::Base
       :joins => 
         "RIGHT OUTER JOIN comments AS t ON (comments.comment_on_id = t.content_id AND comments.comment_on_type = t.content_type) \
         RIGHT OUTER JOIN read_contents AS r ON (r.item_id = t.content_id AND r.item_type = t.content_type)",
-
       :conditions => [
         "t.comment_on_id = ? AND t.comment_on_type = ? AND r.updated_at < comments.updated_at", 
         self.id, "Board"]
-      
-#
-# SELECT COUNT(`comments`.id) as unread FROM `comments` 
-# RIGHT OUTER JOIN `comments` AS t ON comments.comment_on_id = t.content_id AND comments.comment_on_type = t.content_type
-# RIGHT OUTER JOIN `read_contents` AS r ON r.item_id = t.content_id AND r.item_type = t.content_type
-# WHERE 
-#  
   end
 
   

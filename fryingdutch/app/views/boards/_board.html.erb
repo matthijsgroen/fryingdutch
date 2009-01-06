@@ -5,9 +5,9 @@
 		if @current_user
 			info = []
 			unread_topics = board.unread_topics_for @current_user 
-			info << "#{unread_topics} ongelezen onderwerp#{"en" unless unread_topics == 1}" unless unread_topics.zero?
+			info << "#{unread_topics} onderwerp#{"en" unless unread_topics == 1}" unless unread_topics.zero?
 			unread_reactions = board.unread_reactions_for @current_user 
-			info << "#{unread_reactions} ongelezen reactie#{"s" unless unread_reactions == 1}" unless unread_reactions.zero?
-			%><%="<dd>#{info.join(", ")}</dd>" unless info.size.zero? %><%	
+			info << "#{unread_reactions} reactie#{"s" unless unread_reactions == 1}" unless unread_reactions.zero?
+			%><%="<dd>ongelezen: #{info.join(", ")}</dd>" unless info.size.zero? %><%	
 		end %>
 <% end %>
