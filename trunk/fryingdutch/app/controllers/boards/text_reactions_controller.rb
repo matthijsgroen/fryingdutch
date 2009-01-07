@@ -42,5 +42,5 @@ class Boards::TextReactionsController < ApplicationController
       @topic = @board.topics.find params[:topic_id]
     end
 
-    include TopicsHelper
+    include Boards::TopicsHelper
 end
