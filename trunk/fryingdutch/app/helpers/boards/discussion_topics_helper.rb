@@ -1,5 +1,5 @@
 module Boards::DiscussionTopicsHelper
 
-  include TopicsHelper
+  include Boards::TopicsHelper
 
 end
