@@ -1,6 +1,7 @@
 <div class="user_info">
 	<div class="comment_menu">
-	<%= link_to h(user_info.nickname), user_info, :class => "userlink" %>
+	<%= link_to h(user_info.nickname), user_info, :class => "userlink" if user_info %>
+	<%= "Gast" unless user_info %>
 	</div>
-	<%= gravatar_for user_info, :size => 40, :class => "avatar" %>
+	<%= gravatar_for user_info, :size => 40, :class => "avatar" if user_info %>
 </div>

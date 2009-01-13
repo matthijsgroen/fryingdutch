@@ -39,8 +39,8 @@ class Comment < ActiveRecord::Base
   end
   
   def respond_to?(method_id)
-    return true if /read_([_a-zA-Z]\w*)/.match(method_id.to_s)
-    return true if /has_unread_([_a-zA-Z]\w*)_for/.match(method_id.to_s)
+    return true if /^read_([_a-zA-Z]\w*)$/.match(method_id.to_s)
+    return true if /^has_unread_([_a-zA-Z]\w*)_for$/.match(method_id.to_s)
     super
   end
 
