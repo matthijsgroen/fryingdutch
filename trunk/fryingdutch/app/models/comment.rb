@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   def read_item(category, user, item)
     return unless user
     read = ReadContent.find_or_create_by_item_id_and_item_type_and_user_id_and_category(self.content_id, self.content_type, user.id, category)
-    read.updated_at = item.updated_at if item #and item.updated_at < (read.updated_at || item.updated_at) 
+    read.updated_at = item.updated_at if item and item.updated_at >= (read.updated_at || item.updated_at) 
     read.save
   end
 
