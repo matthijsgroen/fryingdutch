@@ -25,5 +25,5 @@
 </ol>
 
 <div id="new_reply">
-<%= link_to "Nieuwe reactie plaatsen", new_board_text_reaction_path(@board, @topic) %>
+<%= link_to "Nieuwe reactie plaatsen", new_board_text_reaction_path(@board, @topic) if current_user %>
 </div>
