@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :user_games_playing, :class_name => "UserGame", :conditions => "user_games.end_date IS NULL"
   has_many :games_playing, :class_name => "Game", :through => :user_games_playing, :source => :game
 
+  #validates_uniqueness_of :nickname, :allow_nil => true
+
   def before_save
     self.permalink = create_permalink 
   end

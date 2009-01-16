@@ -14,6 +14,10 @@
 <% else %>
 <div id="user_header">
 <div id="user_menu">
+	<a class="rpxnow" onclick="return false;"
+	   href="https://tfd-development.rpxnow.com/openid/v2/signin?token_url=<%=CGI.escape(token_url) %>">Inloggen</a>
+	
+<% if false %>
 	<% form_tag(sessions_url) do %>
   <label for="openid_identifier">OpenID:</label>
 	<%= text_field_tag "openid_identifier" %>
@@ -22,6 +26,7 @@
 	<!-- BEGIN ID SELECTOR -->
 	<script type="text/javascript" id="__openidselector" src="https://www.idselector.com/selector/796d7353866138a8eda25ec1efc2e80b67d2440c" charset="utf-8"></script>
 	<!-- END ID SELECTOR -->
+<% end %>
 	<%= link_to "Registreren?", new_user_path %> - Help
 </div>
 </div>

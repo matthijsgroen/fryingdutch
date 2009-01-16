@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     # new.html.erb, registration page    
   end
   
+  def edit
+    
+  end
+  
   def add_game
     game = Game.find_by_permalink(params[:game_id])
     

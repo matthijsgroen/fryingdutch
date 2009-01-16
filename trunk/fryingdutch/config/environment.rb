@@ -29,6 +29,7 @@ Rails::Initializer.run do |config|
   config.gem 'image_science', :version => '~> 1.1.3'
   # Add will_paginate gem support, auto-install using rake gems:install
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'json'
   
   # WARNING: do NOT enable the next line. It will force the test environment, which will give nothing but trouble and headaches!
   #config.gem 'rspec-rails', :version => '~> 1.1.5', :lib => 'spec/rails'
