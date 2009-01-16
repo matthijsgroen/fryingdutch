@@ -15,3 +15,5 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+RPX_API_KEY = "7cf1b7eeac8d64df735a199467a5f3a598791910"

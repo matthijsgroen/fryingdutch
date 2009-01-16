@@ -31,7 +31,8 @@ ActionController::Routing::Routes.draw do |map|
     wow.wow_collect_info 'collect-info', :action => "collect_info", :requirements => { :method => :get }
     wow.wow_update_characters 'characters', :action => "update_characters", :requirements => { :method => :put }
   end
-  
+
+  map.token 'rpx_token', :controller => "sessions", :action => "rpx_token_signin"
   map.logoff 'logoff', :controller => "users", :action => "logoff"
   map.desktop 'desktop', :controller => "users", :action => "desktop"
   map.settings 'settings', :controller => "users", :action => "settings"

@@ -41,8 +41,9 @@ module GravatarHelper
 
     # Return the HTML img tag for the given email address's gravatar.
     def gravatar(email, options={})
-      src = h(gravatar_url(email, options))
+      src = h(gravatar_url(email, options)) unless email.nil? or email.blank?
       options = DEFAULT_OPTIONS.merge(options)
+      src = options[:default] if email.nil? or email.blank?
       [:class, :alt, :size].each { |opt| options[opt] = h(options[opt]) }
       "<img class=\"#{options[:class]}\" alt=\"#{options[:alt]}\" width=\"#{options[:size]}\" height=\"#{options[:size]}\" src=\"#{src}\" />"      
     end
