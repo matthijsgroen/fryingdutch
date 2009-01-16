@@ -5,6 +5,15 @@ class Boards::TextReactionsController < ApplicationController
 
   def new
     @text_reaction = TextComment.new
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js {
+        render :update do |page|
+          page["#new_reply"].replace_html :partial => "remote_new"
+        end
+      }
+    end
   end
   
   def create
