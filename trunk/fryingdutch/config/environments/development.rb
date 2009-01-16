@@ -17,3 +17,4 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 RPX_API_KEY = "7cf1b7eeac8d64df735a199467a5f3a598791910"
+RPX_REALM = "tfd-development"

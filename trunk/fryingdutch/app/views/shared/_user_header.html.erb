@@ -12,10 +12,10 @@
 </div>
 </div>
 <% else %>
-<div id="user_header">
+<div id="login_header">
 <div id="user_menu">
 	<a class="rpxnow" onclick="return false;"
-	   href="https://tfd-development.rpxnow.com/openid/v2/signin?token_url=<%=CGI.escape(token_url) %>">Inloggen</a>
+	   href="https://<%= RPX_REALM %>.rpxnow.com/openid/v2/signin?token_url=<%=CGI.escape(token_url) %>">Inloggen</a> - 
 	
 <% if false %>
 	<% form_tag(sessions_url) do %>

@@ -21,7 +21,8 @@ config.action_controller.perform_caching             = true
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
  RPX_API_KEY = "7cf1b7eeac8d64df735a199467a5f3a598791910"
-
+ RPX_REALM = "beta-fryingdutch"
+ 
  temp = Tempfile.new('ruby_inline', '/tmp')  
  dir = temp.path  
  temp.delete  
