@@ -72,8 +72,22 @@ class SessionsController < ApplicationController
         flash[:error] = "Error saving the fields from your OpenID profile: #{user.errors.full_messages.to_sentence}"
       end
       successful_login user
+    elsif rpx_data["stat"] == "fail"
+      #-1    Service Temporarily Unavailable
+      #0   Missing parameter
+      #1   Invalid parameter
+      #2   Data not found
+      #3   Authentication error
+      messages = {
+        "-1" => "Dienst tijdelijk niet beschikbaar",
+        "0" => "Parameter ontbreekt",
+        "1" => "Parameter ongeldig",
+        "2" => "Gegevens niet gevonden",
+        "3" => "Inloggegevens onjuist"      
+      }
+      failed_login messages[rpx_data["err"]["code"]]
     else
-      failed_login "Sorry, de OpenID server kon niet worden gevonden"
+      failed_login "Het inlog proces is mislukt"
     end
   end  
   
