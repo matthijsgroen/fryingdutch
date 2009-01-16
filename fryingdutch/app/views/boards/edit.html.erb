@@ -1,17 +1,9 @@
 <h1>Editing board</h1>
 
 <% form_for(@board) do |f| %>
-  <%= f.error_messages %>
+	<%= render :partial => f %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Opslaan" %>
   </p>
 <% end %>
 

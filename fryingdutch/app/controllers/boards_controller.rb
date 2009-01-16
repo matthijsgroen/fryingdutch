@@ -21,6 +21,11 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js {
+        render :update do |page|
+          page[@board].replace_html :partial => "board_info", :object => @board
+        end      
+      }
       format.xml  { render :xml => @board }
     end
   end
@@ -48,6 +53,15 @@ class BoardsController < ApplicationController
   # GET /boards/1/edit
   def edit
     @board = Board.find_by_permalink(params[:id])
+    
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.js {
+        render :update do |page|
+          page[@board].replace_html :partial => "remote_edit"
+        end      
+      }
+    end
   end
 
   # POST /boards
@@ -76,6 +90,12 @@ class BoardsController < ApplicationController
       if @board.update_attributes(params[:board])
         flash[:notice] = 'Board was successfully updated.'
         format.html { redirect_to(@board) }
+        format.js {
+          render :update do |page|
+            page[@board].replace_html :partial => "board_info", :object => @board
+            page[@board].highlight 1000
+          end
+        }        
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
