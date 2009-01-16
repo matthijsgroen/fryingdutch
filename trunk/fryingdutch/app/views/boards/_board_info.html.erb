@@ -1,0 +1,10 @@
+<h1 class="boardtitle"><%=h(board_info.name) %></h1>
+<p class="description"><%=h board_info.description %></p>
+<% if current_user %>
+	<ul class="item_options">
+		<li><%= link_to 'Bewerken', edit_board_path(board_info), :rel => "remote" %></li> 
+		<li><%= link_to 'Verwijderen', board_info, :confirm => "Weet u zeker dat u dit forum wilt verwijderen?", :method => :delete %></li>
+		<li><%= link_to 'Sub-forum toevoegen', board_add_path(board_info) %></li>
+	</ul>
+<% end %>
+<hr style="border: none; border-bottom: 1px dashed #eee; clear: both; padding-top: 5px;" />

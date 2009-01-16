@@ -30,7 +30,8 @@ p {
 	height: 40px;
 }
 
-.header h1 {
+.header h1.sitetitle {
+	padding: 0;
 	margin: 0;
 	width: 404px;
 	height: 77px;
@@ -137,4 +138,19 @@ dt {
 	color: white;
 	padding: 0;
 	font-size: 0.7em;
+}
+h1, .edit_board #board_name {
+	font-family: "Trebuchet MS";
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 22px;
+	padding: 3px;
+	margin: 10px 0 5px 0;
+}
+
+.edit_board #board_description,
+.edit_board #board_name {	
+	background-color: #eeeeee;
+	border: 1px solid #dddddd;
 }

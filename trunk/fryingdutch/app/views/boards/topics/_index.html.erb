@@ -1,7 +1,8 @@
-<%= link_to "Nieuw onderwerp", new_topic_path(@board) if current_user %>
+<h2>Onderwerpen</h2>
+
+<%= link_to "Nieuw onderwerp", new_topic_path(@board), :rel => "remote" if current_user %>
 
 <table class="topic-list">
-	<caption>Onderwerpen</caption>
 	<thead>
 		<tr>
 			<td colspan="3">Onderwerp</td>
@@ -15,4 +16,4 @@
 	</tbody>
 </table>
 
-<%= link_to "Nieuw onderwerp", new_topic_path(@board) if current_user %>
+<%= link_to "Nieuw onderwerp", new_topic_path(@board), :rel => "remote" if current_user %>

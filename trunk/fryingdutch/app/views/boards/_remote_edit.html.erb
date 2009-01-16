@@ -1,0 +1,6 @@
+<% remote_form_for(@board) do |f| %>
+	<%= render :partial => f %>
+  <p>
+    <%= f.submit "Opslaan" %> <%=link_to "Ongedaan maken", @board, :rel => "remote" %>
+  </p>
+<% end %>

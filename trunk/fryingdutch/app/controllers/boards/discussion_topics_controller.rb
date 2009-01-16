@@ -25,6 +25,7 @@ class Boards::DiscussionTopicsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js { render_to_facebox }
       format.xml  { render :xml => @topic }
     end
   end
