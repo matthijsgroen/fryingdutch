@@ -1,7 +1,11 @@
-<%= bread_crumbs @board %>
+<%= bread_crumbs_for @board %>
 <% div_for @board do %>
 	<%= render :partial => "board_info", :object => @board %>
 <% end %>
 <%= render :partial => "children" unless @board.children.count.zero? %>
 
+<div>
 <%= render :partial => "boards/topics/index" %>
+</div>
+
+<%= bread_crumbs_for @board %>
