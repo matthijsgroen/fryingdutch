@@ -27,7 +27,7 @@
 <h3>OpenID identities</h3>
 <ul>
 	<% current_user.identities.find(:all).each do |identity| %>
-	<li><%=h(identity.identity_url) %></li>
+	<li><%=h "#{identity.identity_provider} (#{identity.username})" %></li>
 	<% end %>
 </ul>
 <a class="rpxnow" onclick="return false;"
