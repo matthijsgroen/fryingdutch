@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090117075513) do
+ActiveRecord::Schema.define(:version => 20090117124649) do
 
   create_table "boards", :force => true do |t|
     t.integer  "parent_id"
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(:version => 20090117075513) do
     t.string   "identity_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
+    t.boolean  "primary_profile", :default => false
   end
 
   create_table "user_profiles", :force => true do |t|

@@ -39,13 +39,15 @@ class User < ActiveRecord::Base
     userid = UserIdentity.find_by_identity_url(identity_url)
     if userid
       user = userid.user
+      userid.username = profile_data["preferredUsername"]
+      userid.save
     elsif options[:add_user]
       user = User.find options[:add_user]
-      UserIdentity.create :user_id => user.id, :identity_url => identity_url
+      UserIdentity.create :user_id => user.id, :identity_url => identity_url, :username => profile_data["preferredUsername"]
     else
       user = User.create
       UserProfile.create :user_id => user.id
-      UserIdentity.create :user_id => user.id, :identity_url => identity_url
+      UserIdentity.create :user_id => user.id, :identity_url => identity_url, :username => profile_data["preferredUsername"]
     end
     assign_registration_attributes user, profile_data
     user.profile.save
@@ -111,13 +113,15 @@ class User < ActiveRecord::Base
         if (options.has_key?(:if) and options[:if]) or (!options.has_key?(:if))
           value = registration
           path.split(".").each { |i| value = value[i] ? value[i] : "" }
-          o = user
-          attr_path = attribute.split(".").reverse
-          while attr_path.size > 1
-            o = o.send(attr_path.pop)
+          unless value.blank?
+            o = user
+            attr_path = attribute.split(".").reverse
+            while attr_path.size > 1
+              o = o.send(attr_path.pop)
+            end
+            value = options[:convert].call(value) if options.has_key? :convert
+            o.send "#{attr_path.first}=", value
           end
-          value = options[:convert].call(value) if options.has_key? :convert
-          o.send "#{attr_path.first}=", value
         end
       end      
     end
