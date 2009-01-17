@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  full_name: MyString
+  dob: 2009-01-17
+  gender: false
+  country: MyString
+
+two:
+  user: 
+  full_name: MyString
+  dob: 2009-01-17
+  gender: false
+  country: MyString

@@ -7,10 +7,14 @@
 	online profiel kan beheren op 1 centrale plek, en die op meerdere sites kan gebruiken!<br />
 	Zo hoef je niet op al die sites die men ondertussen in zijn digitale leven gebruikt steeds 
 	gegevens zoals email adres te wijzigen!<br /><br />
-	
 	<%= link_to "Ik wil graag meer informatie over OpenID!", "http://openid.net/", :class => "external" %><br />
 	<%= link_to "Ik heb nog geen OpenID, waar kan ik er een krijgen?", "http://openid.net/get/", :class => "external" %><br />
 </p>
+
+<h2>Inloggen</h2>
+<iframe src="https://<%= RPX_REALM %>.rpxnow.com/openid/embed?token_url=<%=CGI.escape(token_url) %>"
+  scrolling="no" frameBorder="no" style="width:400px;height:240px;">
+</iframe>
 
 <h2>Ik snap er geen reet van en OpenID interresseert me niet! Hoe kom ik in de site?</h2>
 <ol>

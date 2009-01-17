@@ -1,20 +1,9 @@
 require 'json'
 
 class SessionsController < ApplicationController
-  #include OpenIdAuthentication
-  
-  protect_from_forgery :except => [:create]
   
   def new
-    
-  end
-  
-  def create
-    if using_open_id?
-      open_id_authentication nil
-    #else
-      #password_authentication(params[:name], params[:password])
-    end
+    # new.html.erb    
   end
 
   def rpx_token_signin
@@ -30,48 +19,14 @@ class SessionsController < ApplicationController
     # for debug information
     # render :text => rpx_data.inspect
     # return
-
-    # -- GMAIL.COM
-    #{
-    #  "profile"=>{
-    #    "verifiedEmail"=>"matthijs.groen@gmail.com", 
-    #    "displayName"=>"matthijs.groen", 
-    #    "preferredUsername"=>"matthijs.groen", 
-    #    "identifier"=>"https://www.google.com/accounts/o8/id?id=AItOawkmv-nqEt3iZ7xybYrzlmQf-LY7ujEz_GE", 
-    #    "email"=>"matthijs.groen@gmail.com"
-    #  }, 
-    #  "stat"=>"ok"
-    #}
-
-    # -- MyOpenID.COM
-    #{
-    #  "profile"=>{
-    #    "photo"=>"http://www.myopenid.com/image?id=66792", 
-    #    "address"=>{
-    #      "country"=>"Netherlands"
-    #    }, 
-    #    "name"=>{
-    #      "formatted"=>"Matthijs Groen"
-    #    }, 
-    #    "verifiedEmail"=>"matthijs.groen@gmail.com", 
-    #    "displayName"=>"Matthijs Groen", 
-    #    "preferredUsername"=>"THAiSi", 
-    #    "url"=>"http://thaisi.myopenid.com/", 
-    #    "gender"=>"male", 
-    #    "birthday"=>"1981-05-31", 
-    #    "identifier"=>"http://thaisi.myopenid.com/", 
-    #    "email"=>"matthijs.groen@gmail.com"
-    #  }, 
-    #  "stat"=>"ok"
-    #}
-    
+   
     if rpx_data["stat"] == "ok"
-      user = User.find_or_create_by_identity_url(rpx_data["profile"]["identifier"])
-      assign_registration_attributes user, rpx_data["profile"]
-      unless user.save
-        flash[:error] = "Error saving the fields from your OpenID profile: #{user.errors.full_messages.to_sentence}"
-      end
-      successful_login user
+      options = {}
+      options[:add_user] = params[:add] if (params[:add]) 
+      user = User.find_or_create_by_rpx_profile(rpx_data["profile"], options)
+      
+      successful_login user unless params[:add]
+      redirect_to settings_url if params[:add]
     elsif rpx_data["stat"] == "fail"
       #-1    Service Temporarily Unavailable
       #0   Missing parameter
@@ -91,23 +46,6 @@ class SessionsController < ApplicationController
     end
   end  
   
-  protected
-
-    # registration is a hash containing the valid sreg keys given above
-    # use this to map them to fields of your user model
-    def assign_registration_attributes(user, registration)
-      [
-        ["email", ["verifiedEmail"]],
-        ["nickname", ["preferredUsername"]],
-        ["display_name", ["name", "formatted"]],
-        ["dob", ["birthday"]]
-      ].each do |attribute, path|
-        value = registration
-        path.each { |i| value = value[i] ? value[i] : "" }
-        user.send "#{attribute}=", value
-      end      
-    end
-
   private
     def successful_login(user)
       session[:user_id] = user.id
