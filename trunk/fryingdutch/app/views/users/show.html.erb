@@ -1,6 +1,6 @@
 <%= gravatar_for @user, :class => "profile_avatar" %>
 <h1><%=h @user.nickname %></h1>
-
+<p>al <%= time_ago_in_words @user.created_at %> TFDer!</p>
 <div class="games">
 	<h2>Spellen die ik speel:</h2>
 	<ul>

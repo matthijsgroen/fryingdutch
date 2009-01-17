@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
   
   def settings
+    @token_url = add_token_url(:add => current_user.id)
   end
   
   def new

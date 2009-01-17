@@ -33,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.token 'rpx_token', :controller => "sessions", :action => "rpx_token_signin"
+  map.add_token 'rpx_token/:add', :controller => "sessions", :action => "rpx_token_signin"
   map.logoff 'logoff', :controller => "users", :action => "logoff"
   map.desktop 'desktop', :controller => "users", :action => "desktop"
   map.settings 'settings', :controller => "users", :action => "settings"

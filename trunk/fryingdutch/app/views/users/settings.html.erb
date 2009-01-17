@@ -11,7 +11,7 @@
 		<span class="explanation">Verplicht: Nodig voor forum berichten etc.</span>
 	</li>
 	<li>
-		<b>Naam:</b> <%=h current_user.display_name %><br />
+		<b>Naam:</b> <%=h current_user.profile.full_name %><br />
 		<span class="explanation">Optioneel: Kan gebruikt worden voor correspondentie</span>
 	</li>
 	<li>
@@ -19,10 +19,19 @@
 		<span class="explanation">Optioneel: Wordt gebruikt om je avatar op te halen bij Gravatar. Kan tevens gebruikt worden voor correspondentie. Voor het ontvangen van nieuwsbrieven moet je geaboneerd zijn.</span>
 	</li>
 	<li>
-		<b>Geboortedatum:</b> <%=h current_user.dob %><br />
+		<b>Geboortedatum:</b> <%=h current_user.profile.dob %><br />
 		<span class="explanation">Optioneel: Wordt gebruikt voor de verjaardagskalender. Indien bepaalde content leeftijdsrestricties heeft dient je geboortedatum wel bekend te zijn.</span>
 	</li>
 </ul>
+
+<h3>OpenID identities</h3>
+<ul>
+	<% current_user.identities.find(:all).each do |identity| %>
+	<li><%=h(identity.identity_url) %></li>
+	<% end %>
+</ul>
+<a class="rpxnow" onclick="return false;"
+   href="https://<%= RPX_REALM %>.rpxnow.com/openid/v2/signin?token_url=<%=CGI.escape( @token_url || token_url) %>">Identity toevoegen aan deze account</a> 
 
 <h3>Avatar</h3>
 <p>

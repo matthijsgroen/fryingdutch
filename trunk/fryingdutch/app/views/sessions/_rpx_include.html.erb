@@ -1,6 +1,6 @@
 <script src="https://rpxnow.com/openid/v2/widget" type="text/javascript"></script>
 <script type="text/javascript">
-  RPXNOW.token_url = "<%=token_url %>";
+  RPXNOW.token_url = "<%=@token_url || token_url %>";
   RPXNOW.realm = "<%= RPX_REALM %>";
   RPXNOW.overlay = true;
 	RPXNOW.language_preference = "nl";
