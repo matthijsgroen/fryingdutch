@@ -51,6 +51,7 @@ p {
 }
 
 #user_header .avatar {
+	margin-top: 4px;
 	float: left;
 }
 
@@ -123,4 +124,68 @@ dt {
 	padding: 3px;
 	float: right;
 	margin: 50px 5px 5px 5px;
+}
+
+.board.tile {
+	background-color: #EEEEEE;
+	border: 2px solid #999999;
+	-moz-border-radius-bottomleft: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+}
+.board.tile a {
+	color: black;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: none;
+}
+.board.tile dd {
+	margin: 0;
+	color: #888888;
+	padding: 0;
+	font-size: 0.7em;
+}
+
+#mainmenu li#search {
+	float: right;
+}
+#mainmenu li#search input {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border: 1px solid #333333;
+	background-color: #555555;
+	color: #dddddd;
+	width: 120px;
+}
+#mainmenu li#search input.empty {
+	font-style: italic;
+}
+#mainmenu li#search input.searching {
+	background: #555555 url("/images/default/search-loader.gif") center right no-repeat; 
+}
+
+#search_result {
+	position: absolute;
+	top: 115px;
+	width: 1000px;
+	margin: 0px auto 0px auto;
+	z-index: 1000;
+}
+
+#search_result .results {
+	width: auto;
+	padding: 5px;
+	background: #EEEEEE;
+	border: 2px solid #999999;
+	float: right;
+}
+
+#search_result .results h4 {
+	margin: 0;
+}
+#search_result .results ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }

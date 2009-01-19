@@ -37,6 +37,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js { render_to_facebox }
       format.xml  { render :xml => @board }
     end
   end

@@ -5,4 +5,8 @@
 	<% end %>
 	<li><%= link_to "Spellen", games_path %></li>
 	<li><%= link_to "Forum", boards_path %></li>
+	<% if current_user %>
+	<li id="search"><input type="text" name="search[query]" /></li>
+	<% end %>
 </ul>
+<div id="search_result"></div>
