@@ -40,6 +40,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.open_id_complete 'sessions', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   map.resources :sessions
+  
+  map.search 'search', :controller => "search", :action => "search", :requirements => { :method => :post }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

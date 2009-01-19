@@ -56,6 +56,17 @@ class User < ActiveRecord::Base
     user
   end
   
+  def self.quick_search(query)
+    condition_values, conditions, index = {}, [], 0
+    query.split.each { |name_part|
+      index += 1
+      value_alias = "f#{index}".to_sym
+      conditions << "nickname LIKE :#{value_alias}"
+      condition_values[value_alias] = "%#{name_part}%"
+    }
+    find :all, :conditions => [conditions.join(" AND "), condition_values]
+  end
+  
   private
     def create_permalink
       if self.nickname

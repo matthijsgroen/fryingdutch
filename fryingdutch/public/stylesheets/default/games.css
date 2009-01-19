@@ -48,7 +48,16 @@ form.edit_game textarea {
 	background-color: #eeeeee;
 	padding: 8px;
 	margin-bottom: 10px;
+	-moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright:10px;
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-topright:10px;	
 }
+.game.personal {
+	border: 2px solid #999966;
+	background-color: #ffffee;
+}
+
 .game h2.title {
 	padding: 0;
 	margin: 0;

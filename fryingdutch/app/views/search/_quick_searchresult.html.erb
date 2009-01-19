@@ -1,0 +1,22 @@
+<div class="results">
+	<p>Resultaten voor <strong><%= h params[:q] %></strong></p>
+
+	<% if @games and @games.count > 0 %>
+		<h4><%=h @games.count %> <%= @games.count > 1 ? "spellen" : "spel" %> gevonden</h4>
+		<ol>
+			<% @games.each do |game| %>
+			<li><%= link_to hl(game.name, params[:q]), game %></li>
+			<% end %>
+		</ol>
+	<% end %>
+
+	<% if @members and @members.count > 0 %>
+		<h4><%=h @members.count %> <%= @members.count > 1 ? "leden" : "lid" %> gevonden</h4>
+		<ol>
+			<% @members.each do |member| %>
+			<li><%= link_to hl(member.nickname, params[:q]), member %></li>
+			<% end %>
+		</ol>
+	<% end %>
+	
+</div>

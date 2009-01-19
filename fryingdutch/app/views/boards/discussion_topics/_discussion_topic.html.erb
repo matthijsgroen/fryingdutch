@@ -1,4 +1,4 @@
-<tr id="<%=dom_id comment %>">
+<% content_tag_for(:tr, comment) do %>
 	<td class="state"><%="*" if comment.unread_reactions_for current_user %></td>
 	<td class="icon">:-)</td>
 	<td class="title"><%=link_to h(discussion_topic.title), board_discussion_topic_path(@board, discussion_topic) %></td>
@@ -7,4 +7,4 @@
 	<td class="last_post">
 		<%= time_ago_in_words comment.updated_at %> geleden
 	</td>
-</tr>
+<% end %>

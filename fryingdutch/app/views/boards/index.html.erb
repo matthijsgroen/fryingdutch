@@ -20,4 +20,4 @@
 <% end %>
 <hr class="clear" />
 
-<%= link_to 'Forum toevoegen', new_board_path if current_user %>
+<%= link_to 'Forum toevoegen', new_board_path, :rel => "remote" if current_user %>

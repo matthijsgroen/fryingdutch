@@ -1,12 +1,12 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-GameRating = $.klass({
+GameRating = jQuery.klass({
 	initialize: function() {
-		this.bar = $(".userrating", this.element);
+		this.bar = jQuery(".userrating", this.element);
 		this.rating = this.bar.width();
 		var game_container = this.element.parents(".game");
-		this.game_url = $("h2 a", game_container).attr("href");
+		this.game_url = jQuery("h2 a", game_container).attr("href");
 	},
 	onmousemove: function(event) {
 		this.bar.addClass("setting");
@@ -30,7 +30,7 @@ GameRating = $.klass({
 
 		this.set_width(width);
 		// send message to server
-		$.ajax({
+		jQuery.ajax({
 			url: this.game_url + "/rating",
 			data: {
 				_method: "put",
@@ -41,13 +41,13 @@ GameRating = $.klass({
 	}
 });
 
-ExternalLink = $.klass({
+ExternalLink = jQuery.klass({
 	initialize: function() {
 		this.element.attr("target", "_blank");
 	}
 });
 
-FlashMessage = $.klass({
+FlashMessage = jQuery.klass({
 	initialize: function() {
 		this.element.highlight(500);
 //		this.element.blindUp(500);
@@ -58,11 +58,11 @@ FlashMessage = $.klass({
 	}
 });
 
-GameTabLink = $.klass(Remote.Link, {
+GameTabLink = jQuery.klass(Remote.Link, {
 	initialize: function($super) {
 		this.menu = this.element.parents("ul");
 		var game_container = this.element.parents(".game");
-		this.content_box = $(".tab_contents", game_container);
+		this.content_box = jQuery(".tab_contents", game_container);
 		$super({ dataType: "script" });
 	},
 	onclick: function($super, event) {
@@ -76,65 +76,109 @@ GameTabLink = $.klass(Remote.Link, {
 		return false;
 	},
 	resetTabs: function() {
-		$("a.game_tab", this.menu).removeClass("active");
+		jQuery("a.game_tab", this.menu).removeClass("active");
 		if (this.content_box.css("display") != "none") {
 			this.content_box.blindUp(500);
 		}
 	},
 	success: function(data) {
 		this.content_box.queue(function () {
-        $(this).html(data);
-        $(this).dequeue();
+        jQuery(this).html(data);
+        jQuery(this).dequeue();
     });
 		this.content_box.blindDown(500);
 	}
 });
 
-ExpandCommentBox = $.klass({
+ExpandCommentBox = jQuery.klass({
 	initialize: function() {
 		this.container = this.element.parents("li");
 	},
 	onfocus: function(event) {
 		this.container.addClass("expanded");
-		$("textarea", this.container).css("height", "auto").attr("rows", 3);
+		jQuery("textarea", this.container).css("height", "auto").attr("rows", 3);
 	},
 });
 
-DisableSubmit = $.klass({
+DisableSubmit = jQuery.klass({
 	initialize: function() {
 		this.container = this.element.parents("li");
 	},
 	onkeyup: function(event) {
 		var value = this.element.val();
-		$("input[type=\"submit\"]", this.container).attr("disabled", (value.length > 3) ? "" : "disabled");
+		jQuery("input[type=\"submit\"]", this.container).attr("disabled", (value.length > 3) ? "" : "disabled");
 	}
 })
 
-NavigationBarLink = $.klass({
+NavigationBarLink = jQuery.klass({
 	initialize : function() {},
 	onclick: function() {
 		id = this.element.attr('id').substring(5);
-		if($('#able_'+id.substring(0,id.length-7)).hasClass('active')) {
-			bars = $(".navbar").hide();
-			bar = $("#"+id);
+		if(jQuery('#able_'+id.substring(0,id.length-7)).hasClass('active')) {
+			bars = jQuery(".navbar").hide();
+			bar = jQuery("#"+id);
 			pos = this.element.position();
 			bar.css('top', pos.top+bar.height());
 			bar.css('left', pos.left);
 			bar.show();
 		} else
-			$("#open_"+id).click();
+			jQuery("#open_"+id).click();
 		return false;
 	}
 });
 
-NavigationBar = $.klass({
-	initialize : function() {
+NavigationBar = jQuery.klass({
+	initialize: function() {
 		this.element.hide();
 		this.element.css('position', 'absolute');
 	},
 });
 
+SearchBox = jQuery.klass({
+	initialize: function() {
+		this.helptext = "Zoeken..."
+		this.time_reference = null;
+		this.onblur();
+	},
+	onfocus: function() {
+		if (this.element.hasClass("empty")) {
+			this.element.val("");
+			this.element.removeClass("empty");
+		} 
+	},
+	onblur: function() {
+		if ((this.element.val() == "") || (this.element.val() == this.helptext)) {
+			this.element.val(this.helptext);
+			this.element.addClass("empty");
+		} 
+	},
+	onkeyup: function() {
+		var minsize = 3
+		if (this.time_reference != null) {
+			clearTimeout(this.time_reference)
+		}
+		var q = this.element.val();
+		if (q.length == 0) {
+			jQuery("#search_result").html("");
+		} else
+		if (q.length < minsize) {
+			jQuery("#search_result").html("<div class=\"results\"><p>Zoekopdracht moet uit minstens "+minsize+" karakters bestaan</p></div>");
+  	} else {
+			jQuery("#search_result").html("<div class=\"results\"><p>Bezig met zoeken...</p></div>");
+			this.time_reference = setTimeout(function() {
+				var box = jQuery("#search input") 
+				var q = box.val();
+		  	box.addClass("searching");
+		  	jQuery.post("/search", {
+		  		q: q
+		  	}, null, "script");
+			}, 1000);
+		}
+	}
+});
+
 jQuery(document).ready(function($) {
+	$('#search input').attach(SearchBox)
 	$('a[rel*=remote]').attach(Remote.Link, { dataType: "script" } );
   $('a[rel*=facebox]').facebox();
 	// Add facebox-support for will-paginate links created as a facebox-navigation
