@@ -194,4 +194,6 @@ jQuery(document).ready(function($) {
 	$("a.external").attach(ExternalLink);
 	$(".flash").attach(FlashMessage);
 	$("a.game_tab").attach(GameTabLink);
+
+
 })

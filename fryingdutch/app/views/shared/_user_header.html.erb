@@ -7,8 +7,8 @@
 <%= gravatar_for current_user, :class => "avatar" %>
 <div id="user_menu">
 	<strong><%=h current_user.nickname %></strong><br />
-	<%= link_to "Instellingen", settings_path %> - <%= link_to "Uitloggen", logoff_path %><br />
-	Berichten (0) - Help<br />		
+	<%= link_to "Instellingen", settings_path %> - <%= link_to "Uitloggen", logoff_path %> - Help<br />
+	Berichten (0) - Vrienden (0)<br />		
 </div>
 </div>
 <% else %>

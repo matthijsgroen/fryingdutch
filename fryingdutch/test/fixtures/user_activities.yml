@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  session_start: 2009-01-24 21:54:44
+  session_end: 
+  time_spent: 2009-01-24 21:54:44
+
+two:
+  user: 
+  session_start: 2009-01-24 21:54:44
+  session_end: 
+  time_spent: 2009-01-24 21:54:44

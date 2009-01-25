@@ -24,6 +24,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.add_game 'add_game/:game_id', :controller => "users", :action => "add_game", :requirements => { :method => :put }
     user.remove_game 'remove_game/:game_id', :controller => "users", :action => "remove_game", :requirements => { :method => :put }
+    user.add_buddy 'add_buddy', :controller => "users", :action => "add_friend", :requirements => { :method => :put }
+    user.remove_buddy 'remove_buddy', :controller => "users", :action => "remove_friend", :requirements => { :method => :put }
   end
   
   # World of Warcraft

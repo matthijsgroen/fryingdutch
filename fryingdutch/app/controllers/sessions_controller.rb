@@ -51,6 +51,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       user.login_counter ||= 0
       user.login_counter += 1
+      user.user_activities.create :session_start => Time.now, :session_end => Time.now, :time_spent => 0
       user.save
       redirect_to desktop_url
     end
