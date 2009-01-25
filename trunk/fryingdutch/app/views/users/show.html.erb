@@ -1,6 +1,5 @@
 <%= gravatar_for @user, :class => "profile_avatar" %>
 <h1><%=h @user.nickname %></h1>
-<p>al <%= time_ago_in_words @user.created_at %> TFDer!</p>
 <div class="games">
 	<h2>Spellen die ik speel:</h2>
 	<ul>
@@ -10,5 +9,32 @@
 			<%= "[Meer info]" if user_game.game.support.features[:public_info?] %>
 		</li>
 		<% end %>
-	</ul>	
+	</ul>
+	<% if current_user %>
+	<h2>Activiteiten</h2>
+	<dl>
+		<dt>Laatst gezien:</dt>
+			<dd><% if s = @user.current_session 
+				if (Time.now - s.session_end) > 30
+				%><%=time_ago_in_words @user.current_session.end_time  %><%
+				else %>Online<%
+				end
+			else %>Onbekend<%
+			end
+			%>
+		</dd>
+		<dt>Lidmaatschap:</dt>
+			<dd><%= time_ago_in_words @user.created_at %> TFDer</dd>
+	</dl>
+	
+	<% if @user.id != current_user.id %>
+	<span id="friend_status">
+		<% if current_user.watching? @user %>
+		<%= link_to_remote "Verwijderen als vriend", :url => user_remove_buddy_path(@user), :method => :put %>
+		<% else %>
+		<%= link_to_remote "Als vriend toevoegen", :url => user_add_buddy_path(@user), :method => :put %>
+		<% end %>
+	</span>
+	<% end %>
+	<% end %>
 </div>

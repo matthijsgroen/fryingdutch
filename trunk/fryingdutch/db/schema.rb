@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090117124649) do
+ActiveRecord::Schema.define(:version => 20090124211917) do
 
   create_table "boards", :force => true do |t|
     t.integer  "parent_id"
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(:version => 20090117124649) do
     t.string   "permalink"
   end
 
+  create_table "observe_objects", :force => true do |t|
+    t.integer  "object_id",   :null => false
+    t.string   "object_type", :null => false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "read_contents", :force => true do |t|
     t.integer  "item_id"
     t.string   "item_type"
@@ -122,6 +130,15 @@ ActiveRecord::Schema.define(:version => 20090117124649) do
 
   create_table "text_comments", :force => true do |t|
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_activities", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "session_start"
+    t.datetime "session_end"
+    t.integer  "time_spent"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
     @current_user = nil
     begin
       @current_user = User.find user_id unless user_id.nil?
+      s = @current_user.current_session
+      s.session_end = Time.now
+      s.save
     rescue
       @current_user = nil
     end

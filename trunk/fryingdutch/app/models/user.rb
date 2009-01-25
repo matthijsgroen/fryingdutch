@@ -1,3 +1,5 @@
+require 'user/watches.rb'
+
 class User < ActiveRecord::Base
 
   SYSTEM = 0; # UserID of the system User.
@@ -8,8 +10,29 @@ class User < ActiveRecord::Base
   has_many :games_playing, :class_name => "Game", :through => :user_games_playing, :source => :game
   has_many :identities, :class_name => "UserIdentity", :dependent => :destroy
   has_one :profile, :class_name => "UserProfile", :dependent => :destroy
-
+  has_many :user_activities
+  
   validates_uniqueness_of :nickname, :unless => :registration?
+
+  #include UserWatches
+
+  def watch(object)
+    return if watching? object
+    ObserveObject.create :user => self, :object => object
+  end
+
+  def watching?(object)
+    r = ObserveObject.count :all, :conditions => { :user_id => self.id, 
+      :object_id => object.id, :object_type => object.class.name }
+    return r > 0
+  end
+
+  def unwatch(object)
+    r = ObserveObject.find :first, :conditions => { :user_id => self.id, 
+      :object_id => object.id, :object_type => object.class.name }
+    r.destroy if r   
+  end
+  
 
   def before_save
     self.permalink = create_permalink 
@@ -18,6 +41,10 @@ class User < ActiveRecord::Base
   def after_create
     self.permalink = create_permalink
     save
+  end
+  
+  def current_session
+    self.user_activities.find :first, :order => "session_start DESC"
   end
   
   def registration?

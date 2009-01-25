@@ -81,6 +81,40 @@ class UsersController < ApplicationController
       end        
     end  
   end
+  
+  def add_friend
+    @user = User.find_by_permalink(params[:user_id])
+    current_user.watch @user unless current_user.watching? @user
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page["#friend_status"].replace_html :text => \
+            link_to_remote("Verwijderen als vriend", :url => user_remove_buddy_path(@user), :method => :put)
+          page["#friend_status"].highlight
+        end
+      }      
+      #format.html { redirect_to @user }
+    end
+  end
+
+  
+  def remove_friend
+    @user = User.find_by_permalink(params[:user_id])
+    current_user.unwatch @user if current_user.watching? @user
+    
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+          page["#friend_status"].replace_html :text => \
+            link_to_remote("Als vriend toevoegen", :url => user_add_buddy_path(@user), :method => :put)
+          page["#friend_status"].highlight
+        end
+      }      
+      #format.html { redirect_to @user }
+    end
+  end
+
 
   def update_quit_reason
     quit_entry = current_user.user_games.find params[:reason_id]
