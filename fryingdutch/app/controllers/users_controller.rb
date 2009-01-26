@@ -28,6 +28,41 @@ class UsersController < ApplicationController
     
   end
   
+  def register
+    # register.html.erb
+    n = User.find_by_nickname_and_state(@current_user.nickname, "active")
+    if n
+      @message = "Nickname is al in gebruik"
+    else
+      @message = "Nickname is beschikbaar"
+    end
+  end
+  
+  def finish_registration
+    n = User.find_by_nickname_and_state(params[:user][:nickname], "active")
+    if n
+      @message = "Nickname is al in gebruik"
+      render :action => "register"
+    else
+      @current_user.state = "active"
+      @current_user.nickname = params[:user][:nickname]
+      if @current_user.save
+        redirect_to desktop_url      
+      else
+        render :action => "register"
+      end
+    end
+  end
+  
+  def check_nickname
+    n = User.find_by_nickname_and_state(params[:nickname], "active")
+    if n
+      render :text => "Nickname is al in gebruik"
+    else
+      render :text => "Nickname is beschikbaar"
+    end
+  end
+  
   def add_game
     game = Game.find_by_permalink(params[:game_id])
     
@@ -81,6 +116,16 @@ class UsersController < ApplicationController
       end        
     end  
   end
+
+  def update_quit_reason
+    quit_entry = current_user.user_games.find params[:reason_id]
+    quit_entry.update_attributes params[:user_game]
+    
+    respond_to do |format|
+      format.js { close_facebox }
+    end
+  end
+  
   
   def add_friend
     @user = User.find_by_permalink(params[:user_id])
@@ -97,7 +142,6 @@ class UsersController < ApplicationController
       #format.html { redirect_to @user }
     end
   end
-
   
   def remove_friend
     @user = User.find_by_permalink(params[:user_id])
@@ -115,15 +159,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def update_quit_reason
-    quit_entry = current_user.user_games.find params[:reason_id]
-    quit_entry.update_attributes params[:user_game]
-    
-    respond_to do |format|
-      format.js { close_facebox }
-    end
-  end
 
   def logoff
     reset_session

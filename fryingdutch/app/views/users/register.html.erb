@@ -1,0 +1,19 @@
+<h1>Registratie afronden</h1>
+
+<% form_for :user, @current_user, :url => finish_registration_path do |f| %>
+
+<%= f.label :nickname, "Nickname" %><br />
+<%= f.text_field :nickname %> 
+
+<%= observe_field :user_nickname,
+      :url => check_nickname_path,
+      :frequency => 0.5,
+      :update => :checkresult,
+      :with => 'nickname'
+      %>
+
+<span id="checkresult"><%= @message %></span>
+<br />
+<%= f.submit "Registratie afronden" %>
+
+<% end %>
