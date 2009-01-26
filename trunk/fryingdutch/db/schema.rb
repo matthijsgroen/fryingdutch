@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090126064101) do
+ActiveRecord::Schema.define(:version => 20090126081128) do
 
   create_table "boards", :force => true do |t|
     t.integer  "parent_id"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20090126064101) do
     t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "draft",        :default => true
+    t.boolean  "allow_reply",  :default => true
   end
 
   create_table "message_labels", :force => true do |t|
