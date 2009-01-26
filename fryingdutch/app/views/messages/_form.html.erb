@@ -1,0 +1,7 @@
+  <%= form.error_messages %>
+  
+	<%= form.label :subject, "Onderwerp" %><br />
+	<%= form.text_field :subject %><br />
+	<% form.fields_for :content do |c| %>
+    <%= c.text_area :description, :rows => 15 %>
+	<% end %>

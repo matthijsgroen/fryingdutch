@@ -8,7 +8,7 @@
 <div id="user_menu">
 	<strong><%=h current_user.nickname %></strong><br />
 	<%= link_to "Instellingen", settings_path %> - <%= link_to "Uitloggen", logoff_path %> - Help<br />
-	<%= link_to "Berichten (0)", messages_path, :rel => "remote" %>
+	<%= link_to "Berichten (0)", messages_path(:format => "facebox"), :rel => "remote" %>
 	- Vrienden (0)<br />		
 </div>
 </div>
