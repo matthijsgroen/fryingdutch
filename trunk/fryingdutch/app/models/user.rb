@@ -11,28 +11,9 @@ class User < ActiveRecord::Base
   has_many :identities, :class_name => "UserIdentity", :dependent => :destroy
   has_one :profile, :class_name => "UserProfile", :dependent => :destroy
   has_many :user_activities
-  
-  validates_uniqueness_of :nickname, :unless => :registration?
+  validates_uniqueness_of :nickname, :scope => [:state], :unless => :registration?
 
-  #include UserWatches
-
-  def watch(object)
-    return if watching? object
-    ObserveObject.create :user => self, :object => object
-  end
-
-  def watching?(object)
-    r = ObserveObject.count :all, :conditions => { :user_id => self.id, 
-      :object_id => object.id, :object_type => object.class.name }
-    return r > 0
-  end
-
-  def unwatch(object)
-    r = ObserveObject.find :first, :conditions => { :user_id => self.id, 
-      :object_id => object.id, :object_type => object.class.name }
-    r.destroy if r   
-  end
-  
+  include UserWatches
 
   def before_save
     self.permalink = create_permalink 
@@ -91,6 +72,7 @@ class User < ActiveRecord::Base
       conditions << "nickname LIKE :#{value_alias}"
       condition_values[value_alias] = "%#{name_part}%"
     }
+    conditions << "state = :state"; condition_values[:state] = "active"
     find :all, :conditions => [conditions.join(" AND "), condition_values]
   end
   

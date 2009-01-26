@@ -2,6 +2,7 @@
 module ApplicationHelper
 
   def current_user
+    return nil if @current_user.registration?
     @current_user
   end
   

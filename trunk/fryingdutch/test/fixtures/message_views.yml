@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  message_header: 
+  read_status: false
+  sent_status: false
+
+two:
+  user: 
+  message_header: 
+  read_status: false
+  sent_status: false

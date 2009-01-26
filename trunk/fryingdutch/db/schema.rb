@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090124211917) do
+ActiveRecord::Schema.define(:version => 20090126064101) do
 
   create_table "boards", :force => true do |t|
     t.integer  "parent_id"
@@ -82,6 +82,48 @@ ActiveRecord::Schema.define(:version => 20090124211917) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
+  end
+
+  create_table "message_headers", :force => true do |t|
+    t.integer  "from_id"
+    t.string   "from_type"
+    t.string   "subject"
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_labels", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "label"
+    t.boolean  "system_label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_recipients", :force => true do |t|
+    t.integer  "message_header_id"
+    t.integer  "recipient_id"
+    t.string   "recipient_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_view_labels", :force => true do |t|
+    t.integer  "message_view_id"
+    t.integer  "label_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_views", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "message_header_id"
+    t.boolean  "read_status"
+    t.boolean  "sent_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "observe_objects", :force => true do |t|

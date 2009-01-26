@@ -21,12 +21,14 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.games_by_tagname "games/tag/:tagname", :controller => "games", :action => "by_tagname"
 
-  map.resources :users do |user|
+  map.resources :users, :collection => { :register => :get } do |user|
     user.add_game 'add_game/:game_id', :controller => "users", :action => "add_game", :requirements => { :method => :put }
     user.remove_game 'remove_game/:game_id', :controller => "users", :action => "remove_game", :requirements => { :method => :put }
     user.add_buddy 'add_buddy', :controller => "users", :action => "add_friend", :requirements => { :method => :put }
     user.remove_buddy 'remove_buddy', :controller => "users", :action => "remove_friend", :requirements => { :method => :put }
   end
+  map.check_nickname 'check_nickname', :controller => "users", :action => "check_nickname", :requirements => { :method => :get }
+  map.finish_registration 'finish_registration', :controller => "users", :action => "finish_registration", :requirements => { :method => :post }
   
   # World of Warcraft
   map.with_options :path_prefix => "/game-support/world-of-warcraft", :controller => "GameSupport::WorldOfWarcraft" do |wow|
