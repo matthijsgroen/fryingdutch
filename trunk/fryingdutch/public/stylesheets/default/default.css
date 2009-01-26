@@ -41,6 +41,7 @@ p {
 	float: right;
 	margin: 5px;
 	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 #user_header .stats {
@@ -129,10 +130,8 @@ dt {
 .board.tile {
 	background-color: #EEEEEE;
 	border: 2px solid #999999;
-	-moz-border-radius-bottomleft: 10px;
-	-moz-border-radius-bottomright: 10px;
-	-moz-border-radius-topleft: 10px;
-	-moz-border-radius-topright: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 .board.tile a {
 	color: black;
@@ -188,4 +187,22 @@ dt {
 	padding: 0;
 	margin: 0;
 	list-style: none;
+}
+
+#message_menu ul {
+	padding: 4px;
+	margin: 0;
+	list-style: none;
+}
+#message_menu li {
+	padding: 4px;
+	margin: 0;
+}
+#message_menu {
+	width: 200px;
+	float: left;
+}
+#messagemain {
+	width: 600px;
+	margin-left: 200px;
 }

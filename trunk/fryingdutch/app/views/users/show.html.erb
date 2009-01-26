@@ -35,6 +35,7 @@
 		<%= link_to_remote "Als vriend toevoegen", :url => user_add_buddy_path(@user), :method => :put %>
 		<% end %>
 	</span>
+	<%=link_to "Stuur bericht", new_message_path(:format => "facebox"), :rel => "remote" %>
 	<% end %>
 	<% end %>
 </div>

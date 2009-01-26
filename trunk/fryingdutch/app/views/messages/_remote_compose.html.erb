@@ -1,0 +1,9 @@
+<h2>Nieuw bericht</h2>
+
+<% remote_form_for @message, :url => messages_path do |f| %>
+	<%= render :partial => f %>
+  <p>
+    <%= f.submit "Verzenden" %>
+    <%= f.submit "Opslaan" %>
+  </p>
+<% end %>

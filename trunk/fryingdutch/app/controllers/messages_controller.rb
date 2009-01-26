@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.js { render_to_facebox }
+      format.facebox { render_to_facebox }
     end    
   end
 
@@ -14,6 +14,18 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @message = Messages::MessageHeader.new
+    @message.content = TextComment.new 
+    
+    respond_to do |format|
+      format.html #new.html.erb
+      format.facebox { render_to_facebox }
+      format.js {
+        render :update do |page|
+          page["#messagemain"].replace_html :partial => "remote_compose"
+        end
+      }
+    end
   end
 
   def edit
