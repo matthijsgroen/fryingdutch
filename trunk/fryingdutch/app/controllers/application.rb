@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if current_user.nil? or current_user.registration?
+    if @current_user.nil? or @current_user.registration?
       flash[:message] = "Je moet ingelogd zijn om deze pagina te bekijken."
       redirect_to root_url
     end
