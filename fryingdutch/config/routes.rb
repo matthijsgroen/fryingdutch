@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.resources :messages
+  
   map.resources :boards do |board|
     board.add 'add', :controller => "Boards", :action => "add_board", :requirements => { :method => :get }
     #topics
