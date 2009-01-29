@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :identities, :class_name => "UserIdentity", :dependent => :destroy
   has_one :profile, :class_name => "UserProfile", :dependent => :destroy
   has_many :user_activities
+  has_many :read_contents, :dependent => :destroy
   validates_uniqueness_of :nickname, :scope => [:state], :unless => :registration?
 
   include UserWatches
@@ -42,13 +43,29 @@ class User < ActiveRecord::Base
     permalink
   end
   
+  def change_to(other)
+    Comment.update_all "user_id = '#{other.id}'", :user_id => self.id
+    UserActivity.update_all "user_id = '#{other.id}'", :user_id => self.id
+    self.destroy
+  end
+  
   def self.find_or_create_by_rpx_profile(profile_data, options = {})
     identity_url = profile_data["identifier"]
     userid = UserIdentity.find_by_identity_url(identity_url)
-    if userid
+    if userid and options[:add_user].nil?
       user = userid.user
       userid.username = profile_data["preferredUsername"]
       userid.save
+    elsif userid and options[:add_user]
+      if userid.user.registration?
+        user = User.find options[:add_user]
+        UserIdentity.create :user_id => user.id, :identity_url => identity_url, :username => profile_data["preferredUsername"]
+        userid.user.change_to user
+      else
+        user = userid.user
+        userid.username = profile_data["preferredUsername"]
+        userid.save
+      end
     elsif options[:add_user]
       user = User.find options[:add_user]
       UserIdentity.create :user_id => user.id, :identity_url => identity_url, :username => profile_data["preferredUsername"]
