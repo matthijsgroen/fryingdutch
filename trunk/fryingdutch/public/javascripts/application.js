@@ -195,5 +195,4 @@ jQuery(document).ready(function($) {
 	$(".flash").attach(FlashMessage);
 	$("a.game_tab").attach(GameTabLink);
 
-
 })
