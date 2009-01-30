@@ -16,7 +16,7 @@
 		<dt>Laatst gezien:</dt>
 			<dd><% if s = @user.current_session 
 				if (Time.now - s.session_end) > 30
-				%><%=time_ago_in_words @user.current_session.end_time  %><%
+				%><%=time_ago_in_words @user.current_session.session_end  %><%
 				else %>Online<%
 				end
 			else %>Onbekend<%
