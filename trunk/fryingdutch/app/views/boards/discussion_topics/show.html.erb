@@ -3,7 +3,7 @@
 <div class="topic">
 	<div class="message">
   	<h3><%=h @topic.content.title %></h3>
-	  <%=h @topic.content.body %>
+	  <%=simple_format @topic.content.body %>
 	</div>
 	<% if false # current_user %>
 		<% if comment.user_id == current_user.id %>
