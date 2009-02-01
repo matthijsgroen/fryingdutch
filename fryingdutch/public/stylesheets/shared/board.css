@@ -56,3 +56,7 @@ table.topic-list tbody td.last_post {
 	float: left;
 	padding-right: 10px;
 }
+
+#new_reply textarea {
+	width: 100%;
+}
