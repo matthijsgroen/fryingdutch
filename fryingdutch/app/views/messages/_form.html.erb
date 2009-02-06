@@ -1,5 +1,8 @@
   <%= form.error_messages %>
   
+	<%= form.label :to, "Aan" %><br />
+	<%= form.text_field :to %><br />
+	
 	<%= form.label :subject, "Onderwerp" %><br />
 	<%= form.text_field :subject %><br />
 	<% form.fields_for :content do |c| %>

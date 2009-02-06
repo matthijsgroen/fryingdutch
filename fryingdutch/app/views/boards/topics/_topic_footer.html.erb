@@ -1,8 +1,8 @@
 <div class="footer">
-	<%= gravatar_for topic_footer.user, :size => 40, :class => "avatar" %>
+	<%= gravatar_for topic_footer.user, :size => 40, :class => "avatar" if topic_footer.user %>
 	<div class="user_info">
 	geplaatst door
-	<%= link_to h(topic_footer.user.nickname), topic_footer.user, :class => "userlink" %>,
+	<%= link_to h(topic_footer.user ? topic_footer.user.nickname : "Gast" ), topic_footer.user, :class => "userlink" %>,
 	<%= time_ago_in_words topic_footer.created_at %> geleden
 	</div>
 </div>
