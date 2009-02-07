@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  state: MyString
+  object: 
+  owner: 
+
+two:
+  state: MyString
+  object: 
+  owner: 

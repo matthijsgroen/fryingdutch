@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
       format.facebox { render_to_facebox }
       format.js {
         render :update do |page|
+          page["#facebox h1"].replace_html :text => "Berichten - Nieuw bericht"
           page["#messagemain"].replace_html :partial => "remote_compose"
         end
       }

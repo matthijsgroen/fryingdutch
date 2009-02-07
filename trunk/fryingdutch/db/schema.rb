@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090206214414) do
+ActiveRecord::Schema.define(:version => 20090207202443) do
 
   create_table "boards", :force => true do |t|
     t.integer  "parent_id"
@@ -139,6 +139,15 @@ ActiveRecord::Schema.define(:version => 20090206214414) do
     t.integer  "message_header_id"
     t.boolean  "read_status"
     t.boolean  "sent_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "object_states", :force => true do |t|
+    t.string   "state"
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

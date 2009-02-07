@@ -206,3 +206,18 @@ dt {
 	width: 600px;
 	margin-left: 200px;
 }
+
+#facebox h1, #facebox h2 {
+	margin: 0;
+	
+}
+
+.mailbox {
+	border: 2px solid #999999;
+	background-color: #eeeeee;
+	padding: 8px;
+	margin-bottom: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	
+}

@@ -22,6 +22,8 @@ form#new_game,
 form.edit_game {
 	border: 2px solid #999999;
 	background-color: #eeeeee;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	padding: 15px;
 	margin-bottom: 10px;
 }
@@ -48,10 +50,8 @@ form.edit_game textarea {
 	background-color: #eeeeee;
 	padding: 8px;
 	margin-bottom: 10px;
-	-moz-border-radius-bottomleft:10px;
-	-moz-border-radius-bottomright:10px;
-	-moz-border-radius-topleft:10px;
-	-moz-border-radius-topright:10px;	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 .game.personal {
 	border: 2px solid #999966;
