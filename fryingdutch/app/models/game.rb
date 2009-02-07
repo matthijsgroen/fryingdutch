@@ -3,10 +3,13 @@ class Game < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :description
   acts_as_taggable
-  has_many :game_ratings, :dependent => :destroy
-  has_one :game_metadata, :dependent => :destroy
+
+  moderated_by :administrators
   has_permalink
   
+  has_many :game_ratings, :dependent => :destroy
+  has_one :game_metadata, :dependent => :destroy
+ 
   has_many :user_games, :dependent => :destroy
   has_many :users, :through => :user_games
   has_many :comments, :as => :comment_on, :conditions => { :category => "comment" }, :order => "position, created_at DESC", :dependent => :destroy

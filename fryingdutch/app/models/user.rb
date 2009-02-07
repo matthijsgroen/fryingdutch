@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_one :profile, :class_name => "UserProfile", :dependent => :destroy
   has_many :user_activities
   has_many :read_contents, :dependent => :destroy
+  has_many :group_memberships, :class_name => "GroupMember", :dependent => :destroy
+  has_many :groups, :through => :group_memberships
   validates_uniqueness_of :nickname, :scope => [:state], :unless => :registration?
 
   include UserWatches

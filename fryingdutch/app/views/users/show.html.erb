@@ -25,6 +25,12 @@
 		</dd>
 		<dt>Lidmaatschap:</dt>
 			<dd><%= time_ago_in_words @user.created_at %> TFDer</dd>
+		<% if @user.groups.size > 0 %>
+		<dt>Lid van groepen:</dt>
+			<% @user.groups.each do |group| %>
+			<dd><%= h group.name %></dd>
+			<% end %>
+		<% end %>
 	</dl>
 	
 	<% if @user.id != current_user.id %>
