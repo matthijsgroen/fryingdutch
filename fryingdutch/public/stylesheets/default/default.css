@@ -219,5 +219,25 @@ dt {
 	margin-bottom: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	
+}
+
+.mailbox .textfield {
+	border: 2px solid #999999;
+	background-color: #ffffff;
+}
+
+.mailbox textarea {
+	border: 2px solid #999999;
+	background-color: #ffffff;
+	width: 530px;
+}
+
+.contactlist {
+	border: 2px solid #999999;
+	background-color: #ffffff;
+}
+
+.contactlist input.textfield {
+	border: none !important;
+	background-color: #ffffff;
 }

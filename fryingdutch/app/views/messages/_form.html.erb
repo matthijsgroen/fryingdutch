@@ -1,10 +1,14 @@
   <%= form.error_messages %>
-  
-	<%= form.label :to, "Aan" %><br />
-	<%= form.text_field :to %><br />
+  <dl>
+	<dt><%= form.label :to, "Aan" %></dt>
+	<dd><%= form.text_field :to, :rel => "contactlist", :class => "textfield" %></dd>
 	
-	<%= form.label :subject, "Onderwerp" %><br />
-	<%= form.text_field :subject %><br />
+	<dt><%= form.label :subject, "Onderwerp" %></dt>
+	<dd><%= form.text_field :subject, :class => "textfield" %></dd>
+	
+	<dt>Bericht</dt>
 	<% form.fields_for :content do |c| %>
-    <%= c.text_area :description, :rows => 15 %>
+    <dd><%= c.text_area :description, :rows => 15 %></dd>
 	<% end %>
+	
+	</dl>

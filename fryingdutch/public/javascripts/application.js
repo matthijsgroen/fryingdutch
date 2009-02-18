@@ -177,6 +177,20 @@ SearchBox = jQuery.klass({
 	}
 });
 
+var ContactList = jQuery.klass({
+	initialize: function() {
+		this.container = this.element.parent
+		jQuery(this.element).before("<input type=\"hidden\" name=\"\" class=\"form_contacts\" /><div class=\"contactlist\"><ul></ul></div>");
+		this.contact_box = this.element.prev();
+		this.result_field = this.contact_box.prev();
+		this.element.appendTo(this.contact_box);
+		
+		this.result_field.attr({ name: this.element.attr("name"), value: this.element.attr("value") });		
+		this.element.attr({ name: "contact_list", value: "" })
+				
+	}
+});
+
 jQuery(document).ready(function($) {
 	$('#search input').attach(SearchBox)
 	$('a[rel*=remote]').attach(Remote.Link, { dataType: "script" } );
@@ -186,6 +200,8 @@ jQuery(document).ready(function($) {
 
 	$('a[rel*=navbar]').attach(NavigationBarLink);
 	$('div .navbar').attach(NavigationBar);
+
+	$('input[rel=contactlist]').attach(ContactList);
 
 	$(".shoutbox .comment textarea").attach(DisableSubmit);
 	$(".shoutbox .new_comment textarea").attach(DisableSubmit);
